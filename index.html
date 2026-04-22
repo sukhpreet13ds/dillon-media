@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dillon Media</title>
+    <meta name="description" content="Dillon Media – Premium media production and creative services.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+<div class="dm-mobile-header">
+    <div class="dm-mobile-header__logo">
+        <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
+    </div>
+    <button class="dm-mobile-burger" id="dm-mobile-burger" aria-label="Open mobile menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+</div>
+
+<div class="dm-mobile-menu" id="dm-mobile-menu">
+    <div class="dm-mobile-menu__header">
+        <div class="dm-mobile-menu__logo">
+            <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
+        </div>
+        <button class="dm-mobile-close" id="dm-mobile-close" aria-label="Close mobile menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    
+    <div class="dm-mobile-menu__body">
+        <div class="dm-mobile-search">
+            <input type="text" class="dm-mobile-search__input" placeholder="Search services...">
+            <button class="dm-mobile-search__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        
+        <nav class="dm-mobile-nav">
+            <ul class="dm-mobile-nav__list">
+                <li class="dm-mobile-nav__item">
+                    <a href="#" class="dm-mobile-nav__link">Home</a>
+                </li>
+                <li class="dm-mobile-nav__item">
+                    <a href="#" class="dm-mobile-nav__link">About Us</a>
+                </li>
+                <li class="dm-mobile-nav__item dm-mobile-nav__item--dropdown">
+                    <div class="dm-mobile-nav__trigger">
+                        <span>Services</span>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <ul class="dm-mobile-nav__dropdown">
+                        <!-- Sub-Category 1 -->
+                        <li class="dm-mobile-nav__sub-item--dropdown">
+                            <div class="dm-mobile-nav__sub-trigger">
+                                <span>Traditional Media</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <ul class="dm-mobile-nav__sub-dropdown">
+                                <li><a href="#">Radio</a></li>
+                                <li><a href="#">Television</a></li>
+                                <li><a href="#">Out-of-Home (OOH)</a></li>
+                                <li><a href="#">Print Media</a></li>
+                            </ul>
+                        </li>
+                        <!-- Sub-Category 2 -->
+                        <li class="dm-mobile-nav__sub-item--dropdown">
+                            <div class="dm-mobile-nav__sub-trigger">
+                                <span>Digital Marketing</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <ul class="dm-mobile-nav__sub-dropdown">
+                                <li><a href="#">SEO</a></li>
+                                <li><a href="#">PPC Advertising</a></li>
+                                <li><a href="#">Social Media Marketing</a></li>
+                                <li><a href="#">Content Marketing</a></li>
+                            </ul>
+                        </li>
+                        <!-- Sub-Category 3 -->
+                        <li class="dm-mobile-nav__sub-item--dropdown">
+                            <div class="dm-mobile-nav__sub-trigger">
+                                <span>Video Production</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <ul class="dm-mobile-nav__sub-dropdown">
+                                <li><a href="#">Commercials</a></li>
+                                <li><a href="#">Corporate Videos</a></li>
+                                <li><a href="#">Explainer Videos</a></li>
+                                <li><a href="#">Music Videos</a></li>
+                            </ul>
+                        </li>
+                        <!-- Sub-Category 4 -->
+                        <li class="dm-mobile-nav__sub-item--dropdown">
+                            <div class="dm-mobile-nav__sub-trigger">
+                                <span>Website Design</span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <ul class="dm-mobile-nav__sub-dropdown">
+                                <li><a href="#">Design & Development</a></li>
+                                <li><a href="#">E-commerce Solutions</a></li>
+                                <li><a href="#">Maintenance & Support</a></li>
+                                <li><a href="#">UX Design</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dm-mobile-nav__item">
+                    <a href="#" class="dm-mobile-nav__link">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<header class="dm-header" id="dm-header">
+    <div class="dm-progress-bar" id="dm-progress" aria-hidden="true"></div>
+
+    <nav class="dm-nav" aria-label="Main Navigation">
+
+        <div class="dm-nav__logo">
+            <a href="#" class="dm-logo-link" aria-label="Dillon Media Home">
+                <img src="assets/dillon-logo.png" alt="Dillon Media Logo" class="dm-logo-img" />
+            </a>
+        </div>
+
+        <ul class="dm-nav__links" id="dm-nav-links" role="menubar">
+            <li class="dm-nav__item dm-nav__item--active" role="none">
+                <a href="#" class="dm-nav__link" role="menuitem">
+                    <!-- <i class="fa-solid fa-house"></i> -->
+                    <span>HOME</span>
+                    <span class="dm-nav__indicator"></span>
+                </a>
+            </li>
+            <li class="dm-nav__item" role="none">
+                <a href="#" class="dm-nav__link" role="menuitem">
+                    <!-- <i class="fa-solid fa-circle-info"></i> -->
+                    <span>ABOUT US</span>
+                    <span class="dm-nav__indicator"></span>
+                </a>
+            </li>
+            <li class="dm-nav__item dm-nav__item--has-mega" role="none">
+                <a href="#" class="dm-nav__link" role="menuitem">
+                    <!-- <i class="fa-solid fa-film"></i> -->
+                    <span>SERVICES</span>
+                    <i class="fa-solid fa-angle-down dm-icon-down"></i>
+                    <i class="fa-solid fa-angle-up dm-icon-up"></i>
+                    <span class="dm-nav__indicator"></span>
+                </a>
+                
+                <div class="dm-mega-menu">
+                    <div class="dm-mega-menu__container">
+                        <div class="dm-mega-menu__content">
+                            <div class="dm-mega-menu__grid">
+                                <div class="dm-mega-menu__column">
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">TRADITIONAL MEDIA MARKETING</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Radio</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Television</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Out-of-Home (OOH)</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Print Media</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">DIGITAL MARKETING</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Search Engine Optimization (SEO)</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Pay-Per-Click (PPC) Advertising</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Social Media Marketing</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Content Marketing</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dm-mega-menu__column">
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">VIDEO PRODUCTION</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Commercials</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Corporate Videos</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Explainer Videos</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Music Videos</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">WEBSITE DESIGN</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Website Design & Development</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">E-commerce Solutions</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Website Maintenance & Support</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">User Experience (UX) Design</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dm-mega-menu__column">
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">PRINT MARKETING</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Brochures & Flyers</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Business Cards</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Posters & Banners</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Magazines & Catalogs</a></li>
+                                         
+                                        </ul>
+                                    </div>
+                                </div>
+                                   <div class="dm-mega-menu__column">
+                                    <div class="dm-mega-menu__group">
+                                        <h4 class="dm-mega-menu__title">SOCIAL MEDIA MANAGEMENT</h4>
+                                        <ul class="dm-mega-menu__list">
+                                            <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Content Creation & Scheduling</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Community Management</a></li>
+                                            <li><a href="#" class="dm-mega-menu__link">Analytics & Reporting</a></li>
+                                            
+                                         
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="dm-mega-menu__image-side">
+                                <div class="dm-mega-menu__image-wrapper">
+                                    <img src="assets/mega-img.jpg" alt="Mega Menu Feature" class="dm-mega-menu__img" />
+                                    <div class="dm-mega-menu__image-overlay">
+                                        <span class="dm-mega-menu__badge">  DILLON PORTAL</span>
+                                        <h3 class="dm-mega-menu__image-title">Get started with Dillon Media </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="dm-nav__item" role="none">
+                <a href="#" class="dm-nav__link" role="menuitem">
+                    <!-- <i class="fa-regular fa-address-card"></i> -->
+                    <span>CONTACT US</span>
+                    <span class="dm-nav__indicator"></span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="dm-nav__actions">
+            <div class="dm-search" id="dm-search">
+                <button class="dm-search__btn" id="dm-search-toggle" aria-label="Open search" aria-expanded="false">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span class="dm-search__ripple" aria-hidden="true"></span>
+                </button>
+                <div class="dm-search__box" id="dm-search-box" role="search">
+                    <input type="text" class="dm-search__input" id="dm-search-input"
+                           placeholder="Search movies, theatres…" aria-label="Search" />
+                    <button class="dm-search__close" id="dm-search-close" aria-label="Close search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <a href="#" class="dm-btn-cta btn-fx" id="dm-cta" role="button">
+                <span class="dm-btn-cta__text">Get Started</span>
+                <span class="dm-btn-cta__shine" aria-hidden="true"></span>
+            </a>
+        </div>
+
+    </nav>
+
+</header>
+
+
+<section class="dm-hero" id="dm-hero">
+    <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
+    <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
+
+    <div class="dm-hero__container">
+
+        <div class="dm-hero__left">
+            <h1 class="dm-hero__title">
+                <span class="dm-hero__line dm-hero__line--solid">
+                    <span class="dm-hero__line-inner">WE MAKE</span>
+                </span>
+                <span class="dm-hero__line dm-hero__line--solid">
+                    <span class="dm-hero__line-inner">BRANDS</span>
+                </span>
+                <span class="dm-hero__line dm-hero__line--outline">
+                    <span class="dm-hero__line-inner">IMPOSSIBLE</span>
+                </span>
+                <span class="dm-hero__line dm-hero__line--accent">
+                    <span class="dm-hero__line-inner">TO <span class="dm-hero__word-wrap"><span class="dm-hero__word" id="dm-hero-word">IGNORE.</span></span></span>
+                </span>
+            </h1>
+        </div>
+
+        <div class="dm-hero__right">
+            <div class="dm-hero__services">
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-video"></i><span>VIDEO</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-tv"></i><span>TV</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-magnifying-glass-chart"></i><span>SEO</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-globe"></i><span>WEB</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-tower-broadcast"></i><span>RADIO</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-bullhorn"></i><span>DIGITAL</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-rectangle-ad"></i><span>OOH</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-music"></i><span>STREAMING</span></a>
+                <a href="#" class="dm-hero__service"><i class="fa-solid fa-envelope"></i><span>EMAIL</span></a>
+            </div>
+            <p class="dm-hero__tagline">FULL-SERVICE, ONE-AGENCY</p>
+
+      
+    </div>
+    
+    </div>
+    <div class="dm-hero__container dm-hero__container--footer">
+     <div class="dm-hero__footer">
+            <div class="dm-hero__footer-left">
+                <p class="dm-hero__footer-text">
+                    From digital to broadcast — we engineer marketing
+                    strategies that cut through the noise and drive results you can measure.
+                </p>
+            </div>
+            <div class="dm-hero__footer-right">
+                <div class="dm-hero__stat-card">
+                    <div class="dm-hero__stat-main">
+                        <span class="dm-hero__stat-number" data-target="40">0</span>
+                        <span class="dm-hero__stat-plus">+</span>
+                    </div>
+                    <p class="dm-hero__stat-label">YEARS OF AWARD-WINNING MEDIA</p>
+                </div>
+                <div class="dm-hero__stat-card">
+                    <div class="dm-hero__stat-main">
+                        <span class="dm-hero__stat-number" data-target="100">0</span>
+                        <span class="dm-hero__stat-plus">+</span>
+                    </div>
+                    <p class="dm-hero__stat-label">YEARS COMBINED EXPERIENCE</p>
+                </div>
+                <div class="dm-hero__stat-card">
+                    <div class="dm-hero__stat-main">
+                        <span class="dm-hero__stat-text">NANFULL</span>
+                    </div>
+                    <p class="dm-hero__stat-label">SERVICE AGENCY</p>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
+
+
+<div id="dm-cursor-dot"  class="dm-cursor-dot"></div>
+<div id="dm-cursor-ring" class="dm-cursor-ring"></div>
+<script src="script/script.js"></script>
+<script src="script/hero.js"></script>
+</body>
+
+</html>

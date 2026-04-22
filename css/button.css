@@ -1,0 +1,54 @@
+.btn-fx {
+    --btn-fx-blob   : #ffffff;
+    --btn-fx-text-on: #212121;
+
+    cursor  : pointer;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition-property: color;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+
+.btn-fx::before {
+    content      : '';
+    position     : absolute;
+    inset        : 0;         
+    margin       : auto;
+    width        : 50px;
+    height       : 50px;
+    border-radius: inherit;   
+    background   : var(--btn-fx-blob);
+    scale        : 0;
+    z-index      : 0;
+
+    transition   : scale 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    border    : none !important;
+    opacity   : 1    !important;
+    transform : none !important;
+    animation : none !important;
+}
+
+.btn-fx:hover::before {
+    scale     : 3;
+    transform : none !important;
+    animation : none !important;
+}
+
+
+.btn-fx .dm-btn-cta__text,
+.btn-fx .dm-btn-cta__shine {
+    position: relative;
+    z-index : 1;
+}
+
+
+.btn-fx:hover {
+    color: var(--btn-fx-text-on) !important;
+}
+
+.btn-fx:active {
+    scale: 1;
+}
