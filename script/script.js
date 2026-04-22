@@ -28,12 +28,14 @@
 
     function openSearch () {
         searchBox.classList.add('is-open');
+        header.classList.add('search-active');
         searchToggle.setAttribute('aria-expanded', 'true');
         setTimeout(() => searchInput.focus(), 200);
     }
 
     function closeSearch () {
         searchBox.classList.remove('is-open');
+        header.classList.remove('search-active');
         searchToggle.setAttribute('aria-expanded', 'false');
         searchInput.value = '';
     }
