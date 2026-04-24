@@ -521,3 +521,184 @@ setInterval(() => {
     
     counts.forEach(animateCount);
 })();
+
+/* ── Process Section Animation ── */
+(function() {
+    'use strict';
+
+    const processSection = document.querySelector('.dm-process');
+    const steps = document.querySelectorAll('.dm-process__step');
+    const lineProgress = document.querySelector('.dm-process__line-progress');
+
+    if (!processSection || !lineProgress) return;
+
+    const observerOptions = {
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Animate the line
+                const isMobile = window.innerWidth < 768;
+                if (isMobile) {
+                    lineProgress.style.height = '100%';
+                } else {
+                    lineProgress.style.width = '100%';
+                }
+
+                // Animate the steps
+                steps.forEach(step => {
+                    step.classList.add('is-visible');
+                });
+
+                // Unobserve after animating once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(processSection);
+})();
+
+/* ── Video 2 Section Carousel & Autoplay ── */
+(function() {
+    'use strict';
+    
+    const section = document.getElementById('dm-video2-section');
+    const mainIframe = document.getElementById('dm-video2-main-iframe');
+    const track = document.getElementById('dm-video2-track');
+    const items = document.querySelectorAll('.dm-video2-item');
+    const prevBtn = document.getElementById('dm-video2-prev');
+    const nextBtn = document.getElementById('dm-video2-next');
+    
+    if (!section || !mainIframe || !track) return;
+    
+    let currentIndex = 0;
+    const totalItems = items.length;
+    
+    function getVisibleCount() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
+    }
+    
+    function updateCarousel() {
+        const visibleCount = getVisibleCount();
+        const gap = 24;
+        const containerWidth = track.parentElement.offsetWidth;
+        const itemWidth = (containerWidth - (gap * (visibleCount - 1))) / visibleCount;
+        
+        // Apply width to items dynamically to ensure precision
+        items.forEach(item => {
+            item.style.flex = `0 0 ${itemWidth}px`;
+        });
+
+        const offset = currentIndex * (itemWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+        
+        // Update arrows visibility
+        if (currentIndex <= 0) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+        
+        if (currentIndex >= totalItems - visibleCount) {
+            nextBtn.classList.add('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+        }
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const visibleCount = getVisibleCount();
+            if (currentIndex < totalItems - visibleCount) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+    }
+    
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const videoUrl = item.getAttribute('data-video');
+            if (mainIframe.src !== videoUrl) {
+                mainIframe.src = videoUrl;
+            }
+            
+            items.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+        });
+    });
+    
+    // Autoplay when in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const currentSrc = mainIframe.src;
+                // If src is empty or just about:blank, load the active item's video
+                if (!currentSrc || currentSrc === window.location.href || currentSrc.includes('about:blank')) {
+                    const activeItem = document.querySelector('.dm-video2-item.active') || items[0];
+                    mainIframe.src = activeItem.getAttribute('data-video');
+                }
+                // We only want to trigger autoplay once when it first comes into view
+                observer.unobserve(section);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    observer.observe(section);
+    
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateCarousel, 100);
+    });
+    
+    // Initial call
+    setTimeout(updateCarousel, 100);
+})();
+
+/* ── Built Different Section Animation ── */
+(function() {
+    'use strict';
+
+    const diffSection = document.querySelector('.dm-diff');
+    if (!diffSection) return;
+
+    const observerOptions = {
+        threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Unobserve after animating once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(diffSection);
+
+    // Observe Blog Section
+    const blogSection = document.querySelector('.dm-blog');
+    if (blogSection) observer.observe(blogSection);
+
+    // Observe CTA Section
+    const ctaSection = document.querySelector('.dm-cta');
+    if (ctaSection) observer.observe(ctaSection);
+})();
