@@ -67,13 +67,18 @@
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href === '#' || href === 'javascript:void(0)') {
+                e.preventDefault();
+            }
+            
             /* Remove active from all */
             document.querySelectorAll('.dm-nav__item').forEach(li => {
                 li.classList.remove('dm-nav__item--active');
             });
             /* Add to clicked */
-            this.closest('.dm-nav__item').classList.add('dm-nav__item--active');
+            const parentItem = this.closest('.dm-nav__item');
+            if (parentItem) parentItem.classList.add('dm-nav__item--active');
 
             /* Ripple burst */
             triggerRipple(this);
@@ -378,32 +383,34 @@
 
 const slider = document.querySelector('.dm-awards__timeline');
 
-let isDown = false;
-let startX;
-let scrollLeft;
+if (slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-});
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
 
-slider.addEventListener('mouseleave', () => {
-    isDown = false;
-});
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+    });
 
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-});
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+    });
 
-slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 1.5; // speed
-    slider.scrollLeft = scrollLeft - walk;
-});
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5; // speed
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
 
 /* Our Work Slider Logic */
 (function() {
@@ -480,14 +487,15 @@ slider.addEventListener('mousemove', (e) => {
 
 
 
-const words = document.querySelectorAll('.dm-work__text-word');
-let index = 0;
-
-setInterval(() => {
-    words[index].classList.remove('active');
-    index = (index + 1) % words.length;
-    words[index].classList.add('active');
-}, 1500);
+const wordsList = document.querySelectorAll('.dm-work__text-word');
+if (wordsList.length > 0) {
+    let wordIndex = 0;
+    setInterval(() => {
+        wordsList[wordIndex].classList.remove('active');
+        wordIndex = (wordIndex + 1) % wordsList.length;
+        wordsList[wordIndex].classList.add('active');
+    }, 1500);
+}
 
 (function() {
     const counts = document.querySelectorAll('.experience-block .count');
@@ -580,34 +588,60 @@ setInterval(() => {
     function getVisibleCount() {
         if (window.innerWidth <= 768) return 1;
         if (window.innerWidth <= 1024) return 2;
-        return 3;
+        return 4;
     }
     
     function updateCarousel() {
-        const visibleCount = getVisibleCount();
-        const gap = 24;
-        const containerWidth = track.parentElement.offsetWidth;
-        const itemWidth = (containerWidth - (gap * (visibleCount - 1))) / visibleCount;
-        
-        // Apply width to items dynamically to ensure precision
-        items.forEach(item => {
-            item.style.flex = `0 0 ${itemWidth}px`;
-        });
+        if (!track || !items.length) return;
 
-        const offset = currentIndex * (itemWidth + gap);
-        track.style.transform = `translateX(-${offset}px)`;
+        const isDesktop = window.innerWidth > 1024;
+        const visibleCount = getVisibleCount();
+        const gap = isDesktop ? 10 : 24;
+        const container = track.parentElement;
         
-        // Update arrows visibility
-        if (currentIndex <= 0) {
-            prevBtn.classList.add('hidden');
-        } else {
-            prevBtn.classList.remove('hidden');
+        // Ensure currentIndex is within bounds
+        if (currentIndex > totalItems - visibleCount) {
+            currentIndex = Math.max(0, totalItems - visibleCount);
         }
-        
-        if (currentIndex >= totalItems - visibleCount) {
-            nextBtn.classList.add('hidden');
+        if (currentIndex < 0) currentIndex = 0;
+
+        if (isDesktop) {
+            // Vertical layout for desktop
+            items.forEach(item => {
+                item.style.flex = '0 0 auto';
+                item.style.width = '100%';
+            });
+            
+            const firstItem = items[0];
+            const itemHeight = firstItem ? firstItem.getBoundingClientRect().height : 0;
+            const offset = currentIndex * (itemHeight + gap);
+            track.style.transform = `translateY(-${offset}px)`;
         } else {
-            nextBtn.classList.remove('hidden');
+            // Horizontal layout for mobile/tablet
+            const containerWidth = container ? container.offsetWidth : 0;
+            const itemWidth = (containerWidth - (gap * (visibleCount - 1))) / visibleCount;
+            
+            items.forEach(item => {
+                item.style.flex = `0 0 ${itemWidth}px`;
+                item.style.width = ''; 
+            });
+
+            const offset = currentIndex * (itemWidth + gap);
+            track.style.transform = `translateX(-${offset}px)`;
+        }
+
+        // Update arrows visibility
+        if (prevBtn) {
+            currentIndex <= 0 ? prevBtn.classList.add('hidden') : prevBtn.classList.remove('hidden');
+        }
+        if (nextBtn) {
+            currentIndex >= totalItems - visibleCount ? nextBtn.classList.add('hidden') : nextBtn.classList.remove('hidden');
+        }
+
+        // Ensure main video is loaded if it's blank and we're in view
+        if (mainIframe && (!mainIframe.src || mainIframe.src.includes('about:blank'))) {
+             const activeItem = document.querySelector('.dm-video2-item.active') || items[0];
+             if (activeItem) mainIframe.src = activeItem.getAttribute('data-video');
         }
     }
     
@@ -646,17 +680,11 @@ setInterval(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const currentSrc = mainIframe.src;
-                // If src is empty or just about:blank, load the active item's video
-                if (!currentSrc || currentSrc === window.location.href || currentSrc.includes('about:blank')) {
-                    const activeItem = document.querySelector('.dm-video2-item.active') || items[0];
-                    mainIframe.src = activeItem.getAttribute('data-video');
-                }
-                // We only want to trigger autoplay once when it first comes into view
+                updateCarousel(); // Force update and load video
                 observer.unobserve(section);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
     
     observer.observe(section);
     
@@ -664,19 +692,20 @@ setInterval(() => {
     let resizeTimer;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(updateCarousel, 100);
+        resizeTimer = setTimeout(updateCarousel, 150);
     });
     
-    // Initial call
-    setTimeout(updateCarousel, 100);
+    // Initial call after a short delay to ensure DOM and styles are ready
+    window.addEventListener('load', () => {
+        setTimeout(updateCarousel, 300);
+    });
+    // Also call immediately just in case
+    setTimeout(updateCarousel, 500);
 })();
 
-/* ── Built Different Section Animation ── */
+/* ── Section Reveal Animations ── */
 (function() {
     'use strict';
-
-    const diffSection = document.querySelector('.dm-diff');
-    if (!diffSection) return;
 
     const observerOptions = {
         threshold: 0.3
@@ -686,19 +715,170 @@ setInterval(() => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Unobserve after animating once
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    observer.observe(diffSection);
+    const diffSection = document.querySelector('.dm-diff');
+    if (diffSection) observer.observe(diffSection);
 
-    // Observe Blog Section
     const blogSection = document.querySelector('.dm-blog');
     if (blogSection) observer.observe(blogSection);
 
-    // Observe CTA Section
     const ctaSection = document.querySelector('.dm-cta');
     if (ctaSection) observer.observe(ctaSection);
+})();
+
+/* ── About Page Story Reveal & Thread Animation ── */
+(function() {
+    'use strict';
+
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const threadLine = document.querySelector('.dm-values-thread-line');
+    const valuesSection = document.querySelector('.dm-about-values');
+
+    if (!reveals.length) return;
+
+    // Intersection Observer for generic reveals
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Scroll listener for thread growth
+    if (threadLine && valuesSection) {
+        window.addEventListener('scroll', () => {
+            const rect = valuesSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Calculate how much of the section is visible
+            // 0 when top enters, 1 when bottom enters/passes
+            const start = rect.top;
+            const end = rect.bottom;
+            
+            if (start < windowHeight && end > 0) {
+                const totalHeight = rect.height;
+                const visiblePart = windowHeight - start;
+                let progress = (visiblePart / totalHeight) * 100;
+                
+                // Clamp between 0 and 100
+                progress = Math.max(0, Math.min(100, progress));
+                threadLine.style.height = progress + '%';
+            }
+        });
+    }
+})();
+
+/* ── Video Modal Logic ── */
+(function() {
+    'use strict';
+
+    const modal = document.getElementById('dm-video-modal');
+    const openBtn = document.getElementById('dm-video-modal-open');
+    const closeBtn = document.getElementById('dm-video-modal-close');
+    const btnClose = document.getElementById('dm-video-modal-btn-close');
+    const iframe = document.getElementById('dm-modal-iframe');
+
+    if (!modal || !openBtn) return;
+
+    const showreelUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; // Placeholder URL
+
+    openBtn.addEventListener('click', () => {
+        modal.classList.add('is-open');
+        iframe.src = showreelUrl;
+        document.body.style.overflow = 'hidden';
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        iframe.src = "";
+        document.body.style.overflow = '';
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+
+    // Escape key to close
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+})();
+
+/* ── Video Production Slider ── */
+(function() {
+    'use strict';
+
+    const slider = document.getElementById('dm-video-slider');
+    if (!slider) return;
+
+    const slides = slider.querySelectorAll('.dm-video-slide');
+    const prevBtn = document.getElementById('video-slide-prev');
+    const nextBtn = document.getElementById('video-slide-next');
+    const dotsContainer = document.getElementById('video-slide-dots');
+    
+    let currentIndex = 0;
+    let autoSlideInterval;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dm-video-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll('.dm-video-dot');
+
+    function updateSlider() {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentIndex);
+            dots[index].classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+        resetAutoSlide();
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoSlide();
+    });
+
+    startAutoSlide();
 })();
