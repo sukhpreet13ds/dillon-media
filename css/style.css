@@ -1147,6 +1147,16 @@ screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait
     cursor: none !important;
 }
 
+@media (max-width: 1024px) {
+    * {
+        cursor: auto !important;
+    }
+    .dm-cursor-dot,
+    .dm-cursor-ring {
+        display: none !important;
+    }
+}
+
 .dm-cursor-dot {
     position: fixed;
     width: 9px;
@@ -6160,7 +6170,7 @@ button:hover~.dm-cursor-ring {
     position: absolute;
     inset: 0;
     z-index: 1;
-    overflow: hidden;     /* ensures video is clipped */
+    overflow: hidden;/* ensures video is clipped */
 }
 
 .dm-service-hero__video {
@@ -6171,6 +6181,7 @@ button:hover~.dm-cursor-ring {
     height: 100%;
     object-fit: cover;
     transform: translate(-50%, -50%);
+    filter: grayscale(100%);
 }
 /* ... existing hero styles ... */
 
@@ -6308,16 +6319,7 @@ button:hover~.dm-cursor-ring {
     backdrop-filter: blur(10px);
 }
 
-.dm-feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, transparent 50%, rgba(145, 13, 23, 0.1) 50%);
-    transition: all 0.4s ease;
-}
+
 
 .dm-feature-card:hover {
     background: rgba(145, 13, 23, 0.03);
@@ -6337,8 +6339,8 @@ button:hover~.dm-cursor-ring {
     font-size: 5rem;
     color: rgba(255, 255, 255, 0.03);
     position: absolute;
-    top: -10px;
-    left: -10px;
+        top: -4px;
+    left: 11px;
     transition: all 0.5s ease;
     z-index: 0;
     line-height: 1;
@@ -6405,7 +6407,7 @@ button:hover~.dm-cursor-ring {
 
 .dm-video-slide {
     position: absolute;
-    inset: 0;
+    /* inset: 0; */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
@@ -6516,12 +6518,29 @@ button:hover~.dm-cursor-ring {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .dm-video-slider {
-        height: 950px;
+        /* height: 950px; */
     }
     .dm-video-slide__image {
         height: 280px;
+    }
+    .dm-video-play-btn{
+        width: 80px;
+        height: 80px;
+    }
+    .dm-service-intro__desc{
+        font-size: 1.05rem;
+        line-height: 1.2;
+    }
+    .dm-slide-main-title{
+        line-height: 1.1;
+    }
+    .dm-video-slider-controls {
+        margin-top: -100px !important;
+    }
+    .dm-service-hero__title {
+          margin-top: 24px;
     }
 }
 
@@ -6576,15 +6595,17 @@ button:hover~.dm-cursor-ring {
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* ================================================================
-   PROUD TO WORK WITH SECTION
-   ================================================================ */
+/*PROUD TO WORK WITH SECTION*/
 .vdm-proud-work {
     padding: 150px 0;
     background: #000;
 }
 .vdm-container{
     max-width: 1400px;
+    margin: 0 auto;
+}
+.dm-container{
+    max-width: 1650px;
     margin: 0 auto;
 }
 .dm-proud-title {
@@ -6649,9 +6670,7 @@ button:hover~.dm-cursor-ring {
     gap: 60px;
 }
 
-.dm-proud-banner--reverse .dm-proud-banner__content {
-    /* No longer needed since HTML structure is handled */
-}
+
 
 .dm-proud-device {
     flex: 1;
@@ -6677,8 +6696,19 @@ button:hover~.dm-cursor-ring {
 .dm-proud-banner:hover .dm-proud-device img {
     filter: drop-shadow(0 60px 130px rgba(0, 0, 0, 1));
 }
-
-
+.dm-proud-device-sm img{
+ width: 100% !important;
+ margin-left: 0% !important;
+ /* transform: scale(.7) !important; */
+}
+.dm-proud-device-sm {
+    flex: 1;
+    max-width: 400px;
+    perspective: 2000px;
+    z-index: 10;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
 .dm-proud-info {
     flex: 1;
     display: flex;
@@ -7154,7 +7184,7 @@ button:hover~.dm-cursor-ring {
 }
 
 .yellow-circle {
-    background: #f1c40f;
+    background: #ffffff;
 }
 
 .red-circle {
@@ -7261,10 +7291,11 @@ button:hover~.dm-cursor-ring {
 /* SEO Banner CTA */
 .seo-banner-cta {
     padding: 100px 0;
-    background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+    background: linear-gradient(135deg, #ffffffe5 0%, #ffffffcb 100%);
     text-align: center;
     position: relative;
     z-index: 10;
+    margin-top: 20px;
 }
 
 .seo-banner-title {
@@ -7437,7 +7468,25 @@ button:hover~.dm-cursor-ring {
         padding: 20px;
     }
     
-    .table-intro h3 { font-size: 2rem; }
+    .table-intro h3 { font-size: 1.5rem; }
+    .seo-pricing-table th,
+.seo-pricing-table td {
+    padding: 12px 28px;
+}
+.seo-pricing-table th{
+    font-size: 1rem;
+}
+.seo-pricing-table .feature-col {
+width: 25%;
+
+}
+.category-row td{
+    font-size: 1.3rem;
+}
+.right-aligned .seo-feature-box,
+.left-aligned .seo-feature-box{
+    text-align: left;
+}
 }
 
 /* ================================================================
@@ -7659,6 +7708,8 @@ button:hover~.dm-cursor-ring {
     .smm-benefits-grid,
     .smm-process-grid {
         grid-template-columns: 1fr;
+        margin-left: 10px;
+        margin-right: 10px;
     }
     
     .smm-platforms-card {
@@ -7683,7 +7734,7 @@ button:hover~.dm-cursor-ring {
 
     .smm-process-box-item.left-icon,
     .smm-process-box-item.right-icon {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
     
@@ -7691,6 +7742,13 @@ button:hover~.dm-cursor-ring {
         margin: -55px 0 0 0 !important;
         padding: 80px 30px 40px 30px !important;
         text-align: center;
+}
+.smm-process-section{
+    padding-top: 0;
+}
+.smm-icon-circle {
+width: 80px;
+height: 80px;
 }
 }
 /* TRADITIONAL MEDIA PAGE SPECIFIC SECTIONS*/
@@ -7739,56 +7797,88 @@ button:hover~.dm-cursor-ring {
 /* Diamond Icon Grid */
 .tra-icon-graphic {
     position: relative;
-    height: 450px;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 1000px;
 }
 
 .tra-icon-grid {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
 }
 
 .tra-icon-card {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    background: var(--accent);
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    gap: 10px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
-    cursor: default;
+    border-radius: 24px;
+    gap: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    z-index: 1;
 }
 
 .tra-icon-card i {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    color: var(--accent);
+    transition: transform 0.4s ease;
 }
 
 .tra-icon-card span {
     font-family: var(--font-body);
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
 }
 
-.card-top { top: -60px; left: 100px; }
-.card-left { top: 100px; left: -60px; }
-.card-center { top: 100px; left: 100px; }
-.card-right { top: 100px; left: 260px; }
-.card-bottom { top: 260px; left: 100px; }
+.card-top { top: -40px; left: 115px; transform: rotate(-5deg); }
+.card-left { top: 115px; left: -40px; transform: rotate(-3deg); }
+.card-center { 
+    top: 115px; 
+    left: 115px; 
+    z-index: 10; 
+    background: var(--accent); 
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 25px 60px rgba(145, 13, 23, 0.4);
+    transform: scale(1.1);
+}
+.card-right { top: 115px; left: 270px; transform: rotate(5deg); }
+.card-bottom { top: 270px; left: 115px; transform: rotate(3deg); }
+
+.card-center i { color: #fff; }
 
 .tra-icon-card:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: translateY(-15px) scale(1.1) rotate(2deg);
     background: #fff;
+    color: #000;
+    z-index: 15;
+}
+
+.tra-icon-card:hover i {
+    transform: scale(1.2);
     color: var(--accent);
 }
+
+.card-center:hover i {
+    color: var(--accent);
+}
+
+.yellow-circle { background: #ffcc00; color: #000; }
+.red-circle { background: var(--accent); color: #fff; }
 
 /* Services Layout */
 .tra-services-section {
@@ -7908,19 +7998,44 @@ button:hover~.dm-cursor-ring {
 }
 
 @media (max-width: 768px) {
-    .tra-service-box-item.left-icon,
-    .tra-service-box-item.right-icon {
+    .tra-service-box-item.left-icon {
         flex-direction: column;
         align-items: center;
     }
     
+    .tra-service-box-item.right-icon {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
     .tra-box-content {
-        margin: -55px 0 0 0 !important;
-        padding: 80px 30px 40px 30px !important;
+        margin: -45px 0 0 0 !important;
+        padding: 70px 25px 35px 25px !important;
         text-align: center;
     }
     
+    .tra-icon-circle {
+        width: 90px;
+        height: 90px;
+        font-size: 2.2rem;
+        border-width: 3px;
+    }
+
     .tra-icon-grid {
+        transform: scale(0.8);
+        margin: 0 auto;
+    }
+
+    .tra-icon-graphic {
+        height: 380px;
+        margin-top: 20px;
+    }
+    .dm-traditional-media{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .tra-checklist li{
+        font-size: 1rem;
     }
 }
 
@@ -7983,7 +8098,7 @@ button:hover~.dm-cursor-ring {
 .str-benefit-card h4 {
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    color: #000;
+    color: #fff;
     margin-bottom: 15px;
 }
 
@@ -8039,7 +8154,7 @@ button:hover~.dm-cursor-ring {
 }
 
 .black-circle { background: #000; }
-.yellow-circle { background: #ffcc00; }
+.yellow-circle { background: #ffffff; color: #000;}
 
 .str-service-icon-item:hover .str-icon-circle {
     transform: scale(1.1) rotate(10deg);
@@ -8174,6 +8289,17 @@ button:hover~.dm-cursor-ring {
     .str-work-card {
         flex-direction: column;
         text-align: center;
+    }
+    .str-services-content{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+     .dm-service-hero__bg::after {
+        background: linear-gradient(
+            180deg,
+            transparent 0%,
+            #0a0a0a 100%
+        );
     }
 }
 
