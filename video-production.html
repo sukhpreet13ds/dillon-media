@@ -11,6 +11,219 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Video Selection Gallery Modal Styles */
+        .dm-selection-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .dm-selection-modal.is-open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .dm-selection-modal__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+
+        .dm-selection-modal__container {
+            position: relative;
+            z-index: 2;
+            width: 95%;
+            max-width: 1400px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 80px 40px 60px;
+            background: rgba(15, 15, 15, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .dm-selection-modal__container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dm-selection-modal__container::-webkit-scrollbar-thumb {
+            background: #910d17;
+            border-radius: 10px;
+        }
+
+        .dm-selection-modal__title {
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .dm-selection-modal__title span {
+            display: block;
+            font-size: 0.35em;
+            letter-spacing: 8px;
+            color: #910d17;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .dm-video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
+            gap: 40px;
+        }
+
+        .dm-video-card {
+            position: relative;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #000;
+        }
+
+        .dm-video-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(145, 13, 23, 0.3);
+            border-color: #910d17;
+        }
+
+        .dm-video-card__thumb {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .dm-video-card__thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .dm-video-card:hover .dm-video-card__thumb img {
+            transform: scale(1.15);
+            filter: brightness(0.7);
+        }
+
+        .dm-video-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .dm-video-card:hover .dm-video-card__overlay {
+            opacity: 1;
+            background: rgba(145, 13, 23, 0.2);
+        }
+
+        .dm-video-card__play-icon {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.7);
+        }
+
+        .dm-video-card:hover .dm-video-card__play-icon {
+            background: #910d17;
+            color: #fff;
+            transform: scale(1);
+            box-shadow: 0 0 40px rgba(145, 13, 23, 0.8);
+        }
+
+        .dm-selection-modal__close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .dm-selection-modal__close:hover {
+            background: #910d17;
+            transform: rotate(90deg);
+            border-color: #910d17;
+        }
+
+        @media (max-width: 992px) {
+            .dm-selection-modal__container {
+                padding: 60px 30px 40px;
+            }
+            .dm-video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dm-selection-modal__container {
+                padding: 50px 15px 30px;
+                width: 98%;
+                border-radius: 20px;
+            }
+            .dm-selection-modal__title {
+                margin-bottom: 40px;
+            }
+            .dm-video-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .dm-video-card__play-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+            .dm-selection-modal__close {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -57,49 +270,105 @@
                             <!-- Sub-Category 1 -->
                             <li class="dm-mobile-nav__sub-item--dropdown">
                                 <div class="dm-mobile-nav__sub-trigger">
-                                    <span><a href="traditional-media.html">Traditional Media</a></span>
+                                    <span><a href="video-production.html">VIDEO PRODUCTION</a></span>
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <ul class="dm-mobile-nav__sub-dropdown">
-                                    <li><a href="#">Radio</a></li>
-                                    <li><a href="#">Television</a></li>
-                                   
+                                    <li>High-quality video content that captures attention.</li>
                                 </ul>
                             </li>
                             <!-- Sub-Category 2 -->
                             <li class="dm-mobile-nav__sub-item--dropdown">
                                 <div class="dm-mobile-nav__sub-trigger">
-                                    <span>Digital Marketing</span>
-                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <span><a href="digital-marketing.html">DIGITAL MARKETING</a></span>
+
+                                 <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <ul class="dm-mobile-nav__sub-dropdown">
-                                    <li><a href="#">SEO</a></li>
-                                    <li><a href="#">PPC Advertising</a></li>
-                               
+                                    <li>Data-driven strategies to grow your online presence.</li>
                                 </ul>
                             </li>
                             <!-- Sub-Category 3 -->
                             <li class="dm-mobile-nav__sub-item--dropdown">
                                 <div class="dm-mobile-nav__sub-trigger">
-                                    <span>Video Production</span>
-                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <span><a href="print-marketing.html">PRINT MARKETING</a></span>
+                                 <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <ul class="dm-mobile-nav__sub-dropdown">
-                                    <li><a href="#">Commercials</a></li>
-                                    <li><a href="#">Corporate Videos</a></li>
-                                  
+                                    <li>Creative print solutions for impactful branding.</li>
                                 </ul>
                             </li>
                             <!-- Sub-Category 4 -->
                             <li class="dm-mobile-nav__sub-item--dropdown">
                                 <div class="dm-mobile-nav__sub-trigger">
-                                    <span>Website Design</span>
-                                    <i class="fa-solid fa-chevron-down"></i>
+                                    <span><a href="event-management.html">EVENT MANAGEMENT</a></span>
+                                <i class="fa-solid fa-chevron-down"></i>
                                 </div>
                                 <ul class="dm-mobile-nav__sub-dropdown">
-                                    <li><a href="#">Design & Development</a></li>
-                                    <li><a href="#">E-commerce Solutions</a></li>
-                              
+                                    <li>Seamless planning and execution of memorable events.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="seo.html">SEO</a></span>
+                               <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Improve rankings and drive organic traffic.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="web-development.html">WEBSITE DEVELOPMENT</a></span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Modern, responsive websites built for performance.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="smm.html">SOCIAL MEDIA MANAGEMENT</a></span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Engage audiences and grow your brand socially.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="traditional-media.html">TRADITIONAL MEDIA</a></span>
+                                 <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Strategic placements across TV, radio, and print.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="tv-services.html">VIBE OTT & CONNECTED TV SERVICES</a></span>
+                                 <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Target audiences through premium OTT platforms.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="programmatic.html">PROGRAMMATIC ADVERTISING SERVICES</a></span>
+                               <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Automated ad buying for precise targeting.</li>
+                                </ul>
+                            </li>
+                             <li class="dm-mobile-nav__sub-item--dropdown">
+                                <div class="dm-mobile-nav__sub-trigger">
+                                    <span><a href="streaming.html">STREAMING AUDIO ADVERTISING</a></span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                <ul class="dm-mobile-nav__sub-dropdown">
+                                    <li>Reach listeners across popular audio platforms.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -152,159 +421,122 @@
                             <div class="dm-mega-menu__content">
                                 <div class="dm-mega-menu__grid">
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="traditional-media.html">TRADITIONAL MEDIA MARKETING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Radio</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Television</a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="digital-marketing.html">DIGITAL MARKETING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Search Engine Optimization
-                                                        (SEO)</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Pay-Per-Click (PPC)
-                                                        Advertising</a></li>
-                                              
-
-                                            </ul>
-                                        </div>
+                                        <a href="video-production.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">VIDEO PRODUCTION</h4>
+                                                <p class="dm-mega-menu__desc">High-quality video content that captures
+                                                    attention.</p>
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="video-production.html">VIDEO PRODUCTION</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Commercials</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Corporate Videos</a></li>
-                                           
-                                            </ul>
-                                        </div>
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="web-development.html">WEBSITE DESIGN</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Website Design &
-                                                        Development</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">E-commerce Solutions</a></li>
-
-                                            </ul>
-                                        </div>
+                                        <a href="digital-marketing.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">DIGITAL MARKETING</h4>
+                                                <p class="dm-mega-menu__desc">Data-driven strategies to grow your online
+                                                    presence.</p>
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="print-marketing.html">PRINT MARKETING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Brochures & Flyers</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Business Cards</a></li>
-                                                
-
-                                            </ul>
-                                        </div>
+                                        <a href="print-marketing.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">PRINT MARKETING</h4>
+                                                <p class="dm-mega-menu__desc">Creative print solutions for impactful
+                                                    branding.</p>
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="smm.html">SOCIAL MEDIA MANAGEMENT</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                              
-
-
-                                            </ul>
-                                        </div>
+                                        <a href="event-management.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">EVENT MANAGEMENT</h4>
+                                                <p class="dm-mega-menu__desc">Seamless planning and execution of
+                                                    memorable events.</p>
+                                            </div>
+                                        </a>
                                     </div>
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="event-management.html">EVENT MANAGEMENT</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                                
-
-
-                                            </ul>
-                                        </div>
+                                        <a href="seo.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">SEO</h4>
+                                                <p class="dm-mega-menu__desc">Improve rankings and drive organic
+                                                    traffic.</p>
+                                            </div>
+                                        </a>
                                     </div>
+
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="programmatic.html">PROGRAMMATIC ADVERTISING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                            
-
-
-                                            </ul>
-                                        </div>
+                                        <a href="web-development.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">WEBSITE DEVELOPMENT</h4>
+                                                <p class="dm-mega-menu__desc">Modern, responsive websites built for
+                                                    performance.</p>
+                                            </div>
+                                        </a>
                                     </div>
+
                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="seo.html">SEO</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                              
-
-
-                                            </ul>
-                                        </div>
+                                        <a href="smm.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">SOCIAL MEDIA MANAGEMENT</h4>
+                                                <p class="dm-mega-menu__desc">Engage audiences and grow your brand
+                                                    socially.</p>
+                                            </div>
+                                        </a>
                                     </div>
-                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="streaming.html">STREAMING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                               
 
-
-                                            </ul>
-                                        </div>
+                                    <div class="dm-mega-menu__column">
+                                        <a href="traditional-media.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">TRADITIONAL MEDIA BUYING</h4>
+                                                <p class="dm-mega-menu__desc">Strategic placements across TV, radio, and
+                                                    print.</p>
+                                            </div>
+                                        </a>
                                     </div>
-                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="tv-services.html">TV STREAMING</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                             
 
-
-                                            </ul>
-                                        </div>
+                                    <div class="dm-mega-menu__column">
+                                        <a href="tv-services.html">
+                                            <div class="dm-mega-menu__group ">
+                                                <h4 class="dm-mega-menu__title">VIBE OTT & CONNECTED TV</h4>
+                                                <p class="dm-mega-menu__desc">Target audiences through premium OTT
+                                                    platforms.</p>
+                                            </div>
+                                        </a>
                                     </div>
-                                     <div class="dm-mega-menu__column">
-                                        <div class="dm-mega-menu__group">
-                                            <h4 class="dm-mega-menu__title"><a href="video-production.html">VIDEO PRODUCTION</a></h4>
-                                            <ul class="dm-mega-menu__list">
-                                                <li><a href="#" class="dm-mega-menu__link">Strategy & Planning</a></li>
-                                                <li><a href="#" class="dm-mega-menu__link">Content Creation &
-                                                        Scheduling</a></li>
-                                              
 
+                                    <div class="dm-mega-menu__column">
+                                        <a href="programmatic.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">PROGRAMMATIC ADVERTISING</h4>
+                                                <p class="dm-mega-menu__desc">Automated ad buying for precise targeting.
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
 
-                                            </ul>
-                                        </div>
+                                    <div class="dm-mega-menu__column">
+                                        <a href="streaming.html">
+                                            <div class="dm-mega-menu__group">
+                                                <h4 class="dm-mega-menu__title">STREAMING AUDIO ADVERTISING</h4>
+                                                <p class="dm-mega-menu__desc">Reach listeners across popular audio
+                                                    platforms.</p>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
 
-                                <div class="dm-mega-menu__image-side">
-                                    <div class="dm-mega-menu__image-wrapper">
-                                        <img src="assets/mega-img.jpg" alt="Mega Menu Feature"
-                                            class="dm-mega-menu__img" />
-                                        <div class="dm-mega-menu__image-overlay">
-                                            <span class="dm-mega-menu__badge"> DILLON PORTAL</span>
-                                            <h3 class="dm-mega-menu__image-title">Get started with Dillon Media </h3>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- <div class="dm-mega-menu__image-side">
+                <div class="dm-mega-menu__image-wrapper">
+                    <img src="assets/mega-img.jpg" alt="Mega Menu Feature"
+                        class="dm-mega-menu__img" />
+                    <div class="dm-mega-menu__image-overlay">
+                        <span class="dm-mega-menu__badge"> DILLON PORTAL</span>
+                        <h3 class="dm-mega-menu__image-title">Get started with Dillon Media </h3>
+                    </div>
+                </div>
+            </div> -->
                             </div>
                         </div>
                     </div>
@@ -359,7 +591,7 @@
         </div>
         <div class="dm-service-hero__visual" data-reveal="right">
             <div class="dm-video-play-box">
-                <div class="dm-video-play-btn" id="dm-video-modal-open">
+                <div class="dm-video-play-btn" id="dm-video-gallery-trigger">
                     <i class="fa-solid fa-play"></i>
                     <div class="dm-video-play-ripple"></div>
                 </div>
@@ -367,9 +599,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class="dm-service-hero__bg">
-        <img src="assets/video-production-7.jpg" alt="Video Production Hero" />
-    </div> -->
+    <div class="dm-service-hero__bg">
+    <video autoplay muted loop playsinline class="dm-service-hero__video">
+        <source src="assets/video-service-bg.mp4" type="video/mp4">
+    </video>
+</div>
 </section>
 
 <section class="video-service-content" id="video-service-content">
@@ -520,6 +754,77 @@
 
 
 
+<!-- Video Selection Modal -->
+<div class="dm-selection-modal" id="dm-selection-modal">
+    <div class="dm-selection-modal__overlay" id="dm-selection-modal-close-overlay"></div>
+    <div class="dm-selection-modal__container">
+        <button class="dm-selection-modal__close" id="dm-selection-modal-btn-close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>        
+        <div class="dm-video-grid">
+            <!-- Video 1: Vimeo -->
+            <div class="dm-video-card" data-video="https://player.vimeo.com/video/662073747?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://vumbnail.com/662073747.jpg" alt="Vimeo Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2: Youtube -->
+            <div class="dm-video-card" data-video="https://www.youtube.com/embed/_9NmLGBzZFA?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://img.youtube.com/vi/_9NmLGBzZFA/maxresdefault.jpg" alt="Youtube Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 3: Youtube -->
+            <div class="dm-video-card" data-video="https://www.youtube.com/embed/50ngZiCfsxE?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://img.youtube.com/vi/50ngZiCfsxE/maxresdefault.jpg" alt="Youtube Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 4: Youtube -->
+            <div class="dm-video-card" data-video="https://www.youtube.com/embed/GK-e1LKjC5s?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://img.youtube.com/vi/GK-e1LKjC5s/maxresdefault.jpg" alt="Youtube Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 5: Youtube -->
+            <div class="dm-video-card" data-video="https://www.youtube.com/embed/qmnPrLm0kAo?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://img.youtube.com/vi/qmnPrLm0kAo/maxresdefault.jpg" alt="Youtube Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 6: Youtube -->
+            <div class="dm-video-card" data-video="https://www.youtube.com/embed/FFEiWTibbew?autoplay=1">
+                <div class="dm-video-card__thumb">
+                    <img src="https://img.youtube.com/vi/FFEiWTibbew/maxresdefault.jpg" alt="Youtube Video">
+                    <div class="dm-video-card__overlay">
+                        <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Video Modal -->
 <div class="dm-video-modal" id="dm-video-modal">
     <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
@@ -631,7 +936,7 @@
     <div id="dm-cursor-ring" class="dm-cursor-ring"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script>
-        VanillaTilt.init(document.querySelectorAll(".dm-service-box"), {
+        VanillaTilt.init(document.querySelectorAll(".dm-service-box, .dm-feature-card"), {
             max: 8,
             speed: 400,
             glare: true,
@@ -639,6 +944,74 @@
         });
     </script>
     <script src="script/script.js"></script>
+    <script>
+        (function() {
+            'use strict';
+
+            const selectionModal = document.getElementById('dm-selection-modal');
+            const selectionOpenBtn = document.getElementById('dm-video-gallery-trigger');
+            const selectionCloseBtn = document.getElementById('dm-selection-modal-btn-close');
+            const selectionOverlay = document.getElementById('dm-selection-modal-close-overlay');
+            
+            const playerModal = document.getElementById('dm-video-modal');
+            const playerIframe = document.getElementById('dm-modal-iframe');
+            const videoCards = document.querySelectorAll('.dm-video-card');
+
+            // Function to open gallery
+            const openGallery = () => {
+                selectionModal.style.display = 'flex';
+                setTimeout(() => selectionModal.classList.add('is-open'), 10);
+                document.body.style.overflow = 'hidden';
+            };
+
+            // Function to close gallery
+            const closeGallery = () => {
+                selectionModal.classList.remove('is-open');
+                setTimeout(() => selectionModal.style.display = 'none', 400);
+                if (!playerModal.classList.contains('is-open')) {
+                    document.body.style.overflow = '';
+                }
+            };
+
+            // Event Listeners for Gallery
+            if (selectionOpenBtn) selectionOpenBtn.addEventListener('click', openGallery);
+            if (selectionCloseBtn) selectionCloseBtn.addEventListener('click', closeGallery);
+            if (selectionOverlay) selectionOverlay.addEventListener('click', closeGallery);
+
+            // Handle Video Card Clicks
+            videoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const videoUrl = card.getAttribute('data-video');
+                    
+                    // 1. Close Gallery
+                    closeGallery();
+                    
+                    // 2. Open Player Modal after a short delay for smooth transition
+                    setTimeout(() => {
+                        playerModal.classList.add('is-open');
+                        playerIframe.src = videoUrl;
+                        document.body.style.overflow = 'hidden';
+                    }, 300);
+                });
+            });
+
+            // Ensure player modal close stops video
+            const playerCloseBtns = [
+                document.getElementById('dm-video-modal-close'),
+                document.getElementById('dm-video-modal-btn-close')
+            ];
+
+            playerCloseBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        playerModal.classList.remove('is-open');
+                        playerIframe.src = "";
+                        document.body.style.overflow = '';
+                    });
+                }
+            });
+        })();
+    </script>
 </body>
 
 </html>

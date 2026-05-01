@@ -259,6 +259,16 @@ ul {
     gap: 30px;
 }
 
+.dm-mega-menu__column:hover .dm-mega-menu__title {
+    color: var(--accent);
+    transition: all .3s ease-in-out;
+}
+
+.dm-mega-menu__column:hover .dm-mega-menu__desc {
+    color: #1a1a1a;
+    transition: all .3s ease-in-out;
+}
+
 .dm-mega-menu__group {
     display: flex;
     flex-direction: column;
@@ -296,7 +306,12 @@ ul {
     color: var(--accent);
     transform: translateX(4px);
 }
-
+.dm-mega-menu__desc {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 6px;
+    line-height: 1.4;
+}
 /* Image side */
 .dm-mega-menu__image-side {
     width: 420px;
@@ -359,7 +374,8 @@ ul {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
-
+/* 
+ */
 
 /* ================================================================
    MOBILE & TABLET NAVIGATION (COMMON STYLES)
@@ -547,12 +563,12 @@ screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait
         display: none;
     }
 
-    .dm-mobile-nav__sub-dropdown li a {
+    .dm-mobile-nav__sub-dropdown li{
         display: block;
         padding: 8px 0;
         color: rgba(255, 255, 255, 0.4);
         text-decoration: none;
-        font-size: 0.9rem;
+        font-size: 0.89rem;
     }
 
     .dm-mobile-nav__sub-item--dropdown.active>.dm-mobile-nav__sub-dropdown {
@@ -6109,10 +6125,19 @@ button:hover~.dm-cursor-ring {
    VIDEO PRODUCTION SERVICE STYLES
    ================================================================ */
 .dm-video-hero {
-    min-height: 70vh; /* Adjusted from 80vh/100vh */
+    min-height: 80vh; 
     background: #000;
     overflow: hidden;
+    padding-top: 100px; /* Fixed gap for navbar */
 }
+
+@media (max-width: 768px) {
+    .dm-video-hero {
+        padding-top: 80px;
+        min-height: 60vh;
+    }
+}
+
 
 .dm-service-hero__container {
     max-width: 1400px;
@@ -6126,7 +6151,27 @@ button:hover~.dm-cursor-ring {
     height: 100%;
     min-height: 70vh; /* Match hero height */
 }
+.dm-video-hero {
+    position: relative;   /* important */
+    overflow: hidden;     /* already there but keep it */
+}
 
+.dm-service-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;     /* ensures video is clipped */
+}
+
+.dm-service-hero__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+}
 /* ... existing hero styles ... */
 
 .dm-service-hero__title {
@@ -6252,40 +6297,74 @@ button:hover~.dm-cursor-ring {
 }
 
 .dm-feature-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 50px 30px;
-    border-radius: 20px;
-    transition: all 0.5s ease;
-    text-align: center;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 60px 40px;
+    border-radius: 24px;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.dm-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, transparent 50%, rgba(145, 13, 23, 0.1) 50%);
+    transition: all 0.4s ease;
 }
 
 .dm-feature-card:hover {
-    background: rgba(145, 13, 23, 0.05);
-    border-color: var(--accent);
-    transform: translateY(-10px);
+    background: rgba(145, 13, 23, 0.03);
+    border-color: rgba(145, 13, 23, 0.4);
+    transform: translateY(-15px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(145, 13, 23, 0.15);
+}
+
+.dm-feature-card:hover::before {
+    background: linear-gradient(135deg, transparent 50%, var(--accent) 50%);
+    width: 80px;
+    height: 80px;
 }
 
 .dm-feature-icon {
     font-family: var(--font-heading);
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.05);
-    margin-bottom: 20px;
-    transition: color 0.3s ease;
+    font-size: 5rem;
+    color: rgba(255, 255, 255, 0.03);
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    transition: all 0.5s ease;
+    z-index: 0;
+    line-height: 1;
 }
 
 .dm-feature-card:hover .dm-feature-icon {
-    color: var(--accent);
+    color: rgba(145, 13, 23, 0.08);
+    transform: scale(1.1) translate(15px, 15px);
 }
 
 .dm-feature-title {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #fff;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+    margin-top: 20px;
+    transition: all 0.3s ease;
 }
+
+.dm-feature-card:hover .dm-feature-title {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
 
 /* Video Slider Section */
 .video-services-slide {
@@ -6390,6 +6469,7 @@ button:hover~.dm-cursor-ring {
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dm-video-slide__image img {
@@ -6398,6 +6478,53 @@ button:hover~.dm-cursor-ring {
     object-fit: cover;
     transition: transform 1s ease;
 }
+
+/* Responsive Overrides for Video Slider */
+@media (max-width: 1024px) {
+    .dm-video-slider {
+        height: 850px; /* Fixed height for absolute children on mobile */
+    }
+    .dm-video-slide {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        transform: translateY(30px);
+        align-items: flex-start;
+    }
+    .dm-video-slide.active {
+        transform: translateY(0);
+    }
+    .dm-video-slide__image {
+        order: -1;
+        height: 350px;
+        width: 100%;
+    }
+    .dm-video-slide__content {
+        padding: 0;
+        text-align: center;
+    }
+    .dm-sliding-num {
+        display: none;
+    }
+    .dm-sliding-title {
+        font-size: 2.5rem;
+    }
+    .dm-sliding-subtitle {
+        margin-bottom: 15px;
+    }
+    .dm-video-slider-controls {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .dm-video-slider {
+        height: 950px;
+    }
+    .dm-video-slide__image {
+        height: 280px;
+    }
+}
+
 
 /* Slider Controls */
 .dm-video-slider-controls {
@@ -6478,14 +6605,26 @@ button:hover~.dm-cursor-ring {
 .dm-proud-banner {
     position: relative;
     width: 100%;
-    min-height: 450px;
+    min-height: 480px;
     background-size: cover;
     background-position: center;
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 24px;
+    /* overflow: hidden;  Removed to allow image pop-out */
     display: flex;
     align-items: center;
+    transition: all 0.5s ease;
 }
+
+.dm-proud-banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    z-index: 3;
+}
+
 
 .dm-proud-banner__overlay {
     position: absolute;
@@ -6516,15 +6655,29 @@ button:hover~.dm-cursor-ring {
 
 .dm-proud-device {
     flex: 1;
-    max-width: 500px;
-    perspective: 1000px;
+    max-width: 600px;
+    perspective: 2000px;
+    z-index: 10;
+    position: relative;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dm-proud-banner:hover .dm-proud-device {
+    transform: scale(1.05) translateY(-10px);
 }
 
 .dm-proud-device img {
-    width: 100%;
+    width: 120%; /* Bigger image */
     height: auto;
-    filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.8));
+    margin-left: -10%; /* Center the overflow */
+    filter: drop-shadow(0 40px 100px rgba(0, 0, 0, 0.9));
+    transition: all 0.6s ease;
 }
+
+.dm-proud-banner:hover .dm-proud-device img {
+    filter: drop-shadow(0 60px 130px rgba(0, 0, 0, 1));
+}
+
 
 .dm-proud-info {
     flex: 1;
