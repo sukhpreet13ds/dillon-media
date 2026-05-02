@@ -374,6 +374,26 @@ ul {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
 }
+
+/* Active mega menu item */
+.dm-mega-menu__column--active .dm-mega-menu__group {
+    /* background: rgba(255, 0, 21, 0.08); */
+    /* border: 1px solid rgba(255, 0, 21, 0.4); */
+    /* border-radius: 10px; */
+    /* padding: 12px; */
+    transition: all 0.3s ease;
+}
+
+/* Title highlight */
+.dm-mega-menu__column--active .dm-mega-menu__title {
+    color: var(--accent);
+}
+
+/* Optional: description brighter */
+.dm-mega-menu__column--active .dm-mega-menu__desc {
+    color: #000;
+}
+
 /* 
  */
 
@@ -995,8 +1015,24 @@ screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait
 
 .dm-about-team__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 15px;
+}
+
+/* First row: only 2 items centered */
+.dm-about-team__member:nth-child(1),
+.dm-about-team__member:nth-child(2) {
+    grid-column: span 3;
+}
+.dm-about-team__member:nth-child(1) .dm-about-team__img-box,
+.dm-about-team__member:nth-child(2) .dm-about-team__img-box {
+    aspect-ratio: 1 / 1.2; /* less tall */
+}
+/* Second row: normal 3 items */
+.dm-about-team__member:nth-child(3),
+.dm-about-team__member:nth-child(4),
+.dm-about-team__member:nth-child(5) {
+    grid-column: span 2;
 }
 
 .dm-about-team__member {
@@ -2291,15 +2327,25 @@ button:hover~.dm-cursor-ring {
 }
 
 .dm-service-grid__wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    width: max-content;
+    animation: dm-service-marquee 60s linear infinite;
+}
+
+@keyframes dm-service-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.dm-service-grid:hover .dm-service-grid__wrapper {
+    animation-play-state: paused;
 }
 
 .dm-service-box {
+    flex: 0 0 450px;
     position: relative;
     padding: 70px 45px;
     border-right: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     background: transparent;
     transition: background 0.4s ease;
     cursor: pointer;
@@ -2308,7 +2354,6 @@ button:hover~.dm-cursor-ring {
     flex-direction: column;
     justify-content: flex-start;
     transform-style: preserve-3d;
-    margin-bottom: 5px;
 }
 
 .dm-service-box__bg {
@@ -2323,6 +2368,7 @@ button:hover~.dm-cursor-ring {
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 0;
     transform: scale(1.15) translateZ(-1px);
+    
 }
 
 .dm-service-box__overlay {
@@ -2351,7 +2397,8 @@ button:hover~.dm-cursor-ring {
 }
 
 /* Remove right border for the last item in each row (desktop 4 columns) */
-.dm-service-box:nth-child(4n) {
+/* Remove right border logic for marquee if needed, but here we want it for separation */
+.dm-service-box:last-child {
     border-right: none;
 }
 
@@ -2422,46 +2469,22 @@ button:hover~.dm-cursor-ring {
 }
 
 /* Responsive Grid */
-@media screen and (max-width: 1400px) {
-    .dm-service-grid__wrapper {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .dm-service-box:nth-child(4n) {
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .dm-service-box:nth-child(3n) {
-        border-right: none;
-    }
-}
-
+/* Responsive Marquee */
 @media screen and (max-width: 1024px) {
-    .dm-service-grid__wrapper {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .dm-service-box:nth-child(3n) {
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .dm-service-box:nth-child(2n) {
-        border-right: none;
-    }
-
     .dm-service-box {
-        padding: 50px 35px;
+        flex: 0 0 380px;
+        padding: 60px 35px;
     }
 }
 
-@media screen and (max-width: 600px) {
-    .dm-service-grid__wrapper {
-        grid-template-columns: 1fr;
-    }
-
+@media screen and (max-width: 768px) {
     .dm-service-box {
-        border-right: none;
-        padding: 45px 25px;
+        flex: 0 0 320px;
+        padding: 50px 25px;
+    }
+    
+    .dm-service-grid__wrapper {
+        animation-duration: 40s;
     }
 }
 
@@ -3268,24 +3291,25 @@ button:hover~.dm-cursor-ring {
 }
 
 .dm-work__text-center {
-    font-family: var(--font-heading);
+        font-family: var(--font-heading);
     font-size: 5rem;
-    color: var(--accent);
-    opacity: 0.1;
-    letter-spacing: 0.2em;
-    /* transform: rotate(-5deg); */
+
+    color: #c40818c7; /* red fill */
+    -webkit-text-stroke: 1px #fff; /* white outline */
+
+    opacity: 0.8;
+    letter-spacing: 0.3em;
+    transform: rotate(0) scale(1.1);
+
     pointer-events: none;
     user-select: none;
     transition: all 0.5s ease;
-    opacity: 0.3;
-    transform: rotate(0) scale(1.1);
-    letter-spacing: 0.4em;
 }
 
 .dm-work__item--text:hover .dm-work__text-center {
-    opacity: 0.3;
+    /* opacity: 0.3; */
     transform: rotate(0) scale(1.1);
-    letter-spacing: 0.4em;
+    letter-spacing: 0.2em;
 }
 
 /* Slider Component */
@@ -3706,7 +3730,7 @@ button:hover~.dm-cursor-ring {
     font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.6);
     letter-spacing: 0.15em;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     max-width: 300px;
     margin: 0 auto;
     line-height: 1.6;
@@ -3939,9 +3963,7 @@ button:hover~.dm-cursor-ring {
     transition: color 0.3s ease;
 }
 
-.dm-process__step:hover .dm-process__label {
-    color: #fff;
-}
+
 
 .dm-process__content {
     display: flex;
@@ -3955,8 +3977,9 @@ button:hover~.dm-cursor-ring {
     font-size: 4rem;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.384);
     transition: all 0.4s ease;
+    font-weight: 100;
 }
 
 .dm-process__step:hover .dm-process__number {
@@ -3983,7 +4006,7 @@ button:hover~.dm-cursor-ring {
 
 @media screen and (max-width: 1024px) {
     .dm-process__container {
-        padding: 0 40px;
+        padding: 0 30px;
     }
 
     .dm-process__steps {
@@ -4045,6 +4068,13 @@ button:hover~.dm-cursor-ring {
         width: 100%;
         height: 0%;
         transition: height 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .dm-process__label{
+        background-color: #797777;
+        color: #ffffff;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: .6rem;
     }
 }
 
@@ -5834,6 +5864,7 @@ button:hover~.dm-cursor-ring {
 .dm-text-outline {
     color: transparent;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    font-weight: 500;
 }
 
 /* Animations */

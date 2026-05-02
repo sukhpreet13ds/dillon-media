@@ -381,36 +381,107 @@
     });
 })();
 
-const slider = document.querySelector('.dm-awards__timeline');
+/* ── Awards Timeline Auto-scroll & Drag ── */
+(function() {
+    'use strict';
+    
+    const slider = document.querySelector('.dm-awards__timeline');
+    if (!slider) return;
 
-if (slider) {
     let isDown = false;
     let startX;
     let scrollLeft;
+    let isHovered = false;
+    let autoScrollRequest;
+    const scrollSpeed = 0.6; // Pixels per frame
 
+    const isDesktop = () => window.innerWidth > 1024;
+
+    function startAutoScroll() {
+        if (!autoScrollRequest && isDesktop()) {
+            autoScrollRequest = requestAnimationFrame(step);
+        }
+    }
+
+    function stopAutoScroll() {
+        if (autoScrollRequest) {
+            cancelAnimationFrame(autoScrollRequest);
+            autoScrollRequest = null;
+        }
+    }
+
+    function step() {
+        if (isDesktop() && !isDown && !isHovered) {
+            slider.scrollLeft += scrollSpeed;
+            
+            // Loop back to start when reaching the end
+            if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - 1) {
+                slider.scrollLeft = 0;
+            }
+        }
+        autoScrollRequest = requestAnimationFrame(step);
+    }
+
+    // Drag events
     slider.addEventListener('mousedown', (e) => {
+        if (!isDesktop()) return;
         isDown = true;
         slider.classList.add('active');
         startX = e.pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
+        stopAutoScroll();
     });
 
     slider.addEventListener('mouseleave', () => {
         isDown = false;
+        isHovered = false;
+        slider.classList.remove('active');
+        startAutoScroll();
+    });
+
+    slider.addEventListener('mouseenter', () => {
+        isHovered = true;
     });
 
     slider.addEventListener('mouseup', () => {
         isDown = false;
+        slider.classList.remove('active');
+        startAutoScroll();
     });
 
     slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
+        if (!isDown || !isDesktop()) return;
         e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5; // speed
+        const walk = (x - startX) * 1.5; 
         slider.scrollLeft = scrollLeft - walk;
     });
-}
+
+    // Intersection Observer to run only when visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && isDesktop()) {
+                startAutoScroll();
+            } else {
+                stopAutoScroll();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(slider);
+
+    // Resize handler to toggle auto-scroll based on viewport
+    window.addEventListener('resize', () => {
+        if (!isDesktop()) {
+            stopAutoScroll();
+        } else {
+            const rect = slider.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                startAutoScroll();
+            }
+        }
+    });
+})();
 
 /* Our Work Slider Logic */
 (function() {
@@ -882,3 +953,21 @@ if (wordsList.length > 0) {
 
     startAutoSlide();
 })();
+
+
+
+
+const iframe = document.querySelector('.dm-work__video-wrapper iframe');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // reload iframe to force autoplay
+            iframe.src = iframe.src;
+        }
+    });
+}, {
+    threshold: 0.5 // play when 50% visible
+});
+
+observer.observe(iframe);
