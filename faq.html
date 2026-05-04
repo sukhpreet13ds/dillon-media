@@ -40,7 +40,7 @@
                 <button class="dm-mobile-search__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
-           <nav class="dm-mobile-nav">
+            <nav class="dm-mobile-nav">
                 <ul class="dm-mobile-nav__list">
                     <li class="dm-mobile-nav__item">
                         <a href="index.html" class="dm-mobile-nav__link">Home</a>
@@ -196,7 +196,7 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item dm-nav__item--active dm-nav__item--has-mega" role="none">
+                <li class="dm-nav__item dm-nav__item--has-mega" role="none">
                     <a href="#" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-film"></i> -->
                         <span>SERVICES</span>
@@ -306,7 +306,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="dm-mega-menu__column dm-mega-menu__column--active">
+                                    <div class="dm-mega-menu__column">
                                         <a href="streaming.html">
                                             <div class="dm-mega-menu__group">
                                                 <h4 class="dm-mega-menu__title">AUDIO STREAMING
@@ -368,215 +368,288 @@
 
 
 
-    <section class="dm-service-hero dm-video-hero">
-        <div class="dm-service-hero__container">
-            <div class="dm-service-hero__content" data-reveal="left">
-                <h1 class="dm-service-hero__title">Streaming Audio <span class="dm-text-outline">Advertising</span></h1>
-                <p class="dm-service-hero__subtitle">Reach Your Audience with Targeted Audio Campaigns</p>
-                <div class="dm-service-hero__actions">
-                    <a href="#video-service-content" class="dm-btn-cta btn-fx">
-                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
-                        <span class="dm-btn-cta__shine"></span>
-                    </a>
-                </div>
-            </div>
-            <!-- <div class="dm-service-hero__visual" data-reveal="right">
-            <div class="dm-video-play-box">
-                <div class="dm-video-play-btn" id="dm-video-modal-open">
-                    <i class="fa-solid fa-play"></i>
-                    <div class="dm-video-play-ripple"></div>
-                </div>
-                <p class="dm-video-play-text">WATCH SHOWREEL</p>
-            </div>
-        </div> -->
-        </div>
-        <div class="dm-service-hero__bg">
-            <video autoplay muted loop playsinline class="dm-service-hero__video">
-                <source src="assets/stream-bg.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+    <section class="dm-hero dm-hero--about" id="dm-hero">
+        <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
+        <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
 
-    <section class="streaming-section">
-        <div class="vdm-container">
-            <!-- Intro Content -->
-            <div class="str-intro" data-reveal>
-                <p class="str-intro-text">
-                    In today's digital landscape, AUDIO STREAMING
-                    on platforms like Spotify and Pandora offers a unique opportunity to connect with highly engaged
-                    listeners. These platforms deliver personalized, targeted ads to users based on their music
-                    preferences, demographics, and listening habits, ensuring your message reaches the right audience at
-                    the right time. Here’s how we help you make the most of these platforms.
-                </p>
+        <div class="dm-hero__container">
+            <div class="dm-hero__left">
+                <h1 class="dm-hero__title">
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">FREQUENTLY</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">ASKED</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--outline">
+                        <span class="dm-hero__line-inner">QUESTIONS</span>
+                    </span>
+                  
+                </h1>
             </div>
 
-            <!-- Why Choose Section -->
-            <div class="str-why-choose">
-                <h2 class="str-main-title" data-reveal>Why Choose Streaming Audio <br> Advertising?</h2>
-                <div class="str-benefits-row">
-                    <div class="str-benefit-card" data-reveal="up">
-                        <div class="str-benefit-icon">
-                            <img src="assets/target.png" alt="Targeted Reach"
-                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/2103/2103633.png'">
-                        </div>
-                        <h4>Targeted Reach</h4>
-                        <p>Leverage advanced targeting options to connect with specific demographics, locations, or
-                            interest groups.</p>
-                    </div>
-                    <div class="str-benefit-card" data-reveal="up" data-reveal-delay="200">
-                        <div class="str-benefit-icon">
-                            <img src="assets/campaign.png" alt="Engaged Audiences"
-                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/3050/3050525.png'">
-                        </div>
-                        <h4>Engaged Audiences</h4>
-                        <p>Capture the attention of users during their most relaxed moments—while they're enjoying their
-                            favorite music or podcasts.</p>
-                    </div>
-                    <div class="str-benefit-card" data-reveal="up" data-reveal-delay="400">
-                        <div class="str-benefit-icon">
-                            <img src="assets/indicator.png" alt="Measurable Impact"
-                                onerror="this.src='https://cdn-icons-png.flaticon.com/512/2103/2103633.png'">
-                        </div>
-                        <h4>Measurable Impact</h4>
-                        <p>Get detailed analytics on ad performance to refine your strategy and maximize ROI.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Our Services Section -->
-            <div class="str-services-section">
-                <h2 class="str-main-title" data-reveal>Our Services</h2>
-
-                <div class="str-services-icons" data-reveal>
-                    <div class="str-service-icon-item">
-                        <span>Custom Audio Ad Creation</span>
-                        <div class="str-icon-circle black-circle">
-                            <i class="fa-solid fa-microphone-lines"></i>
-                        </div>
-                    </div>
-                    <div class="str-service-icon-item">
-                        <span>Campaign Strategy and Management</span>
-                        <div class="str-icon-circle black-circle">
-                            <i class="fa-solid fa-chess"></i>
-                        </div>
-                    </div>
-                    <div class="str-service-icon-item">
-                        <span>Multi-Platform Integration</span>
-                        <div class="str-icon-circle black-circle">
-                            <i class="fa-solid fa-network-wired"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="str-services-content">
-                    <div class="str-services-text">
-                        <p>We produce compelling audio ads that resonate with your audience. Our creative team works
-                            with you to develop:</p>
-                        <ul class="str-service-list">
-                            <li><strong>Scriptwriting:</strong> Crafting engaging scripts that align with your brand
-                                voice.</li>
-                            <li><strong>Professional Voiceovers:</strong> Utilizing high-quality voice talent to convey
-                                your message authentically.</li>
-                            <li><strong>Sound Design:</strong> Adding music and sound effects to make your ad memorable.
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="str-services-visual">
-                        <img src="assets/audio-ad.webp" alt="Audio Production" class="str-services-img">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Why Work With Us Section -->
-            <div class="str-work-section">
-                <h2 class="str-main-title" data-reveal>Why Work With Us?</h2>
-                <div class="str-work-grid">
-                    <div class="str-work-info">
-                        <div class="str-work-card red-bg">
-                            <div class="str-work-icon">
-                                <i class="fa-solid fa-award"></i>
+            <div class="dm-hero__right dm-hero__right--about">
+                <div class="dm-about-team">
+                    <h3 class="dm-about-team__title">MEET THE LEADERSHIP TEAM</h3>
+                    <div class="dm-about-team__grid">
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m2.jpg" alt="JEFF DILLON">
                             </div>
-                            <div class="str-work-text">
-                                <h4>Expertise:</h4>
-                                <p>Our team has extensive experience in digital marketing and audio production.</p>
-                            </div>
+                            <h4 class="dm-about-team__name">JEFF DILLON</h4>
+                            <p class="dm-about-team__role">CEO & CFO</p>
                         </div>
-                        <div class="str-work-card red-bg">
-                            <div class="str-work-icon">
-                                <i class="fa-solid fa-lightbulb"></i>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m1.jpg" alt="CLINTON GRUBBS">
                             </div>
-                            <div class="str-work-text">
-                                <h4>Creativity</h4>
-                                <p>We bring fresh ideas to every campaign, ensuring your ads stand out.</p>
-                            </div>
+                            <h4 class="dm-about-team__name">CLINTON GRUBBS</h4>
+                            <p class="dm-about-team__role">MARKETING DIRECTOR</p>
                         </div>
-                        <div class="str-work-card red-bg">
-                            <div class="str-work-icon">
-                                <i class="fa-solid fa-chart-pie"></i>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m3.jpg" alt="KRISTINA ACKERMAN">
                             </div>
-                            <div class="str-work-text">
-                                <h4>Results-driven</h4>
-                                <p>We focus on delivering measurable outcomes that align with your business goals.</p>
-                            </div>
+                            <h4 class="dm-about-team__name">KRISTINA ACKERMAN</h4>
+                            <p class="dm-about-team__role">BRAND DEVELOPMENT DIRECTOR</p>
                         </div>
-                    </div>
-                    <div class="str-work-visual">
-                        <img src="assets/audio-ad-2.png" alt="Our Workspace" class="str-work-img">
+                        
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m5.png" alt="FAITH DOMINIE">
+                            </div>
+                            <h4 class="dm-about-team__name">FAITH DOMINIE</h4>
+                            <p class="dm-about-team__role">MARKETING ASST. DIRECTOR</p>
+                        </div>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m4.jpg" alt="THOMAS (TJ) READY">
+                            </div>
+                            <h4 class="dm-about-team__name">THOMAS (TJ) READY</h4>
+                            <p class="dm-about-team__role">OPERATIONS DIRECTOR</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    
+    <section class="faq-section" id="faq-section">
+        <div class="faq-section__inner">
 
+            <!-- Header -->
+            <div class="faq-header">
+                <p class="faq-header__label">HELP CENTER</p>
+                <h2 class="faq-header__title">Frequently Asked <span class="faq-header__accent">Questions</span></h2>
+                <p class="faq-header__sub">Find quick answers to the most common questions about our services.</p>
+            </div>
 
+            <!-- Controls Row -->
+            <div class="faq-controls">
+                <!-- Category Filters -->
+                <div class="faq-categories" id="faq-categories">
+                    <button class="faq-cat-btn active" data-cat="all">All</button>
+                    <button class="faq-cat-btn" data-cat="general">General</button>
+                    <button class="faq-cat-btn" data-cat="services">Services</button>
+                    <button class="faq-cat-btn" data-cat="pricing">Pricing</button>
+                    <button class="faq-cat-btn" data-cat="process">Process</button>
+                    <button class="faq-cat-btn" data-cat="support">Support</button>
+                </div>
 
+                <!-- Search Bar -->
+                <div class="faq-search" id="faq-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass faq-search__icon"></i>
+                    <input
+                        type="text"
+                        id="faq-search-input"
+                        class="faq-search__input"
+                        placeholder="Search questions and tags…"
+                        autocomplete="off"
+                    />
+                    <button class="faq-search__clear" id="faq-search-clear" aria-label="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
 
+            <!-- No Results Message -->
+            <div class="faq-no-results" id="faq-no-results" style="display:none;">
+                <i class="fa-solid fa-circle-question"></i>
+                <p>No results found. Try a different search term or category.</p>
+            </div>
 
+            <!-- Accordion List -->
+            <div class="faq-list" id="faq-list">
 
+                <!-- Item 1 -->
+                <div class="faq-item" data-cat="general" data-tags="dillon media agency overview about">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Do you require a contract?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">About</span>
+                            <span class="faq-tag">Agency</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>We do not generally require a contract for ongoing marketing services. We do strongly encourage clients to allow 3-6 months for clear tangible results based on various campaign factors such as campaign type(s), market competition and budget. We provide a service agreement prior to commencing all projects.</p>
+                            <img src="assets/faq-1.webp" alt="Dillon Media Agency Overview" class="faq-item__img" />
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 2 -->
+                <div class="faq-item" data-cat="services" data-tags="video production services filming editing">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">How long does it take to see results?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Video</span>
+                            <span class="faq-tag">Production</span>
+                            <span class="faq-tag">Services</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>The time for campaigns to become effective can vary dramatically depending on what type of campaigns you’re running. The short answer…1. Pay-per-click campaigns, such as Google Ads or Facebook Ads, can see results as quickly as a week or two; remember there are a ton of variables. 2. SEO and Organic Social campaigns can take 3-6+ months to start seeing results (and sometimes longer in larger, more competitive markets). 3. Traditional campaigns such as TV, Radio and Billboards can take 1-3 months to see tangible results depending on reach and budget.
+</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 3 -->
+                <div class="faq-item" data-cat="services" data-tags="digital marketing seo social media ads campaigns">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Is television advertising affordable for small businesses?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Digital</span>
+                            <span class="faq-tag">Marketing</span>
+                            <span class="faq-tag">Strategy</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Television advertising can be more affordable than many think. Certain factors such as placement and saturation can greatly affect the budget. Properly managed campaigns can help you hit the right audience and in turn help you get the best return on investment.</p>
+                            <img src="assets/faq-3.jpg" alt="Digital Marketing Strategy" class="faq-item__img" />
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 4 -->
+                <div class="faq-item" data-cat="pricing" data-tags="pricing cost budget packages how much">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Is TV advertising still worth it now that everyone is on connected devices?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Pricing</span>
+                            <span class="faq-tag">Budget</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Television advertising still plays a big role in reaching large audiences. It’s true, a growing number of people are no longer watching TV in the traditional sense. The facts are, there are still a huge number of Americans who watch TV. Our approach is to reach audiences across all platforms.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 5 -->
+                <div class="faq-item" data-cat="process" data-tags="process onboarding how to get started workflow">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Can you work with my current software or tools?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Process</span>
+                            <span class="faq-tag">Onboarding</span>
+                            <span class="faq-tag">Getting Started</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>As an agency, we’ve worked with a wide variety of software and management platforms. We generally think it’s best to stick with a client’s tools if they are doing the best job for the client. That said, we’ll analyze each piece of your workflow and will give you our suggestions based on our experience and let you make the decision.
+</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 6 -->
+                <div class="faq-item" data-cat="services" data-tags="seo search engine optimization rankings traffic google">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">How long does it take to create a website?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">SEO</span>
+                            <span class="faq-tag">Rankings</span>
+                            <span class="faq-tag">Traffic</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Small websites can be developed in less than a month, larger websites can take 2-3 months and dynamic portals and take anywhere from 4-6 months. Generally, the biggest bottleneck for website projects is developing the content from the client’s side. Once we have the text for the pages, the process moves pretty quick. A redesign of a small active website can be done within a week or two.</p>
+                            <img src="assets/faq-5.jpg" alt="SEO Services" class="faq-item__img" />
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 7 -->
+                <div class="faq-item" data-cat="support" data-tags="support contact help account manager communication">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Which is better, Facebook or Google Ads?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Support</span>
+                            <span class="faq-tag">Contact</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Both platforms play an important role in marketing for businesses. The best approach is to understand where your prospective buyers are throughout the buying cycle and create a plan to target them from there.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 8 -->
+                <div class="faq-item" data-cat="process" data-tags="timeline delivery turnaround how long campaign launch">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Why do you charge onboarding fees?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Timeline</span>
+                            <span class="faq-tag">Delivery</span>
+                            <span class="faq-tag">Process</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Many campaigns require onboarding fees due to the extensive amount of time involved to properly set them up. To analyze campaign data, we use quite a few behind-the-scenes tools and softwares to help optimize and grow your campaigns as they age. We also like to do things like keyword and market research before we even begin creating content and creative assets.</p>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Item 9 -->
+                <div class="faq-item" data-cat="general" data-tags="social media management smm platforms instagram facebook">
+                    <button class="faq-item__trigger" aria-expanded="false">
+                        <span class="faq-item__question">Can't find what your looking for?</span>
+                        <div class="faq-item__tags">
+                            <span class="faq-tag">Social Media</span>
+                            <span class="faq-tag">Platforms</span>
+                            <span class="faq-tag">Management</span>
+                        </div>
+                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-item__body">
+                        <div class="faq-item__content">
+                            <p>Feel free to send us a message in the chat widget below or email us at info@dillonmediagroup.com.</p>
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-
-
-
-
-
-    <!-- Video Modal -->
-    <div class="dm-video-modal" id="dm-video-modal">
-        <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
-        <div class="dm-video-modal__container">
-            <button class="dm-video-modal__close" id="dm-video-modal-btn-close">&times;</button>
-            <div class="dm-video-modal__frame">
-                <iframe id="dm-modal-iframe" src="" frameborder="0" allow="autoplay; fullscreen"
-                    allowfullscreen></iframe>
             </div>
         </div>
-    </div>
-
-    <section class="dm-cta" id="dm-cta">
-        <div class="dm-cta__container">
-            <div class="dm-cta__content">
-                <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
-                <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
-                    the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
-                <a href="#" class="dm-cta__btn">
-                    <span class="dm-cta__btn-text">START A CONVERSATION</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-        <div class="dm-cta__bg-glow"></div>
     </section>
+
 
     <footer class="dm-footer" id="dm-footer">
         <div class="dm-footer__container">
@@ -673,4 +746,4 @@
     <script src="script/script.js"></script>
 </body>
 
-</html>
+</html>           

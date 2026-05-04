@@ -970,4 +970,112 @@ const observer = new IntersectionObserver((entries) => {
     threshold: 0.5 // play when 50% visible
 });
 
-observer.observe(iframe);
+if (iframe) observer.observe(iframe);
+
+/* ── FAQ Accordion + Search + Category Filter ── */
+(function () {
+    'use strict';
+
+    const faqList      = document.getElementById('faq-list');
+    const searchInput  = document.getElementById('faq-search-input');
+    const searchClear  = document.getElementById('faq-search-clear');
+    const catBtns      = document.querySelectorAll('.faq-cat-btn');
+    const noResults    = document.getElementById('faq-no-results');
+
+    if (!faqList) return;
+
+    const items = Array.from(faqList.querySelectorAll('.faq-item'));
+    let activeCategory = 'all';
+    let searchQuery    = '';
+
+    /* ── Accordion ── */
+    items.forEach(item => {
+        const trigger = item.querySelector('.faq-item__trigger');
+        const body    = item.querySelector('.faq-item__body');
+
+        trigger.addEventListener('click', () => {
+            const isOpen = item.classList.contains('is-open');
+
+            // Close all open items first
+            items.forEach(i => {
+                i.classList.remove('is-open');
+                i.querySelector('.faq-item__trigger').setAttribute('aria-expanded', 'false');
+                const b = i.querySelector('.faq-item__body');
+                b.style.maxHeight = '0px';
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                item.classList.add('is-open');
+                trigger.setAttribute('aria-expanded', 'true');
+                body.style.maxHeight = body.scrollHeight + 'px';
+            }
+        });
+    });
+
+    /* ── Filter logic ── */
+    function applyFilter() {
+        const q = searchQuery.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+            const cat  = item.getAttribute('data-cat') || '';
+            const tags = item.getAttribute('data-tags') || '';
+            const question = item.querySelector('.faq-item__question');
+            const qText = question ? question.textContent.toLowerCase() : '';
+
+            const catMatch = activeCategory === 'all' || cat === activeCategory;
+            const searchMatch = q === '' || qText.includes(q) || tags.toLowerCase().includes(q);
+
+            if (catMatch && searchMatch) {
+                item.classList.remove('is-hidden');
+                visibleCount++;
+            } else {
+                item.classList.add('is-hidden');
+                // Also close hidden items
+                item.classList.remove('is-open');
+                item.querySelector('.faq-item__trigger').setAttribute('aria-expanded', 'false');
+                item.querySelector('.faq-item__body').style.maxHeight = '0px';
+            }
+        });
+
+        if (noResults) {
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    }
+
+    /* ── Category buttons ── */
+    catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            catBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeCategory = btn.getAttribute('data-cat');
+            applyFilter();
+        });
+    });
+
+    /* ── Search input ── */
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            searchQuery = searchInput.value;
+            if (searchClear) {
+                searchClear.classList.toggle('is-visible', searchQuery.length > 0);
+            }
+            applyFilter();
+        });
+    }
+
+    /* ── Clear button ── */
+    if (searchClear) {
+        searchClear.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            searchClear.classList.remove('is-visible');
+            applyFilter();
+            searchInput.focus();
+        });
+    }
+
+    // Initial filter pass
+    applyFilter();
+})();
