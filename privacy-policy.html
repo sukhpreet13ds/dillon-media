@@ -190,7 +190,7 @@
             </div>
 
             <ul class="dm-nav__links" id="dm-nav-links" role="menubar">
-                <li class="dm-nav__item " role="none">
+                <li class="dm-nav__item" role="none">
                     <a href="index.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-house"></i> -->
                         <span>HOME</span>
@@ -204,7 +204,7 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item dm-nav__item--active dm-nav__item--has-mega" role="none">
+                <li class="dm-nav__item dm-nav__item--has-mega" role="none">
                     <a href="#" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-film"></i> -->
                         <span>SERVICES</span>
@@ -283,7 +283,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="dm-mega-menu__column dm-mega-menu__column--active">
+                                    <div class="dm-mega-menu__column">
                                         <a href="traditional-media.html">
                                             <div class="dm-mega-menu__group">
                                                 <h4 class="dm-mega-menu__title">TRADITIONAL MEDIA BUYING</h4>
@@ -376,222 +376,204 @@
 
 
 
-    <section class="dm-service-hero dm-video-hero">
-        <div class="dm-service-hero__container">
-            <div class="dm-service-hero__content" data-reveal="left">
-                <h1 class="dm-service-hero__title">Traditional Media <span class="dm-text-outline">Services</span></h1>
-                <p class="dm-service-hero__subtitle">Reach your target audience through traditional media channels.</p>
-                <div class="dm-service-hero__actions">
-                    <a href="#video-service-content" class="dm-btn-cta btn-fx">
-                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
-                        <span class="dm-btn-cta__shine"></span>
-                    </a>
+    <section class="dm-hero dm-hero--about" id="dm-hero">
+        <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
+        <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
+
+        <div class="dm-hero__container">
+            <div class="dm-hero__left">
+                <h1 class="dm-hero__title">
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">PRIVACY</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">AND</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--outline">
+                        <span class="dm-hero__line-inner">POLICY</span>
+                    </span>
+
+                </h1>
+            </div>
+
+            <div class="dm-hero__right dm-hero__right--about">
+                <div class="dm-about-team">
+                    <h3 class="dm-about-team__title">MEET THE LEADERSHIP TEAM</h3>
+                    <div class="dm-about-team__grid">
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m2.jpg" alt="JEFF DILLON">
+                            </div>
+                            <h4 class="dm-about-team__name">JEFF DILLON</h4>
+                            <p class="dm-about-team__role">CEO & CFO</p>
+                        </div>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m1.jpg" alt="CLINTON GRUBBS">
+                            </div>
+                            <h4 class="dm-about-team__name">CLINTON GRUBBS</h4>
+                            <p class="dm-about-team__role">MARKETING DIRECTOR</p>
+                        </div>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m3.jpg" alt="KRISTINA ACKERMAN">
+                            </div>
+                            <h4 class="dm-about-team__name">KRISTINA ACKERMAN</h4>
+                            <p class="dm-about-team__role">BRAND DEVELOPMENT DIRECTOR</p>
+                        </div>
+
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m5.png" alt="FAITH DOMINIE">
+                            </div>
+                            <h4 class="dm-about-team__name">FAITH DOMINIE</h4>
+                            <p class="dm-about-team__role">MARKETING ASST. DIRECTOR</p>
+                        </div>
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m4.jpg" alt="THOMAS (TJ) READY">
+                            </div>
+                            <h4 class="dm-about-team__name">THOMAS (TJ) READY</h4>
+                            <p class="dm-about-team__role">OPERATIONS DIRECTOR</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="dm-service-hero__visual" data-reveal="right">
-            <div class="dm-video-play-box">
-                <div class="dm-video-play-btn" id="dm-video-modal-open">
-                    <i class="fa-solid fa-play"></i>
-                    <div class="dm-video-play-ripple"></div>
-                </div>
-                <p class="dm-video-play-text">WATCH SHOWREEL</p>
-            </div>
-        </div> -->
-        </div>
-        <div class="dm-service-hero__bg">
-            <video autoplay muted loop playsinline class="dm-service-hero__video">
-                <source src="assets/traditional-bg.mp4" type="video/mp4">
-            </video>
         </div>
     </section>
 
-    <section class="dm-traditional-media">
-        <div class="vdm-container">
-            <!-- Top Section: Why Choose -->
-            <div class="tra-why-choose">
-                <div class="tra-why-content">
-                    <h2 class="tra-section-title">Why Choose Traditional Media?</h2>
-                    <ul class="tra-checklist">
-                        <li><i class="fa-solid fa-check"></i> Broad audience reach</li>
-                        <li><i class="fa-solid fa-check"></i> Tangible and memorable impressions</li>
-                        <li><i class="fa-solid fa-check"></i> Complementary synergy with digital campaigns</li>
+    <section class="privacy-policy-context" id="privacy-policy-context">
+
+        <div class="tc-wrap">
+
+            <!-- Intro block -->
+            <div class="tc-intro-block">
+                <p class="tc-intro-text">Privacy Policy</p>
+                <p class="tc-intro-text">This privacy policy sets out how DillonMediaGroup.com uses and protects any information that you give Dillon Media Group when you use this website.</p>
+                <p class="tc-intro-text">Dillon Media Group is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website then you can be assured that it will only be used in accordance with this privacy statement.</p>
+            </div>
+
+            <div class="tc-content">
+
+                <!-- Who we are -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Who We Are</h2>
+                    <p>Our website address is <a href="https://dillonmediagroup.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">dillonmediagroup.com</a></p>
+                </div>
+
+                <!-- What personal data we collect -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">What Personal Data We Collect And Why We Collect It</h2>
+                    <p>Comments When visitors leave comments on the site we collect the data shown in the comments form, and also the visitor's IP address and browser user agent string to help spam detection.</p>
+                    <p>An anonymized string created from your email address (also called a hash) may be provided to the Gravatar service to see if you are using it. The Gravatar service privacy policy is available here: dillonmediagroup.com/privacy-policy. After approval of your comment, your profile picture is visible to the public in the context of your comment.</p>
+                    <p>Media If you upload images to the website, you should avoid uploading images with embedded location data (EXIF GPS) included. Visitors to the website can download and extract any location data from images on the website.</p>
+                </div>
+
+                <!-- Contact forms & Cookies -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Contact Forms &amp; Cookies</h2>
+                    <p>Contact forms Cookies If you leave a comment on our site you may opt-in to saving your name, email address and website in cookies. These are for your convenience so that you do not have to fill in your details again when you leave another comment. These cookies will last for one year.</p>
+                    <p>If you have an account and you log in to this site, we will set a temporary cookie to determine if your browser accepts cookies. This cookie contains no personal data and is discarded when you close your browser.</p>
+                    <p>When you log in, we will also set up several cookies to save your login information and your screen display choices. Login cookies last for two days, and screen options cookies last for a year. If you select "Remember Me", your login will persist for two weeks. If you log out of your account, the login cookies will be removed.</p>
+                    <p>If you edit or publish an article, an additional cookie will be saved in your browser. This cookie includes no personal data and simply indicates the post ID of the article you just edited. It expires after 180 days.</p>
+                </div>
+
+                <!-- Embedded content -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Embedded Content From Other Websites</h2>
+                    <p>Articles on this site may include embedded content (e.g. videos, images, articles, etc.). Embedded content from other websites behaves in the exact same way as if the visitor has visited the other website.</p>
+                    <p>These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction with the embedded content if you have an account and are logged in to that website.</p>
+                </div>
+
+                <!-- Analytics & Data sharing -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Analytics &amp; Who We Share Your Data With</h2>
+                    <p>Analytics</p>
+                    <p>Who we share your data with.</p>
+                </div>
+
+                <!-- How long we retain -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">How Long We Retain Your Data</h2>
+                    <p>If you leave a comment, the comment and its metadata are retained indefinitely. This is so we can recognize and approve any follow-up comments automatically instead of holding them in a moderation queue.</p>
+                    <p>For users that register on our website (if any), we also store the personal information they provide in their user profile. All users can see, edit, or delete their personal information at any time (except they cannot change their username). Website administrators can also see and edit that information.</p>
+                </div>
+
+                <!-- Rights over your data -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Q – What Rights You Have Over Your Data?</h2>
+                    <p>If you have an account on this website or have left comments, you can request to receive an exported file of the personal data we hold about you, including any data you have provided to us. You can also request that we erase any personal data we hold about you. This does not include any data we are obliged to keep for administrative, legal, or security purposes.</p>
+                </div>
+
+                <!-- Where we send your data -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Q – Where We Send Your Data?</h2>
+                    <p>Visitor comments may be checked through an automated spam detection service.</p>
+                </div>
+
+                <!-- What we collect -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">What We Collect</h2>
+                    <p>We may collect the following informatio :</p>
+                    <ul class="tc-list">
+                        <li>Name and job title</li>
+                        <li>Contact information including email address</li>
+                        <li>Demographic information such as postcode, preferences, and interests</li>
+                        <li>Other information relevant to customer surveys and/or offers</li>
                     </ul>
                 </div>
-                <div class="tra-icon-graphic">
-                    <div class="tra-icon-grid">
-                        <div class="tra-icon-card card-top">
-                            <i class="fa-solid fa-clapperboard"></i>
-                            <span>Billboard</span>
-                        </div>
-                        <div class="tra-icon-card card-left">
-                            <i class="fa-solid fa-radio"></i>
-                            <span>Radio</span>
-                        </div>
-                        <div class="tra-icon-card card-center">
-                            <i class="fa-solid fa-newspaper"></i>
-                            <span>Newspaper</span>
-                        </div>
-                        <div class="tra-icon-card card-right">
-                            <i class="fa-solid fa-tv"></i>
-                            <span>TV</span>
-                        </div>
-                        <div class="tra-icon-card card-bottom">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                            <span>Direct Mail</span>
-                        </div>
-                    </div>
+
+                <!-- What we do with the information -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Q – What We Do With The Information We Gather?</h2>
+                    <p>We require this information to understand your needs and provide you with a better service, and in particular for the following reasons:</p>
+                    <ul class="tc-list">
+                        <li>Internal record keeping.</li>
+                        <li>We may use the information to improve our products and services.</li>
+                        <li>We may periodically send promotional emails about new products, special offers or other information which we think you may find interesting using the email address which you have provided.</li>
+                        <li>From time to time, we may also use your information to contact you for market research purposes. We may contact you by email, phone, fax or mail. We may use the information to customize the website according to your interests.</li>
+                    </ul>
                 </div>
-            </div>
 
-            <!-- Our Services Section -->
-            <div class="tra-services-section">
-                <h2 class="tra-section-title" data-reveal>Our Services</h2>
-
-                <div class="tra-services-layout">
-                    <!-- Left Column -->
-                    <div class="tra-services-col">
-                        <div class="tra-service-box-item left-icon">
-                            <div class="tra-icon-circle yellow-circle">
-                                <i class="fa-solid fa-file-invoice"></i>
-                            </div>
-                            <div class="tra-box-content">
-                                <h4>Flyers & Brochures</h4>
-                                <p>Perfect for face-to-face interactions and events, our expertly designed print
-                                    materials help communicate your message effectively.</p>
-                            </div>
-                        </div>
-
-                        <div class="tra-service-box-item left-icon">
-                            <div class="tra-icon-circle red-circle">
-                                <i class="fa-regular fa-envelope"></i>
-                            </div>
-                            <div class="tra-box-content">
-                                <h4>Mailers</h4>
-                                <p>Reach your audience directly in their homes with custom-designed mail campaigns that
-                                    grab attention and drive action.</p>
-                            </div>
-                        </div>
-
-                        <div class="tra-service-box-item left-icon">
-                            <div class="tra-icon-circle yellow-circle">
-                                <i class="fa-solid fa-broadcast-tower"></i>
-                            </div>
-                            <div class="tra-box-content">
-                                <h4>Radio Advertising</h4>
-                                <p>Harness the power of sound to create memorable campaigns. We craft engaging scripts
-                                    and work with top stations to ensure your ads are heard.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column -->
-                    <div class="tra-services-col">
-                        <div class="tra-service-box-item right-icon">
-                            <div class="tra-box-content">
-                                <h4>Television Advertising</h4>
-                                <p>Bring your brand to life with high-impact TV commercials. We ensure your message is
-                                    both visually stunning and strategically placed to reach your audience.</p>
-                            </div>
-                            <div class="tra-icon-circle red-circle">
-                                <i class="fa-solid fa-tv"></i>
-                            </div>
-                        </div>
-
-                        <div class="tra-service-box-item right-icon">
-                            <div class="tra-box-content">
-                                <h4>Billboards</h4>
-                                <p>Make a bold statement with billboard advertising. Our team will create visually
-                                    compelling designs and secure the best locations for maximum exposure.</p>
-                            </div>
-                            <div class="tra-icon-circle yellow-circle">
-                                <i class="fa-solid fa-road-barrier"></i>
-                            </div>
-                        </div>
-
-                        <div class="tra-service-box-item right-icon">
-                            <div class="tra-box-content">
-                                <h4>Magazine Advertising</h4>
-                                <p>Position your brand in premium publications to connect with niche or mass audiences.
-                                    Our creative and placement strategies ensure maximum ROI.</p>
-                            </div>
-                            <div class="tra-icon-circle red-circle">
-                                <i class="fa-solid fa-book-open"></i>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Security -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Security</h2>
+                    <p>We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.</p>
                 </div>
-            </div>
 
-            <!-- What We Provide Section -->
-            <div class="tra-provide-section">
-                <div class="tra-provide-grid">
-                    <div class="tra-provide-content" data-reveal="left">
-                        <h2 class="tra-section-title">What We Provide</h2>
-                        <ul class="tra-checklist">
-                            <li><i class="fa-solid fa-check"></i> Creative design and copywriting</li>
-                            <li><i class="fa-solid fa-check"></i> Strategic media planning and buying</li>
-                            <li><i class="fa-solid fa-check"></i> Performance tracking and reporting</li>
-                        </ul>
-                    </div>
-                    <div class="tra-provide-visual" data-reveal="right">
-                        <img src="assets/tra-ryt.jpg" alt="Traditional Media Planning" class="tra-provide-img">
-                    </div>
+                <!-- How we use cookies -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">How We Use Cookies</h2>
+                    <p>A cookie is a small file which asks permission to be placed on your computer's hard drive. Once you agree, the file is added and the cookie helps analyze web traffic or lets you know when you visit a particular site. Cookies allow web applications to respond to you as an individual. The web application can tailor its operations to your needs, likes and dislikes by gathering and remembering information about your preferences. We use traffic log cookies to identify which pages are being used. This helps us analyze data about web page traffic and improve our website in order to tailor it to customer needs. We only use this information for statistical analysis purposes and then the data is removed from the system.</p>
+                    <p>Overall, cookies help us provide you with a better website, by enabling us to monitor which pages you find useful and which you do not. A cookie in no way gives us access to your computer or any information about you, other than the data you choose to share with us. You can choose to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer. This may prevent you from taking full advantage of the website.</p>
                 </div>
-            </div>
-        </div>
+
+                <!-- Links to other websites -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Links To Other Websites</h2>
+                    <p>Our website may contain links to other websites of interest. However, once you have used these links to leave our site, you should note that we do not have any control over that other website. Therefore, we cannot be responsible for the protection and privacy of any information which you provide whilst visiting such sites and such sites are not governed by this privacy statement. You should exercise caution and look at the privacy statement applicable to the website in question.</p>
+                </div>
+
+                <!-- Controlling your personal information -->
+                <div class="tc-section">
+                    <h2 class="tc-section__title">Controlling Your Personal Information</h2>
+                    <p>You may choose to restrict the collection or use of your personal information in the following ways:</p>
+                    <ul class="tc-list">
+                        <li>Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used by anybody for direct marketing purposes.</li>
+                        <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us at <a href="mailto:info@dillonmediagroup.com" class="tc-email-link">info@dillonmediagroup.com</a></li>
+                    </ul>
+                    <p>We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so. We may use your personal information to send you promotional information about third parties which we think you may find interesting if you tell us that you wish this to happen.</p>
+                    <p>You may request details of personal information which we hold about you under the Data Protection Act 1998. A small fee will be payable. If you would like a copy of the information held on you please email <a href="mailto:info@dillonmediagroup.com" class="tc-email-link">info@dillonmediagroup.com</a></p>
+                    <p>If you believe that any information we are holding on you is incorrect or incomplete, please write to or email us as soon as possible, at the above address. We will promptly correct any information found to be incorrect.</p>
+                </div>
+
+            </div><!-- /.tc-content -->
+        </div><!-- /.tc-wrap -->
+
     </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Video Modal -->
-    <div class="dm-video-modal" id="dm-video-modal">
-        <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
-        <div class="dm-video-modal__container">
-            <button class="dm-video-modal__close" id="dm-video-modal-btn-close">&times;</button>
-            <div class="dm-video-modal__frame">
-                <iframe id="dm-modal-iframe" src="" frameborder="0" allow="autoplay; fullscreen"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <section class="dm-cta" id="dm-cta">
-        <div class="dm-cta__container">
-            <div class="dm-cta__content">
-                <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
-                <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
-                    the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
-                <a href="#" class="dm-cta__btn">
-                    <span class="dm-cta__btn-text">START A CONVERSATION</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-        <div class="dm-cta__bg-glow"></div>
-    </section>
-
-     <footer class="dm-footer" id="dm-footer">
+    <footer class="dm-footer" id="dm-footer">
         <div class="dm-footer__container">
             <div class="dm-footer__top">
                 <div class="dm-footer__brand">

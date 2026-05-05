@@ -1079,3 +1079,25 @@ if (iframe) observer.observe(iframe);
     // Initial filter pass
     applyFilter();
 })();
+
+/* ── Terms & Conditions Cards Scroll Reveal ── */
+(function () {
+    'use strict';
+
+    const tcCards = document.querySelectorAll('.tc-card');
+    if (!tcCards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('tc-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    tcCards.forEach(card => observer.observe(card));
+})();
