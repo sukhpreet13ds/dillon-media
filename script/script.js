@@ -243,7 +243,7 @@
                 cell.target = 0; 
             }
 
-            ctx.strokeStyle = 'rgba(32, 31, 31, 0.08)';
+            ctx.strokeStyle = 'rgba(32, 31, 31, 0.01)';
             ctx.lineWidth   = 1;
             ctx.strokeRect(cx, cy, CELL, CELL);           
         });

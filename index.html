@@ -35,9 +35,15 @@
         </div>
 
         <div class="dm-mobile-menu__body">
-            <div class="dm-mobile-search">
-                <input type="text" class="dm-mobile-search__input" placeholder="Search services...">
-                <button class="dm-mobile-search__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div class="dm-mobile-search-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 30px;">
+                <div class="dm-mobile-search" style="flex: 1; margin-bottom: 0;">
+                    <input type="text" class="dm-mobile-search__input" placeholder="Search services...">
+                    <button class="dm-mobile-search__btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <button class="dm-theme-toggle dm-mobile-theme-toggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon dark-icon"></i>
+                    <i class="fa-solid fa-sun light-icon"></i>
+                </button>
             </div>
 
             <nav class="dm-mobile-nav">
@@ -350,6 +356,7 @@
             </ul>
 
             <div class="dm-nav__actions">
+               
                 <div class="dm-search" id="dm-search">
                     <button class="dm-search__btn" id="dm-search-toggle" aria-label="Open search" aria-expanded="false">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -363,7 +370,10 @@
                         </button>
                     </div>
                 </div>
-
+ <button id="dm-theme-toggle" class="dm-theme-toggle" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-sun"></i>
+                </button>
                 <a href="#" class="dm-btn-cta btn-fx" id="dm-cta" role="button">
                     <span class="dm-btn-cta__text">Get Started</span>
                     <span class="dm-btn-cta__shine" aria-hidden="true"></span>
@@ -373,7 +383,6 @@
         </nav>
 
     </header>
-
 
     <section class="dm-hero" id="dm-hero">
         <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
@@ -1803,6 +1812,9 @@
     </script>
     <script src="script/script.js"></script>
     <script src="script/hero.js"></script>
+    <script src="script/theme.js"></script>
 </body>
 
 </html>
+
+
