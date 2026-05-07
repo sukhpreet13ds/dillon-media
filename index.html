@@ -17,7 +17,9 @@
 
     <div class="dm-mobile-header">
         <div class="dm-mobile-header__logo">
-            <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
+            <a href="index.html" class="dm-logo-link" aria-label="Dillon Media Home">
+                <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
+            </a>
         </div>
         <button class="dm-mobile-burger" id="dm-mobile-burger" aria-label="Open mobile menu">
             <i class="fa-solid fa-bars-staggered"></i>
@@ -27,7 +29,9 @@
     <div class="dm-mobile-menu" id="dm-mobile-menu">
         <div class="dm-mobile-menu__header">
             <div class="dm-mobile-menu__logo">
+                <a href="index.html" class="dm-logo-link" aria-label="Dillon Media Home">
                 <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
+            </a>
             </div>
             <button class="dm-mobile-close" id="dm-mobile-close" aria-label="Close mobile menu">
                 <i class="fa-solid fa-xmark"></i>
@@ -180,6 +184,9 @@
                 </li>
                 <li class="dm-mobile-nav__item">
                     <a href="contact-us.html" class="dm-mobile-nav__link">Contact Us</a>
+                </li>
+                <li class="dm-mobile-nav__item">
+                    <a href="pricing.html" class="dm-mobile-nav__link">Pricing</a>
                 </li>
             </ul>
         </nav>
@@ -352,6 +359,14 @@
                     <a href="contact-us.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-regular fa-address-card"></i> -->
                         <span>CONTACT US</span>
+                        <span class="dm-nav__indicator"></span>
+                    </a>
+                </li>
+
+                <li class="dm-nav__item" role="none">
+                    <a href="pricing.html" class="dm-nav__link" role="menuitem">
+                        <!-- <i class="fa-regular fa-address-card"></i> -->
+                        <span>PRICING</span>
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
@@ -1010,6 +1025,9 @@
                             <span class="dm-awards__stat-num">20 +</span>
                             <span class="dm-awards__stat-label">TELLY AWARDS</span>
                         </div>
+                    </div>
+                    <div class="dm-awards__prize-box">
+                        <img src="assets/dillon-prize.jpg" alt="Dillon Prize" class="dm-awards__prize-img">
                     </div>
                 </div>
             </div>

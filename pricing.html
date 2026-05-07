@@ -11,230 +11,11 @@
     <link rel="stylesheet" href="css/hero.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        /* Video Selection Gallery Modal Styles */
-        .dm-selection-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .dm-selection-modal.is-open {
-            display: flex;
-            opacity: 1;
-        }
-
-        .dm-selection-modal__overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-        }
-
-        .dm-selection-modal__container {
-            position: relative;
-            z-index: 2;
-            width: 95%;
-            max-width: 1400px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 80px 40px 60px;
-            background: rgba(15, 15, 15, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
-        }
-
-        .dm-selection-modal__container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .dm-selection-modal__container::-webkit-scrollbar-thumb {
-            background: #910d17;
-            border-radius: 10px;
-        }
-
-        .dm-selection-modal__title {
-            color: #fff;
-            font-size: clamp(2rem, 6vw, 4rem);
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 60px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .dm-selection-modal__title span {
-            display: block;
-            font-size: 0.35em;
-            letter-spacing: 8px;
-            color: #910d17;
-            margin-top: 10px;
-            font-weight: 600;
-        }
-
-        .dm-video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr));
-            gap: 40px;
-        }
-
-        .dm-video-card {
-            position: relative;
-            aspect-ratio: 16/9;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: #000;
-        }
-
-        .dm-video-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(145, 13, 23, 0.3);
-            border-color: #910d17;
-        }
-
-        .dm-video-card__thumb {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .dm-video-card__thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .dm-video-card:hover .dm-video-card__thumb img {
-            transform: scale(1.15);
-            filter: brightness(0.7);
-        }
-
-        .dm-video-card__overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.6;
-            transition: all 0.4s ease;
-        }
-
-        .dm-video-card:hover .dm-video-card__overlay {
-            opacity: 1;
-            background: rgba(145, 13, 23, 0.2);
-        }
-
-        .dm-video-card__play-icon {
-            width: 80px;
-            height: 80px;
-            background: #fff;
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform: scale(0.7);
-        }
-
-        .dm-video-card:hover .dm-video-card__play-icon {
-            background: #910d17;
-            color: #fff;
-            transform: scale(1);
-            box-shadow: 0 0 40px rgba(145, 13, 23, 0.8);
-        }
-
-        .dm-selection-modal__close {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .dm-selection-modal__close:hover {
-            background: #910d17;
-            transform: rotate(90deg);
-            border-color: #910d17;
-        }
-
-        @media (max-width: 992px) {
-            .dm-selection-modal__container {
-                padding: 60px 30px 40px;
-            }
-
-            .dm-video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 25px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .dm-selection-modal__container {
-                padding: 50px 15px 30px;
-                width: 98%;
-                border-radius: 20px;
-            }
-
-            .dm-selection-modal__title {
-                margin-bottom: 40px;
-            }
-
-            .dm-video-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .dm-video-card__play-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.4rem;
-            }
-
-            .dm-selection-modal__close {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.4rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-     <div class="dm-mobile-header">
+    <div class="dm-mobile-header">
         <div class="dm-mobile-header__logo">
             <a href="index.html" class="dm-logo-link" aria-label="Dillon Media Home">
                 <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
@@ -252,7 +33,7 @@
                 <img src="assets/dillon-logo.png" alt="Dillon Media Logo">
             </a>
             </div>
-             <button class="dm-mobile-close" id="dm-mobile-close" aria-label="Close mobile menu">
+            <button class="dm-mobile-close" id="dm-mobile-close" aria-label="Close mobile menu">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -268,6 +49,7 @@
                     <i class="fa-solid fa-moon dark-icon"></i>
                     <i class="fa-solid fa-sun light-icon"></i>
                 </button>
+           
         </div>
 
         <nav class="dm-mobile-nav">
@@ -423,21 +205,21 @@
             </div>
 
             <ul class="dm-nav__links" id="dm-nav-links" role="menubar">
-                <li class="dm-nav__item " role="none">
+                <li class="dm-nav__item" role="none">
                     <a href="index.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-house"></i> -->
                         <span>HOME</span>
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item" role="none">
+                <li class="dm-nav__item " role="none">
                     <a href="about-us.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-circle-info"></i> -->
                         <span>ABOUT US</span>
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item dm-nav__item--active dm-nav__item--has-mega" role="none">
+                <li class="dm-nav__item dm-nav__item--has-mega" role="none">
                     <a href="#" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-film"></i> -->
                         <span>SERVICES</span>
@@ -450,7 +232,7 @@
                         <div class="dm-mega-menu__container">
                             <div class="dm-mega-menu__content">
                                 <div class="dm-mega-menu__grid">
-                                    <div class="dm-mega-menu__column dm-mega-menu__column--active">
+                                    <div class="dm-mega-menu__column">
                                         <a href="video-production.html">
                                             <div class="dm-mega-menu__group">
                                                 <h4 class="dm-mega-menu__title">VIDEO PRODUCTION</h4>
@@ -580,7 +362,7 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item" role="none">
+                  <li class="dm-nav__item dm-nav__item--active" role="none" >
                     <a href="pricing.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-regular fa-address-card"></i> -->
                         <span>PRICING</span>
@@ -619,291 +401,226 @@
 
 
 
-    <section class="dm-service-hero dm-video-hero">
-        <div class="dm-service-hero__container">
-            <div class="dm-service-hero__content" data-reveal="left">
-                <h1 class="dm-service-hero__title">VIDEO <span class="dm-text-outline">PRODUCTION</span></h1>
-                <p class="dm-service-hero__subtitle">BRINGING YOUR STORY TO LIFE WITH CINEMATIC EXCELLENCE</p>
-                <div class="dm-service-hero__actions">
-                    <a href="#video-service-content" class="dm-btn-cta btn-fx">
-                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
-                        <span class="dm-btn-cta__shine"></span>
-                    </a>
-                </div>
-            </div>
-            <div class="dm-service-hero__visual" data-reveal="right">
-                <div class="dm-video-play-box">
-                    <div class="dm-video-play-btn" id="dm-video-gallery-trigger">
-                        <i class="fa-solid fa-play"></i>
-                        <div class="dm-video-play-ripple"></div>
-                    </div>
-                    <p class="dm-video-play-text">WATCH SHOWREEL</p>
-                </div>
-            </div>
-        </div>
-        <div class="dm-service-hero__bg">
-            <video autoplay muted loop playsinline class="dm-service-hero__video">
-                <source src="assets/video-service-bg.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
+    <section class="dm-hero dm-hero--about" id="dm-hero">
+        <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
+        <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
 
-    <section class="video-service-content" id="video-service-content">
-        <div class="dm-container">
-            <div class="dm-service-intro" data-reveal>
-                <h2 class="dm-service-intro__title">CONTENT THAT <span class="dm-text-glow">DELIVERS.</span></h2>
-                <p class="dm-service-intro__desc">Video production and live streaming services are becoming a leading
-                    option for speaking to a prospective audience. Our award-winning production team is here and ready
-                    to bring your story to life.</p>
+        <div class="dm-hero__container">
+            <div class="dm-hero__left">
+                <h1 class="dm-hero__title">
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">DILLON</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">MEDIA</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--outline">
+                        <span class="dm-hero__line-inner">GROUP</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--accent">
+                        <span class="dm-hero__line-inner">PRICES</span>
+                    </span>
+                </h1>
             </div>
 
-            <div class="dm-service-features">
-                <div class="dm-feature-card" data-reveal>
-                    <div class="dm-feature-icon">01</div>
-                    <h3 class="dm-feature-title">BROADCAST COMMERCIALS</h3>
-                </div>
-                <div class="dm-feature-card" data-reveal>
-                    <div class="dm-feature-icon">02</div>
-                    <h3 class="dm-feature-title">TESTIMONIAL VIDEOS</h3>
-                </div>
-                <div class="dm-feature-card" data-reveal>
-                    <div class="dm-feature-icon">03</div>
-                    <h3 class="dm-feature-title">SOCIAL MEDIA COMMERCIALS</h3>
-                </div>
-                <div class="dm-feature-card" data-reveal>
-                    <div class="dm-feature-icon">04</div>
-                    <h3 class="dm-feature-title">MULTI CAMERA LIVE STREAMING</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="video-services-slide">
-        <div class="dm-slide-container">
-            <div class="dm-slide-header" data-reveal>
-                <h2 class="dm-slide-main-title">CREATIVITY THROUGH <span class="dm-text-outline">PHOTOGRAPHY</span> &
-                    <span class="dm-text-glow">VIDEOGRAPHY</span>
-                </h2>
-                <p class="dm-slide-main-desc">Every media production service is tailor-made to each business. We help
-                    your brand’s individuality to shine. Learn more about our range of solutions below.</p>
-            </div>
-
-            <div class="dm-video-slider-wrapper" data-reveal>
-                <div class="dm-video-slider" id="dm-video-slider">
-                    <!-- Slide 1 -->
-                    <div class="dm-video-slide active">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">01</span>
-                            <h3 class="dm-sliding-title">PHOTOGRAPHY</h3>
-                            <h4 class="dm-sliding-subtitle">IMAGE TAKERS, IMAGE-MAKERS</h4>
-                            <p class="dm-sliding-text">No matter what industry you’re in, your image is extremely
-                                important. The visuals used in your marketing and branding initiatives, including paid
-                                advertising, social media and on your website, should trigger confidence to prospective
-                                clients or customers.</p>
-                            <p class="dm-sliding-text--small">We offer professional photography on location throughout
-                                the Ocala to help businesses showcase their offerings. Best of all for you, using Dillon
-                                Video means your photographs will tie in perfectly with any online marketing strategy or
-                                website we already manage.</p>
+            <div class="dm-hero__right dm-hero__right--about">
+                <div class="dm-about-team">
+                    <h3 class="dm-about-team__title">MEET THE LEADERSHIP TEAM</h3>
+                    <div class="dm-about-team__grid">
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m2.jpg" alt="JEFF DILLON">
+                            </div>
+                            <h4 class="dm-about-team__name">JEFF DILLON</h4>
+                            <p class="dm-about-team__role">CEO & CFO</p>
                         </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/vp-slide1.jpg" alt="Photography Service" />
+                        <div class="dm-about-team__member">
+                            <div class="dm-about-team__img-box">
+                                <img src="assets/team-m1.jpg" alt="CLINTON GRUBBS">
+                            </div>
+                            <h4 class="dm-about-team__name">CLINTON GRUBBS</h4>
+                            <p class="dm-about-team__role">MARKETING DIRECTOR</p>
+                        </div>
+                        <div class="dm-about-team__carousel">
+                            <div class="dm-about-team__member">
+                                <div class="dm-about-team__img-box">
+                                    <img src="assets/team-m3.jpg" alt="KRISTINA ACKERMAN">
+                                </div>
+                                <h4 class="dm-about-team__name">KRISTINA ACKERMAN</h4>
+                                <p class="dm-about-team__role">BRAND DEVELOPMENT DIRECTOR</p>
+                            </div>
+
+                            <div class="dm-about-team__member">
+                                <div class="dm-about-team__img-box">
+                                    <img src="assets/team-m5.png" alt="FAITH DOMINIE">
+                                </div>
+                                <h4 class="dm-about-team__name">FAITH DOMINIE</h4>
+                                <p class="dm-about-team__role">MARKETING ASST. DIRECTOR</p>
+                            </div>
+                            <div class="dm-about-team__member">
+                                <div class="dm-about-team__img-box">
+                                    <img src="assets/team-m4.jpg" alt="THOMAS (TJ) READY">
+                                </div>
+                                <h4 class="dm-about-team__name">THOMAS (TJ) READY</h4>
+                                <p class="dm-about-team__role">OPERATIONS DIRECTOR</p>
+                            </div>
+                            <div class="dm-about-team__member">
+                                <div class="dm-about-team__img-box">
+                                    <img src="assets/bell.png" alt="Bell">
+                                </div>
+                                <h4 class="dm-about-team__name">TYLER BELL</h4>
+                                <p class="dm-about-team__role">TECHNICAL DIRECTOR</p>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Slide 2 -->
-                    <div class="dm-video-slide">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">02</span>
-                            <h3 class="dm-sliding-title">VIDEOGRAPHY</h3>
-                            <p class="dm-sliding-text">Videos are becoming a go-to tool for businesses and organizations
-                                that want to connect with their target audience. Through video production and live
-                                streaming, businesses are able to communicate their story and share their values in a
-                                way that’s both engaging and memorable.</p>
-                            <p class="dm-sliding-text--small">Our award-winning production team works on projects that
-                                range from social media commercials to professional television spots, ensuring that
-                                every client gets a final product that’s tailored to their needs and exceeds
-                                expectations.</p>
-                        </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/vp-slide2.jpg" alt="Videography Service" />
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="dm-video-slide">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">03</span>
-                            <h3 class="dm-sliding-title">DRONE & VIRTUAL TOURS</h3>
-                            <p class="dm-sliding-text">Using drones, Dillon Video is able to capture stunning aerial
-                                footage that can be used for a variety of purposes, including real estate, construction,
-                                and event videography.</p>
-                            <p class="dm-sliding-text--small">Our team is also able to create virtual tours that allow
-                                potential customers to experience your business from the comfort of their own homes.</p>
-                        </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/vp-slide3.jpg" alt="Drone & Virtual Tours Service" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slider Controls -->
-                <div class="dm-video-slider-controls">
-                    <button class="dm-video-slider-btn prev" id="video-slide-prev"><i
-                            class="fa-solid fa-arrow-left"></i></button>
-                    <div class="dm-video-slider-dots" id="video-slide-dots"></div>
-                    <button class="dm-video-slider-btn next" id="video-slide-next"><i
-                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- <section class="vdm-proud-work">
-        <div class="vdm-container">
-            <h2 class="dm-proud-title">Proud to work with</h2>
-
-            <div class="dm-proud-banners">
-                <div class="dm-proud-banner" style="background-image: url('assets/proud-1-bg.jpg');">
-                    <div class="dm-proud-banner__overlay"></div>
-                    <div class="dm-proud-banner__content">
-                        <div class="dm-proud-device" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
-                            data-tilt-max-glare="0.3">
-                            <img src="assets/proud-1.png" alt="Phillips Showcase">
-                        </div>
-                        <div class="dm-proud-info">
-                            <img src="assets/proud-1-logo.png" alt="Phillips Logo" class="dm-proud-logo">
-                            <a href="#" class="dm-proud-link">View Project <i
-                                    class="fa-solid fa-arrow-right-long"></i></a>
-                        </div>
-                    </div>
+    <section class="about-text-section dm-about-story">
+        <div class="dm-about-container">
+            <!-- Intro Section -->
+            <div class="dm-about-intro" data-reveal>
+                <div class="dm-about-meta">
+                    <span class="dm-about-dash"></span>
+                    <span class="dm-about-meta-text">WHO WE ARE</span>
                 </div>
+                <h2 class="dm-about-main-title">Enterprise-grade WordPress hosting. <span class="dm-text-glow">Without the enterprise-
+grade complexity.</span>
+                    PROFESSIONALS</h2>
+                <p class="dm-about-desc">Your site runs on the same caliber of infrastructure trusted by Fortune 500 brands —
+backed by a team that treats your business like our own. We handle the backend so you
+can focus on the front of your business.</p>
+            </div>
 
-                <div class="dm-proud-banner dm-proud-banner--reverse"
-                    style="background-image: url('assets/proud-2-bg.png');">
-                    <div class="dm-proud-banner__overlay"></div>
-                    <div class="dm-proud-banner__content">
-                        <div class="dm-proud-info">
-                            <img src="assets/proud-2-logo.png" alt="Ocala Bets Logo" class="dm-proud-logo">
-                            <a href="#" class="dm-proud-link">View Project <i
-                                    class="fa-solid fa-arrow-right-long"></i></a>
-                        </div>
-                        <div class="dm-proud-device" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
-                            data-tilt-max-glare="0.3">
-                            <img src="assets/proud-2.png" alt="Ocala Bets Showcase">
-                        </div>
+            <div class="dm-pricing-trust">
+                <div class="dm-pricing-trust__container">
+                    <div class="dm-pricing-trust__item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>99.99% Uptime Guarantee</span>
+                    </div>
+                    <div class="dm-pricing-trust__item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Fully Managed Service</span>
+                    </div>
+                    <div class="dm-pricing-trust__item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Daily Backups</span>
+                    </div>
+                    <div class="dm-pricing-trust__item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>SOC 2 Security Available</span>
+                    </div>
+                    <div class="dm-pricing-trust__item">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Real Human Support</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Video Selection Modal -->
-    <div class="dm-selection-modal" id="dm-selection-modal">
-        <div class="dm-selection-modal__overlay" id="dm-selection-modal-close-overlay"></div>
-        <div class="dm-selection-modal__container">
-            <button class="dm-selection-modal__close" id="dm-selection-modal-btn-close">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="dm-video-grid">
-                <!-- Video 1: Vimeo -->
-                <div class="dm-video-card" data-video="https://player.vimeo.com/video/662073747?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://vumbnail.com/662073747.jpg" alt="Vimeo Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+            <div class="dm-pricing-grid">
+                <!-- Tier 1 -->
+                <div class="dm-pricing-card">
+                    <div class="dm-pricing-card__header">
+                        <h3 class="dm-pricing-card__tier">Tier 1 — Foundation</h3>
+                        <div class="dm-pricing-card__price">
+                            <span class="dm-currency">$</span>99<span class="dm-period">/ mo</span>
                         </div>
+                        <p class="dm-pricing-card__tagline">Fast, secure, fully managed WordPress — without the headaches.</p>
+                    </div>
+                    <div class="dm-pricing-card__body">
+                        <p class="dm-pricing-card__desc">Fully managed WordPress hosting for small businesses and growing sites. We handle backups, security, and performance — you focus on your business.</p>
+                        <p class="dm-pricing-card__best"><strong>Best for:</strong> Small business sites, portfolios, blogs, and lead-gen pages up to 5K monthly visitors.</p>
+                    </div>
+                    <div class="dm-pricing-card__footer">
+                        <a href="#" class="dm-pricing-card__btn">PURCHASE NOW</a>
                     </div>
                 </div>
 
-                <!-- Video 2: Youtube -->
-                <div class="dm-video-card" data-video="https://www.youtube.com/embed/_9NmLGBzZFA?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://img.youtube.com/vi/_9NmLGBzZFA/maxresdefault.jpg" alt="Youtube Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                <!-- Tier 2 -->
+                <div class="dm-pricing-card dm-pricing-card--popular">
+                    <div class="dm-pricing-card__badge">MOST POPULAR</div>
+                    <div class="dm-pricing-card__header">
+                        <h3 class="dm-pricing-card__tier">Tier 2 — Growth</h3>
+                        <div class="dm-pricing-card__price">
+                            <span class="dm-currency">$</span>219<span class="dm-period">/ mo</span>
                         </div>
+                        <p class="dm-pricing-card__tagline">Where your website starts pulling its weight.</p>
+                    </div>
+                    <div class="dm-pricing-card__body">
+                        <p class="dm-pricing-card__desc">For businesses where the site drives revenue. Everything in Foundation, plus enterprise-grade security, page-level speed optimization, and unified analytics.</p>
+                        <p class="dm-pricing-card__best"><strong>Best for:</strong> Established midsize businesses, e-commerce stores, marketing-driven sites, and agencies.</p>
+                    </div>
+                    <div class="dm-pricing-card__footer">
+                        <a href="#" class="dm-pricing-card__btn">PURCHASE NOW</a>
                     </div>
                 </div>
 
-                <!-- Video 3: Youtube -->
-                <div class="dm-video-card" data-video="https://www.youtube.com/embed/50ngZiCfsxE?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://img.youtube.com/vi/50ngZiCfsxE/maxresdefault.jpg" alt="Youtube Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
+                <!-- Tier 3 -->
+                <div class="dm-pricing-card">
+                    <div class="dm-pricing-card__header">
+                        <h3 class="dm-pricing-card__tier">Tier 3 — Enterprise</h3>
+                        <div class="dm-pricing-card__price">
+                            <span class="dm-currency">$</span>499<span class="dm-period">/ mo</span>
                         </div>
+                        <p class="dm-pricing-card__tagline">Mission-critical hosting for sites where downtime isn't an option.</p>
                     </div>
-                </div>
-
-                <!-- Video 4: Youtube -->
-                <div class="dm-video-card" data-video="https://www.youtube.com/embed/GK-e1LKjC5s?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://img.youtube.com/vi/GK-e1LKjC5s/maxresdefault.jpg" alt="Youtube Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                    <div class="dm-pricing-card__body">
+                        <p class="dm-pricing-card__desc">Engineered for high-traffic sites at 150K+ monthly visitors. Sub-second load times, 24/7 priority support, and Fortune 500-grade security.</p>
+                        <p class="dm-pricing-card__best"><strong>Best for:</strong> High-traffic publishers, scaling e-commerce, regulated industries, and membership sites.</p>
                     </div>
-                </div>
-
-                <!-- Video 5: Youtube -->
-                <div class="dm-video-card" data-video="https://www.youtube.com/embed/qmnPrLm0kAo?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://img.youtube.com/vi/qmnPrLm0kAo/maxresdefault.jpg" alt="Youtube Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 6: Youtube -->
-                <div class="dm-video-card" data-video="https://www.youtube.com/embed/FFEiWTibbew?autoplay=1">
-                    <div class="dm-video-card__thumb">
-                        <img src="https://img.youtube.com/vi/FFEiWTibbew/maxresdefault.jpg" alt="Youtube Video">
-                        <div class="dm-video-card__overlay">
-                            <div class="dm-video-card__play-icon"><i class="fa-solid fa-play"></i></div>
-                        </div>
+                    <div class="dm-pricing-card__footer">
+                        <a href="#" class="dm-pricing-card__btn">PURCHASE NOW</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Video Modal -->
-    <div class="dm-video-modal" id="dm-video-modal">
-        <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
-        <div class="dm-video-modal__container">
-            <button class="dm-video-modal__close" id="dm-video-modal-btn-close">&times;</button>
-            <div class="dm-video-modal__frame">
-                <iframe id="dm-modal-iframe" src="" frameborder="0" allow="autoplay; fullscreen"
-                    allowfullscreen></iframe>
+            <div class="dm-pricing-table-wrapper">
+                <table class="dm-pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Foundation</th>
+                            <th>Growth</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Monthly Price</td><td>$99</td><td>$219</td><td>$499</td></tr>
+                        <tr><td>Websites Hosted</td><td>1</td><td>1</td><td>1</td></tr>
+                        <tr><td>Monthly Visitors</td><td>5K</td><td>25K</td><td>150K</td></tr>
+                        <tr><td>SSD Storage</td><td>1 GB</td><td>2 GB</td><td>10 GB <i class="fa-solid fa-triangle-exclamation warning"></i></td></tr>
+                        <tr><td>Daily Backups (30-day retention)</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Cloudflare CDN</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>SSL Certificate</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Staging Environment</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Plugin Manager</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Performance Monitoring</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Spam Blocker</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>SMTP Relay (email delivery)</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Premium Gravity / Wufoo Forms</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Global Edge Security</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Google Analytics + Search Console</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Site Migration (included)</td><td>1</td><td>1</td><td>1</td></tr>
+                        <tr><td>Included Support Time</td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Live Advanced Analytics Dashboard</td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Free Malware Scans</td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Page Speed Boost</td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>SOC 2-Level Security + Managed WAF</td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>Page-Level Caching</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                        <tr><td>24/7 Priority Support</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><i class="fa-solid fa-check check"></i></td></tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </div>
+       
 
+     
+
+           
+        </div>
+    </section>
+  
     <section class="dm-cta" id="dm-cta">
         <div class="dm-cta__container">
             <div class="dm-cta__content">
@@ -1003,7 +720,7 @@
     <div id="dm-cursor-ring" class="dm-cursor-ring"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
     <script>
-        VanillaTilt.init(document.querySelectorAll(".dm-service-box, .dm-feature-card"), {
+        VanillaTilt.init(document.querySelectorAll(".dm-service-box"), {
             max: 8,
             speed: 400,
             glare: true,
@@ -1012,74 +729,6 @@
     </script>
     <script src="script/script.js"></script>
     <script src="script/theme.js"></script>
-    <script>
-        (function () {
-            'use strict';
-
-            const selectionModal = document.getElementById('dm-selection-modal');
-            const selectionOpenBtn = document.getElementById('dm-video-gallery-trigger');
-            const selectionCloseBtn = document.getElementById('dm-selection-modal-btn-close');
-            const selectionOverlay = document.getElementById('dm-selection-modal-close-overlay');
-
-            const playerModal = document.getElementById('dm-video-modal');
-            const playerIframe = document.getElementById('dm-modal-iframe');
-            const videoCards = document.querySelectorAll('.dm-video-card');
-
-            // Function to open gallery
-            const openGallery = () => {
-                selectionModal.style.display = 'flex';
-                setTimeout(() => selectionModal.classList.add('is-open'), 10);
-                document.body.style.overflow = 'hidden';
-            };
-
-            // Function to close gallery
-            const closeGallery = () => {
-                selectionModal.classList.remove('is-open');
-                setTimeout(() => selectionModal.style.display = 'none', 400);
-                if (!playerModal.classList.contains('is-open')) {
-                    document.body.style.overflow = '';
-                }
-            };
-
-            // Event Listeners for Gallery
-            if (selectionOpenBtn) selectionOpenBtn.addEventListener('click', openGallery);
-            if (selectionCloseBtn) selectionCloseBtn.addEventListener('click', closeGallery);
-            if (selectionOverlay) selectionOverlay.addEventListener('click', closeGallery);
-
-            // Handle Video Card Clicks
-            videoCards.forEach(card => {
-                card.addEventListener('click', () => {
-                    const videoUrl = card.getAttribute('data-video');
-
-                    // 1. Close Gallery
-                    closeGallery();
-
-                    // 2. Open Player Modal after a short delay for smooth transition
-                    setTimeout(() => {
-                        playerModal.classList.add('is-open');
-                        playerIframe.src = videoUrl;
-                        document.body.style.overflow = 'hidden';
-                    }, 300);
-                });
-            });
-
-            // Ensure player modal close stops video
-            const playerCloseBtns = [
-                document.getElementById('dm-video-modal-close'),
-                document.getElementById('dm-video-modal-btn-close')
-            ];
-
-            playerCloseBtns.forEach(btn => {
-                if (btn) {
-                    btn.addEventListener('click', () => {
-                        playerModal.classList.remove('is-open');
-                        playerIframe.src = "";
-                        document.body.style.overflow = '';
-                    });
-                }
-            });
-        })();
-    </script>
 </body>
 
 </html>
