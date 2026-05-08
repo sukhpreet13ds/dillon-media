@@ -851,20 +851,17 @@ if (wordsList.length > 0) {
     'use strict';
 
     const modal = document.getElementById('dm-video-modal');
-    const openBtn = document.getElementById('dm-video-modal-open');
-    const closeBtn = document.getElementById('dm-video-modal-close');
-    const btnClose = document.getElementById('dm-video-modal-btn-close');
     const iframe = document.getElementById('dm-modal-iframe');
+    const closeBtnOverlay = document.getElementById('dm-video-modal-close');
+    const closeBtnX = document.getElementById('dm-video-modal-btn-close');
 
-    if (!modal || !openBtn) return;
+    if (!modal) return;
 
-    const showreelUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"; // Placeholder URL
-
-    openBtn.addEventListener('click', () => {
+    const openModal = (url) => {
         modal.classList.add('is-open');
-        iframe.src = showreelUrl;
+        iframe.src = url;
         document.body.style.overflow = 'hidden';
-    });
+    };
 
     const closeModal = () => {
         modal.classList.remove('is-open');
@@ -872,8 +869,29 @@ if (wordsList.length > 0) {
         document.body.style.overflow = '';
     };
 
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (btnClose) btnClose.addEventListener('click', closeModal);
+    // Global listener for video triggers
+    document.addEventListener('click', (e) => {
+        // Handle ID-based triggers (backward compatibility)
+        const idTrigger = e.target.closest('#dm-video-modal-open');
+        if (idTrigger) {
+            e.preventDefault();
+            const showreelUrl = idTrigger.getAttribute('data-video') || "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+            openModal(showreelUrl);
+            return;
+        }
+
+        // Handle class-based triggers for specific YouTube IDs
+        const classTrigger = e.target.closest('.dm-video-modal-trigger');
+        if (classTrigger) {
+            e.preventDefault();
+            const videoId = classTrigger.getAttribute('data-video-id');
+            const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            openModal(videoUrl);
+        }
+    });
+
+    if (closeBtnOverlay) closeBtnOverlay.addEventListener('click', closeModal);
+    if (closeBtnX) closeBtnX.addEventListener('click', closeModal);
 
     // Escape key to close
     window.addEventListener('keydown', (e) => {
@@ -882,6 +900,7 @@ if (wordsList.length > 0) {
         }
     });
 })();
+
 
 /* ── Video Production Slider ── */
 (function() {
