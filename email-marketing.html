@@ -192,7 +192,7 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item dm-nav__item--has-mega" role="none">
+                <li class="dm-nav__item dm-nav__item--active dm-nav__item--has-mega" role="none">
                     <a href="#" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-film"></i> -->
                         <span>SERVICES</span>
@@ -201,7 +201,7 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
 
-                   <div class="dm-mega-menu">
+                    <div class="dm-mega-menu">
                         <div class="dm-mega-menu__container">
                             <div class="dm-mega-menu__content">
                                 <div class="dm-mega-menu__grid">
@@ -244,6 +244,7 @@
                                         </a>
                                     </div>
                                    
+
                                     <div class="dm-mega-menu__column">
                                         <a href="programmatic.html">
                                             <div class="dm-mega-menu__group">
@@ -274,7 +275,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="dm-mega-menu__column">
+                                    <div class="dm-mega-menu__column dm-mega-menu__column--active">
                                         <a href="email-marketing.html">
                                             <div class="dm-mega-menu__group">
                                                 <h4 class="dm-mega-menu__title">EMAIL MARKETING
@@ -397,75 +398,171 @@
 
 
 
-    <section class="dm-hero dm-hero--about" id="dm-hero">
-        <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
-        <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
+    <section class="dm-service-hero dm-video-hero">
+        <div class="dm-service-hero__container">
+            <div class="dm-service-hero__content" data-reveal="left">
+                <h1 class="dm-service-hero__title">EMAIL <span class="dm-text-outline">MARKETING</span></h1>
+                <p class="dm-service-hero__subtitle">ENGAGE AUDIENCES WITH TARGETED EMAIL CAMPAIGNS THAT DELIVER MEASURABLE RESULTS.</p>
+                <div class="dm-service-hero__actions">
+                    <a href="#video-service-content" class="dm-btn-cta btn-fx">
+                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
+                        <span class="dm-btn-cta__shine"></span>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="dm-service-hero__visual" data-reveal="right">
+                <div class="dm-video-play-box">
+                    <div class="dm-video-play-btn" id="dm-video-modal-open">
+                        <i class="fa-solid fa-play"></i>
+                        <div class="dm-video-play-ripple"></div>
+                    </div>
+                    <p class="dm-video-play-text">WATCH SHOWREEL</p>
+                </div>
+            </div> -->
+        </div>
+        <div class="dm-service-hero__bg">
+            <video autoplay muted loop playsinline class="dm-service-hero__video">
+                <source src="assets/email-video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
-        <div class="dm-hero__container">
-            <div class="dm-hero__left">
-                <h1 class="dm-hero__title">
-                    <span class="dm-hero__line dm-hero__line--solid">
-                        <span class="dm-hero__line-inner">FREQUENTLY</span>
-                    </span>
-                    <span class="dm-hero__line dm-hero__line--solid">
-                        <span class="dm-hero__line-inner">ASKED</span>
-                    </span>
-                    <span class="dm-hero__line dm-hero__line--outline">
-                        <span class="dm-hero__line-inner">QUESTIONS</span>
-                    </span>
-
-                </h1>
+    <section class="video-service-content" id="video-service-content">
+        <div class="dm-container">
+            <div class="dm-service-intro" data-reveal>
+                <h2 class="dm-service-intro__title">Email Marketing <span class="dm-text-glow">Services.</span></h2>
+                <p class="dm-service-intro__desc">Build stronger customer relationships and drive consistent conversions with strategic email marketing
+                campaigns tailored to your audience. At Dillon Media Group, we create engaging, personalized, and
+                data-driven email marketing strategies that help businesses increase customer retention, promote offers,
+                and maximize ROI through targeted communication and automation.</p>
             </div>
 
-            <div class="dm-hero__right dm-hero__right--about">
-                <div class="dm-about-team">
-                    <h3 class="dm-about-team__title">MEET THE LEADERSHIP TEAM</h3>
-                    <div class="dm-about-team__grid">
-                        <div class="dm-about-team__member">
-                            <div class="dm-about-team__img-box">
-                                <img src="assets/team-m2.jpg" alt="JEFF DILLON">
-                            </div>
-                            <h4 class="dm-about-team__name">JEFF DILLON</h4>
-                            <p class="dm-about-team__role">CEO & CFO</p>
-                        </div>
-                        <div class="dm-about-team__member">
-                            <div class="dm-about-team__img-box">
-                                <img src="assets/team-m4.jpg" alt="THOMAS (TJ) READY">
-                            </div>
-                            <h4 class="dm-about-team__name">THOMAS (TJ) READY</h4>
-                            <p class="dm-about-team__role">OPERATIONS DIRECTOR</p>
-                        </div>
-                        <div class="dm-about-team__carousel">
-                            <div class="dm-about-team__member">
-                                <div class="dm-about-team__img-box">
-                                    <img src="assets/team-m1.jpg" alt="CLINTON GRUBBS">
-                                </div>
-                                <h4 class="dm-about-team__name">CLINTON GRUBBS</h4>
-                                <p class="dm-about-team__role">MARKETING DIRECTOR</p>
-                            </div>
+            <div class="dm-service-features">
+                <div class="dm-feature-card" data-reveal>
+                    <div class="dm-feature-icon">01</div>
+                    <h3 class="dm-feature-title">Email Campaign Strategy</h3>
+                </div>
+                <div class="dm-feature-card" data-reveal>
+                    <div class="dm-feature-icon">02</div>
+                    <h3 class="dm-feature-title">Automated Email Sequences</h3>
+                </div>
+                <div class="dm-feature-card" data-reveal>
+                    <div class="dm-feature-icon">03</div>
+                    <h3 class="dm-feature-title">Newsletter & Promotional Emails</h3>
+                </div>
+                <div class="dm-feature-card" data-reveal>
+                    <div class="dm-feature-icon">04</div>
+                    <h3 class="dm-feature-title">Performance Tracking & Analytics</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <div class="dm-about-team__member">
-                                <div class="dm-about-team__img-box">
-                                    <img src="assets/team-m5.png" alt="FAITH DOMINIE">
-                                </div>
-                                <h4 class="dm-about-team__name">FAITH DOMINIE</h4>
-                                <p class="dm-about-team__role">MARKETING ASST. DIRECTOR</p>
-                            </div>
-                            <div class="dm-about-team__member">
-                                <div class="dm-about-team__img-box">
-                                    <img src="assets/team-m3.jpg" alt="KRISTINA ACKERMAN">
-                                </div>
-                                <h4 class="dm-about-team__name">KRISTINA ACKERMAN</h4>
-                                <p class="dm-about-team__role">BRAND DEVELOPMENT DIRECTOR</p>
-                            </div>
-                            <div class="dm-about-team__member">
-                                <div class="dm-about-team__img-box">
-                                    <img src="assets/bell.png" alt="Bell">
-                                </div>
-                                <h4 class="dm-about-team__name">TYLER BELL</h4>
-                                <p class="dm-about-team__role">TECHNICAL DIRECTOR</p>
-                            </div>
+    <section class="video-services-slide">
+        <div class="dm-slide-container">
+            <div class="dm-slide-header" data-reveal>
+                <h2 class="dm-slide-main-title">Why Choose Our <span class="dm-text-outline">Email Marketing</span>
+                    <span class="dm-text-glow">Services?</span>
+                </h2>
+                <p class="dm-slide-main-desc">Our email marketing strategies are designed to help businesses build lasting customer relationships,
+                increase engagement, and drive conversions through personalized communication, automation, and
+                data-driven optimization.</p>
+            </div>
+
+            <div class="dm-video-slider-wrapper" data-reveal>
+                <div class="dm-video-slider" id="dm-video-slider">
+                    <!-- Slide 1 -->
+                    <div class="dm-video-slide active">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">01</span>
+                            <h3 class="dm-sliding-title">Personalized Email Campaigns</h3>
+                            <h4 class="dm-sliding-subtitle">Connect With Your Audience Effectively</h4>
+                            <p class="dm-sliding-text">  We create personalized email campaigns tailored to your audience’s interests, behaviors,
+                            and customer journey to increase engagement and conversions.</p>
+                            <p class="dm-sliding-text--small"> From promotional offers to product launches and customer updates, our campaigns are designed
+                            to deliver the right message at the right time.</p>
                         </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/email-slide1.webp" alt="Photography Service" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="dm-video-slide">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">02</span>
+                            <h3 class="dm-sliding-title">Automation & Customer Retention</h3>
+                            <h4 class="dm-sliding-subtitle">Build Stronger Customer Relationships</h4>
+                            <p class="dm-sliding-text">Automated email sequences help businesses stay connected with customers through welcome
+                            emails, follow-ups, abandoned cart reminders, and loyalty campaigns.</p>
+                            <p class="dm-sliding-text--small">We help improve customer retention and engagement by creating automated workflows that save
+                            time while maintaining consistent communication.</p>
+                        </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/email-slide2.jpg" alt="Videography Service" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="dm-video-slide">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">03</span>
+                            <h3 class="dm-sliding-title">Analytics & Performance Optimization</h3>
+                            <h4 class="dm-sliding-subtitle">Data-Driven Email Marketing Results</h4>
+                            <p class="dm-sliding-text">We continuously analyze campaign performance to improve open rates, click-through rates,
+                            audience engagement, and overall ROI.</p>
+                            <p class="dm-sliding-text--small"> Through A/B testing, audience segmentation, and detailed reporting, we optimize every email
+                            campaign to maximize long-term marketing success.</p>
+                        </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/eamil-slide3.jpg" alt="Drone & Virtual Tours Service" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <div class="dm-video-slider-controls">
+                    <button class="dm-video-slider-btn prev" id="video-slide-prev"><i
+                            class="fa-solid fa-arrow-left"></i></button>
+                    <div class="dm-video-slider-dots" id="video-slide-dots"></div>
+                    <button class="dm-video-slider-btn next" id="video-slide-next"><i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="email-mar-section-wrapper">
+        <div class="dm-container">
+            <div class="email-mar-section-container" data-reveal>
+                <div class="email-mar-section-left">
+                    <div class="email-mar-section-item active" data-index="0">
+                        <h3 class="email-mar-section-title">Email Campaign Strategy</h3>
+                        <p class="email-mar-section-text">We create customized email marketing strategies designed to
+                            engage your audience, increase conversions, and strengthen customer relationships.</p>
+                    </div>
+                    <div class="email-mar-section-item" data-index="1">
+                        <h3 class="email-mar-section-title">Automated Email Sequences</h3>
+                        <p class="email-mar-section-text">Our automated workflows help businesses send timely welcome
+                            emails, follow-ups, and promotional messages that improve customer retention.</p>
+                    </div>
+                    <div class="email-mar-section-item" data-index="2">
+                        <h3 class="email-mar-section-title">Newsletter & Promotional Emails</h3>
+                        <p class="email-mar-section-text">Keep your audience informed and engaged with professionally
+                            designed newsletters and promotional campaigns tailored to your brand.</p>
+                    </div>
+                    <div class="email-mar-section-item" data-index="3">
+                        <h3 class="email-mar-section-title">Analytics & Performance Tracking</h3>
+                        <p class="email-mar-section-text">We monitor campaign performance through detailed analytics,
+                            helping optimize open rates, click-through rates, and overall email marketing ROI.</p>
+                    </div>
+                </div>
+                <div class="email-mar-section-right">
+                    <div class="email-mar-section-image-box">
+                        <img src="assets/auto-email1.jpg" alt="Email Strategy" class="email-mar-section-img active">
+                        <img src="assets/auto-email2.webp" alt="Automated Sequences" class="email-mar-section-img">
+                        <img src="assets/auto-email-3.jpg" alt="Newsletters" class="email-mar-section-img">
+                        <img src="assets/auto-email-4.jpg" alt="Analytics" class="email-mar-section-img">
                     </div>
                 </div>
             </div>
@@ -473,250 +570,94 @@
     </section>
 
 
-    <section class="faq-section" id="faq-section">
-        <div class="faq-section__inner">
+    <!-- <section class="vdm-proud-work">
+        <div class="vdm-container">
+            <h2 class="dm-proud-title" data-reveal>Proud to work with</h2>
 
-            <!-- Header -->
-            <div class="faq-header">
-                <p class="faq-header__label">HELP CENTER</p>
-                <h2 class="faq-header__title">Frequently Asked <span class="faq-header__accent">Questions</span></h2>
-                <p class="faq-header__sub">Find quick answers to the most common questions about our services.</p>
-            </div>
-
-            <!-- Controls Row -->
-            <div class="faq-controls">
-                <!-- Category Filters -->
-                <div class="faq-categories" id="faq-categories">
-                    <button class="faq-cat-btn active" data-cat="all">All</button>
-                    <button class="faq-cat-btn" data-cat="general">General</button>
-                    <button class="faq-cat-btn" data-cat="services">Services</button>
-                    <button class="faq-cat-btn" data-cat="pricing">Pricing</button>
-                    <button class="faq-cat-btn" data-cat="process">Process</button>
-                    <button class="faq-cat-btn" data-cat="support">Support</button>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="faq-search" id="faq-search-wrap">
-                    <i class="fa-solid fa-magnifying-glass faq-search__icon"></i>
-                    <input type="text" id="faq-search-input" class="faq-search__input"
-                        placeholder="Search questions and tags…" autocomplete="off" />
-                    <button class="faq-search__clear" id="faq-search-clear" aria-label="Clear search">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- No Results Message -->
-            <div class="faq-no-results" id="faq-no-results" style="display:none;">
-                <i class="fa-solid fa-circle-question"></i>
-                <p>No results found. Try a different search term or category.</p>
-            </div>
-
-            <!-- Accordion List -->
-            <div class="faq-list" id="faq-list">
-
-                <!-- Item 1 -->
-                <div class="faq-item" data-cat="general" data-tags="dillon media agency overview about">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Do you require a contract?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">About</span>
-                            <span class="faq-tag">Agency</span>
+            <div class="dm-proud-banners">
+                <div class="dm-proud-banner" style="background-image: url('assets/proud-p-1-bg.jpg');">
+                    <div class="dm-proud-banner__overlay"></div>
+                    <div class="dm-proud-banner__content">
+                        <div class="dm-proud-device" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare
+                            data-tilt-max-glare="0.3">
+                            <img src="assets/proud-p-1.png" alt="Phillips Showcase">
                         </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>We do not generally require a contract for ongoing marketing services. We do strongly
-                                encourage clients to allow 3-6 months for clear tangible results based on various
-                                campaign factors such as campaign type(s), market competition and budget. We provide a
-                                service agreement prior to commencing all projects.</p>
-                            <img src="assets/faq-1.webp" alt="Dillon Media Agency Overview" class="faq-item__img" />
+                        <div class="dm-proud-info">
+                            <img src="assets/proud-p-1-logo.png" alt="Phillips Logo" class="dm-proud-logo">
+                            <a href="#" class="dm-proud-link">View Project <i
+                                    class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="faq-item" data-cat="services" data-tags="video production services filming editing">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">How long does it take to see results?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Video</span>
-                            <span class="faq-tag">Production</span>
-                            <span class="faq-tag">Services</span>
+                <div class="dm-proud-banner dm-proud-banner--reverse"
+                    style="background-image: url('assets/proud-p-2-bg.jpg');">
+                    <div class="dm-proud-banner__overlay"></div>
+                    <div class="dm-proud-banner__content">
+                        <div class="dm-proud-info">
+                            <img src="assets/proud-2-logo.png" alt="Ocala Bets Logo" class="dm-proud-logo">
+                            <a href="#" class="dm-proud-link">View Project <i
+                                    class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>The time for campaigns to become effective can vary dramatically depending on what type
-                                of campaigns you’re running. The short answer…1. Pay-per-click campaigns, such as Google
-                                Ads or Facebook Ads, can see results as quickly as a week or two; remember there are a
-                                ton of variables. 2. SEO and Organic Social campaigns can take 3-6+ months to start
-                                seeing results (and sometimes longer in larger, more competitive markets). 3.
-                                Traditional campaigns such as TV, Radio and Billboards can take 1-3 months to see
-                                tangible results depending on reach and budget.
-                            </p>
+                        <div class="dm-proud-device dm-proud-device-sm" data-tilt data-tilt-max="10"
+                            data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.3">
+                            <img src="assets/proud-p-2.png" alt="Ocala Bets Showcase">
                         </div>
                     </div>
                 </div>
-
-                <!-- Item 3 -->
-                <div class="faq-item" data-cat="services" data-tags="digital marketing seo social media ads campaigns">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Is television advertising affordable for small
-                            businesses?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Digital</span>
-                            <span class="faq-tag">Marketing</span>
-                            <span class="faq-tag">Strategy</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Television advertising can be more affordable than many think. Certain factors such as
-                                placement and saturation can greatly affect the budget. Properly managed campaigns can
-                                help you hit the right audience and in turn help you get the best return on investment.
-                            </p>
-                            <img src="assets/faq-3.jpg" alt="Digital Marketing Strategy" class="faq-item__img" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 4 -->
-                <div class="faq-item" data-cat="pricing" data-tags="pricing cost budget packages how much">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Is TV advertising still worth it now that everyone is on
-                            connected devices?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Pricing</span>
-                            <span class="faq-tag">Budget</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Television advertising still plays a big role in reaching large audiences. It’s true, a
-                                growing number of people are no longer watching TV in the traditional sense. The facts
-                                are, there are still a huge number of Americans who watch TV. Our approach is to reach
-                                audiences across all platforms.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="faq-item" data-cat="process" data-tags="process onboarding how to get started workflow">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Can you work with my current software or tools?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Process</span>
-                            <span class="faq-tag">Onboarding</span>
-                            <span class="faq-tag">Getting Started</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>As an agency, we’ve worked with a wide variety of software and management platforms. We
-                                generally think it’s best to stick with a client’s tools if they are doing the best job
-                                for the client. That said, we’ll analyze each piece of your workflow and will give you
-                                our suggestions based on our experience and let you make the decision.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="faq-item" data-cat="services"
-                    data-tags="seo search engine optimization rankings traffic google">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">How long does it take to create a website?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">SEO</span>
-                            <span class="faq-tag">Rankings</span>
-                            <span class="faq-tag">Traffic</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Small websites can be developed in less than a month, larger websites can take 2-3 months
-                                and dynamic portals and take anywhere from 4-6 months. Generally, the biggest bottleneck
-                                for website projects is developing the content from the client’s side. Once we have the
-                                text for the pages, the process moves pretty quick. A redesign of a small active website
-                                can be done within a week or two.</p>
-                            <img src="assets/faq-5.jpg" alt="SEO Services" class="faq-item__img" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 7 -->
-                <div class="faq-item" data-cat="support" data-tags="support contact help account manager communication">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Which is better, Facebook or Google Ads?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Support</span>
-                            <span class="faq-tag">Contact</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Both platforms play an important role in marketing for businesses. The best approach is
-                                to understand where your prospective buyers are throughout the buying cycle and create a
-                                plan to target them from there.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 8 -->
-                <div class="faq-item" data-cat="process"
-                    data-tags="timeline delivery turnaround how long campaign launch">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Why do you charge onboarding fees?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Timeline</span>
-                            <span class="faq-tag">Delivery</span>
-                            <span class="faq-tag">Process</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Many campaigns require onboarding fees due to the extensive amount of time involved to
-                                properly set them up. To analyze campaign data, we use quite a few behind-the-scenes
-                                tools and softwares to help optimize and grow your campaigns as they age. We also like
-                                to do things like keyword and market research before we even begin creating content and
-                                creative assets.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 9 -->
-                <div class="faq-item" data-cat="general"
-                    data-tags="social media management smm platforms instagram facebook">
-                    <button class="faq-item__trigger" aria-expanded="false">
-                        <span class="faq-item__question">Can't find what your looking for?</span>
-                        <div class="faq-item__tags">
-                            <span class="faq-tag">Social Media</span>
-                            <span class="faq-tag">Platforms</span>
-                            <span class="faq-tag">Management</span>
-                        </div>
-                        <span class="faq-item__icon"><i class="fa-solid fa-plus"></i></span>
-                    </button>
-                    <div class="faq-item__body">
-                        <div class="faq-item__content">
-                            <p>Feel free to send us a message in the chat widget below or email us at
-                                info@dillonmediagroup.com.</p>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
+    </section> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Video Modal -->
+    <div class="dm-video-modal" id="dm-video-modal">
+        <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
+        <div class="dm-video-modal__container">
+            <button class="dm-video-modal__close" id="dm-video-modal-btn-close">&times;</button>
+            <div class="dm-video-modal__frame">
+                <iframe id="dm-modal-iframe" src="" frameborder="0" allow="autoplay; fullscreen"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <section class="dm-cta" id="dm-cta">
+        <div class="dm-cta__container">
+            <div class="dm-cta__content">
+                <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
+                <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
+                    the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
+                <a href="#" class="dm-cta__btn">
+                    <span class="dm-cta__btn-text">START A CONVERSATION</span>
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+        <div class="dm-cta__bg-glow"></div>
+    </section>
 
     <footer class="dm-footer" id="dm-footer">
         <div class="dm-footer__container">
@@ -751,7 +692,7 @@
                 <div class="dm-footer__links dm-footer__services">
                     <h4 class="dm-footer__link-title">SERVICES</h4>
 
-                    <div class="dm-footer__services-grid">
+                  <div class="dm-footer__services-grid">
 
                         <!-- Left Column -->
                         <ul class="dm-footer__list">

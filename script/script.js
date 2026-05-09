@@ -1120,3 +1120,65 @@ if (iframe) observer.observe(iframe);
 
     tcCards.forEach(card => observer.observe(card));
 })();
+/* -- Email Marketing Loop Section Logic -- */
+(function() {
+    'use strict';
+
+    function initEmailMarketingLoop() {
+        const items = document.querySelectorAll('.email-mar-section-item');
+        const images = document.querySelectorAll('.email-mar-section-img');
+        const section = document.querySelector('.email-mar-section-wrapper');
+        
+        if (!items.length || !images.length) return;
+
+        let currentIndex = 0;
+        let loopInterval;
+        const DURATION = 3000;
+
+        function showStep(index) {
+            items.forEach(item => item.classList.remove('active'));
+            images.forEach(img => img.classList.remove('active'));
+
+            items[index].classList.add('active');
+            images[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        function startLoop() {
+            stopLoop();
+            loopInterval = setInterval(() => {
+                let next = (currentIndex + 1) % items.length;
+                showStep(next);
+            }, DURATION);
+        }
+
+        function stopLoop() {
+            if (loopInterval) clearInterval(loopInterval);
+        }
+
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                showStep(index);
+                startLoop();
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startLoop();
+                } else {
+                    stopLoop();
+                }
+            });
+        }, { threshold: 0.2 });
+
+        if (section) observer.observe(section);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initEmailMarketingLoop);
+    } else {
+        initEmailMarketingLoop();
+    }
+})();

@@ -428,8 +428,7 @@ ul {
     display: none;
 }
 
-@media screen and (max-width: 767px),
-screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+@media screen and (max-width: 767px), screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 
     .dm-header {
         display: none;
@@ -621,30 +620,177 @@ screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait
         transform: rotate(180deg);
         color: var(--accent);
     }
+
+    /* .dm-video-slider {
+        height: 650px !important;
+    } */
+
+    .dm-service-features {
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+    }
+
+    .dm-video-slide {
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+    }
+    .str-services-content, .str-work-info, .tra-why-choose, .tra-services-section, .tra-provide-grid, .smm-platforms-card, .smm-benefits-grid {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    }
+  .str-work-img{
+    display: none !important;
+  }
+   
 }
 
 /* ── Tablet Portrait Overrides ── */
 @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .dm-header {
+        display: none !important;
+    }
+
     .dm-mobile-header {
-        padding: 20px 40px;
+        padding: 20px 40px !important;
     }
 
     .dm-mobile-header__logo img {
-        height: 32px;
+        height: 32px !important;
     }
 
     .dm-mobile-burger {
-        font-size: 1.8rem;
+        font-size: 1.8rem !important;
     }
 
     .dm-mobile-menu__header {
-        padding: 20px 40px;
+        padding: 20px 40px !important;
     }
 
     .dm-mobile-menu__body {
-        padding: 40px;
-        max-width: 600px;
-        margin: 0 auto;
+        padding: 40px !important;
+        /* max-width: 600px !important; */
+        margin: 0 auto !important;
+    }
+
+    /* Mobile Menu Font Adjustments for Tablet */
+    .dm-mobile-nav__link,
+    .dm-mobile-nav__trigger {
+        font-size: 1.5rem !important;
+        padding: 22px 0 !important;
+    }
+
+    .dm-mobile-nav__sub-trigger {
+        font-size: 1.25rem !important;
+    }
+
+    .dm-mobile-nav__sub-dropdown li {
+        font-size: 1.1rem !important;
+        padding: 12px 0 !important;
+    }
+
+    .dm-mobile-nav__dropdown {
+        padding-bottom: 25px !important;
+    }
+
+    .dm-mobile-search__input {
+        font-size: 1.2rem !important;
+    }
+
+    .dm-mobile-close {
+        font-size: 2.2rem !important;
+    }
+
+    .dm-hero__right {
+        width: 100% !important;
+        max-width: 480px !important;
+        margin: 40px auto 0 !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .dm-hero__services {
+        width: 100% !important;
+    }
+
+    .dm-hero__tagline {
+        text-align: center !important;
+        width: 100% !important;
+    }
+        .dm-hero__stat-card {
+        flex: 1 !important;
+        min-width: 250px !important;
+    }
+    .dm-dashboard__graph-container{
+        height: 130px !important;
+    }
+    .dm-dashboard__svg{
+        width: auto !important;
+    }
+    .dm-process__step-title{
+        font-size: 1.2rem !important;
+    }
+
+    /* dm-work section expansion */
+    .dm-work__grid {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        gap: 30px !important;
+    }
+
+    .dm-work__item,
+    .dm-work__item--large,
+    .dm-work__item--text,
+    .dm-work__item--slider,
+    .dm-work__item:nth-child(3),
+    .dm-work__item:nth-child(4),
+    .dm-work__item:nth-child(5) {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        width: 100% !important;
+        height: 450px !important;
+    }
+
+    .dm-work__item--large {
+        height: 500px !important;
+    }
+
+    .dm-work__text-center {
+        font-size: 4rem !important;
+    }
+    .dm-hero__title{
+        font-size: 9.5rem !important;
+    }
+
+    /* Disable Team Hover for Tablet Portrait */
+    .dm-team__box:hover {
+        background: transparent !important;
+        z-index: 1 !important;
+    }
+
+    .dm-team__box:hover .dm-team__avatar-container {
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 50% !important;
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin-bottom: 30px !important;
+        box-shadow: none !important;
+    }
+
+    .dm-team__box:hover .dm-team__img {
+        filter: grayscale(1) !important;
+    }
+
+    .dm-team__box:hover .dm-team__content {
+        transform: none !important;
+        max-width: 100% !important;
+    }
+
+    .dm-team__box:hover .dm-team__bio {
+        opacity: 0.8 !important;
+        color: inherit !important;
     }
 }
 
@@ -1475,7 +1621,7 @@ button:hover~.dm-cursor-ring {
 }
 
 /* ── Mobile Viewport (< 768px) ── */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 767px), screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .dm-header {
         display: none;
     }
@@ -1739,7 +1885,7 @@ button:hover~.dm-cursor-ring {
 
     .dm-mobile-menu__body {
         padding: 40px;
-        max-width: 600px;
+        max-width: 100%;
         margin: 0 auto;
     }
 }
@@ -3302,6 +3448,25 @@ button:hover~.dm-cursor-ring {
     background: var(--accent);
 }
 
+/* Legacy Split View */
+.dm-awards__cards-split {
+    display: grid;
+    grid-template-columns: 350px 350px;
+    gap: 40px;
+    align-items: start;
+}
+
+.dm-awards__cards--secondary::before {
+    top: 0 !important; /* Start from top of cards since no year label above this column */
+}
+
+@media (max-width: 992px) {
+    .dm-awards__cards-split {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
 .dm-awards__card-medal {
     font-family: var(--font-body);
     font-size: 0.7rem;
@@ -4273,7 +4438,7 @@ button:hover~.dm-cursor-ring {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 767px), screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .dm-process {
         padding: 80px 0;
     }
@@ -5801,7 +5966,7 @@ button:hover~.dm-cursor-ring {
     color: #fff;
 }
 .dm-footer__services .dm-footer__link-title {
-    text-align: center;
+    /* text-align: center; */
     margin-bottom: 25px;
 }
 
@@ -5828,7 +5993,7 @@ button:hover~.dm-cursor-ring {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .dm-cta {
         padding-top: 0px !important;
         padding-bottom: 20px;
@@ -6536,7 +6701,7 @@ button:hover~.dm-cursor-ring {
 
 .dm-service-hero__title {
     font-family: var(--font-heading);
-    font-size: clamp(4rem, 10vw, 8rem);
+    font-size: clamp(4rem, 13vw, 8rem);
     line-height: 0.9;
     color: #fff;
     margin-bottom: 24px;
@@ -6787,7 +6952,7 @@ button:hover~.dm-cursor-ring {
 .dm-sliding-num {
     font-family: var(--font-heading);
     font-size: 6rem;
-    color: rgba(145, 13, 23, 0.2);
+    color: rgba(145, 13, 24, 0.664);
     line-height: 1;
     margin-bottom: 20px;
     display: block;
@@ -7249,7 +7414,7 @@ button:hover~.dm-cursor-ring {
     .dm-service-hero__container {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 60px;
+        /* gap: 60px; */
     }
 
     .dm-service-hero__actions {
@@ -7452,7 +7617,7 @@ button:hover~.dm-cursor-ring {
     }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
     .event-service-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -7776,7 +7941,7 @@ button:hover~.dm-cursor-ring {
     background: #fff;
     color: #000;
     position: sticky;
-    left: 0;
+    /* left: 0; */
     z-index: 20;
 }
 
@@ -10816,6 +10981,119 @@ input:checked + .dm-slider:before {
 
 .dm-switch input:checked + .dm-slider::before {
     transform: translate(20px, -50%);
+}
+
+/* Email Marketing Loop Section */
+.email-mar-section-wrapper {
+    padding: 120px 0;
+    background: transparent;
+}
+
+.email-mar-section-container {
+    background: #000;
+    border-radius: 40px;
+    padding: 80px;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.email-mar-section-left {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.email-mar-section-item {
+    padding: 35px;
+    border-radius: 20px;
+    border-left: 4px solid transparent;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    opacity: 0.35;
+    background: transparent;
+}
+
+.email-mar-section-item.active {
+    opacity: 1;
+    border-left-color: var(--accent);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(10px);
+}
+
+.email-mar-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.email-mar-section-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.email-mar-section-right {
+    position: relative;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.email-mar-section-image-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.email-mar-section-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.email-mar-section-img.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@media (max-width: 1024px) {
+    .email-mar-section-container {
+        grid-template-columns: 1fr;
+        padding: 50px;
+        gap: 50px;
+    }
+    
+    .email-mar-section-right {
+        height: 400px;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .email-mar-section-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 50px;
+    }
+    .email-mar-section-item {
+        padding: 20px;
+    }
+    
+    .email-mar-section-title {
+        font-size: 1.4rem;
+    }
 }
 
 
