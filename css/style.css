@@ -596,6 +596,7 @@ ul {
         color: rgba(255, 255, 255, 0.7);
         font-size: 1rem;
         cursor: pointer;
+        text-transform: uppercase;
     }
 
     .dm-mobile-nav__sub-dropdown {
@@ -8891,6 +8892,7 @@ button:hover~.dm-cursor-ring {
     font-family: var(--font-heading);
     font-size: 1.4rem;
     margin-bottom: 5px;
+    letter-spacing: 1.6px;
 }
 
 .str-work-text p {
