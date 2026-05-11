@@ -162,6 +162,13 @@
                     <li class="dm-mobile-nav__item">
                         <a href="contact-us.html" class="dm-mobile-nav__link">Contact Us</a>
                     </li>
+                    <li class="dm-mobile-nav__item" style="border-bottom: none; margin-top: 25px;">
+                        <a href="#" class="dm-btn-cta dm-modal-trigger"
+                            style="width: 100%; display: flex; justify-content: center; transform: none !important;">
+                            <span class="dm-btn-cta__text">Get Started</span>
+                            <span class="dm-btn-cta__shine" aria-hidden="true"></span>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>
@@ -397,7 +404,7 @@
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="#" class="dm-btn-cta btn-fx" id="dm-cta" role="button">
+                <a href="#" class="dm-btn-cta btn-fx dm-modal-trigger" id="dm-cta" role="button">
                     <span class="dm-btn-cta__text">Get Started</span>
                     <span class="dm-btn-cta__shine" aria-hidden="true"></span>
                 </a>
@@ -711,6 +718,48 @@
             </div>
         </div>
     </footer>
+
+    <!-- Booking Modal -->
+    <div class="dm-booking-modal" id="dm-booking-modal">
+        <div class="dm-booking-modal__overlay" id="dm-booking-modal-overlay"></div>
+        <div class="dm-booking-modal__container">
+            <button class="dm-booking-modal__close" id="dm-booking-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="dm-booking-modal__content">
+                <h2 class="dm-booking-modal__title">Book Now</h2>
+                <form class="dm-booking-modal__form">
+                    <div class="dm-booking-modal__form-row">
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="First Name" required>
+                        </div>
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <input type="email" class="dm-booking-modal__input" placeholder="Email" required>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <select class="dm-booking-modal__select" required>
+                            <option value="" disabled selected>Discuss New Projects</option>
+                            <option value="new-project">Discuss New Project</option>
+                            <option value="troubleshooting">Troubleshooting/Support</option>
+                            <option value="general">General Questions</option>
+                        </select>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <textarea class="dm-booking-modal__textarea" placeholder="Details" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="dm-booking-modal__submit">
+                        <span>Submit</span>
+                        <i class="fa-solid fa-paper-plane submit-icon"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div id="dm-cursor-dot" class="dm-cursor-dot"></div>
     <div id="dm-cursor-ring" class="dm-cursor-ring"></div>

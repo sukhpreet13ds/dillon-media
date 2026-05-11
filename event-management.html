@@ -162,6 +162,13 @@
                     <li class="dm-mobile-nav__item">
                         <a href="contact-us.html" class="dm-mobile-nav__link">Contact Us</a>
                     </li>
+                    <li class="dm-mobile-nav__item" style="border-bottom: none; margin-top: 25px;">
+                        <a href="#" class="dm-btn-cta dm-modal-trigger"
+                            style="width: 100%; display: flex; justify-content: center; transform: none !important;">
+                            <span class="dm-btn-cta__text">Get Started</span>
+                            <span class="dm-btn-cta__shine" aria-hidden="true"></span>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>
@@ -396,7 +403,7 @@
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="#" class="dm-btn-cta btn-fx" id="dm-cta" role="button">
+                <a href="#" class="dm-btn-cta btn-fx dm-modal-trigger" id="dm-cta" role="button">
                     <span class="dm-btn-cta__text">Get Started</span>
                     <span class="dm-btn-cta__shine" aria-hidden="true"></span>
                 </a>
@@ -413,9 +420,9 @@
             <div class="dm-service-hero__content" data-reveal="left">
                 <h1 class="dm-service-hero__title">EVENT <span class="dm-text-outline">MANAGEMENT</span></h1>
                 <p class="dm-service-hero__subtitle">BRINGING YOUR STORY TO LIFE WITH CINEMATIC EXCELLENCE</p>
-                <div class="dm-service-hero__actions">
+                <div class="dm-service-hero__actions dm-modal-trigger">
                     <a href="#video-service-content" class="dm-btn-cta btn-fx">
-                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
+                        <span class="dm-btn-cta__text">GET IN TOUCH</span>
                         <span class="dm-btn-cta__shine"></span>
                     </a>
                 </div>
@@ -687,7 +694,7 @@
                 <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
                 <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
                     the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
-                <a href="#" class="dm-cta__btn">
+                <a href="#" class="dm-cta__btn dm-modal-trigger">
                     <span class="dm-cta__btn-text">START A CONVERSATION</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
@@ -794,6 +801,48 @@
             </div>
         </div>
     </footer>
+
+    <!-- Booking Modal -->
+    <div class="dm-booking-modal" id="dm-booking-modal">
+        <div class="dm-booking-modal__overlay" id="dm-booking-modal-overlay"></div>
+        <div class="dm-booking-modal__container">
+            <button class="dm-booking-modal__close" id="dm-booking-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="dm-booking-modal__content">
+                <h2 class="dm-booking-modal__title">Book Now</h2>
+                <form class="dm-booking-modal__form">
+                    <div class="dm-booking-modal__form-row">
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="First Name" required>
+                        </div>
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <input type="email" class="dm-booking-modal__input" placeholder="Email" required>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <select class="dm-booking-modal__select" required>
+                            <option value="" disabled selected>Discuss New Projects</option>
+                            <option value="new-project">Discuss New Project</option>
+                            <option value="troubleshooting">Troubleshooting/Support</option>
+                            <option value="general">General Questions</option>
+                        </select>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <textarea class="dm-booking-modal__textarea" placeholder="Details" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="dm-booking-modal__submit">
+                        <span>Submit</span>
+                        <i class="fa-solid fa-paper-plane submit-icon"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div id="dm-cursor-dot" class="dm-cursor-dot"></div>
     <div id="dm-cursor-ring" class="dm-cursor-ring"></div>

@@ -1182,3 +1182,71 @@ if (iframe) observer.observe(iframe);
         initEmailMarketingLoop();
     }
 })();
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('dm-booking-modal');
+            const openBtns = document.querySelectorAll('.dm-modal-trigger');
+            const closeBtn = document.getElementById('dm-booking-modal-close-btn');
+            const overlay = document.getElementById('dm-booking-modal-overlay');
+
+            const openModal = (e) => {
+                if(e) e.preventDefault();
+                modal.classList.add('is-open');
+                document.body.classList.add('modal-open');
+
+                // Close mobile menu if it's open
+                const mobileMenu = document.getElementById('dm-mobile-menu');
+                if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+                    mobileMenu.classList.remove('is-open');
+                    // We don't need to reset body.style.overflow here because .modal-open handles it
+                }
+            };
+
+            const closeModal = () => {
+                modal.classList.remove('is-open');
+                document.body.classList.remove('modal-open');
+            };
+
+            openBtns.forEach(btn => btn.addEventListener('click', openModal));
+            
+            if(closeBtn) closeBtn.addEventListener('click', closeModal);
+            if(overlay) overlay.addEventListener('click', closeModal);
+
+            // Esc key to close
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                    closeModal();
+                }
+            });
+
+            // Handle form submission (prevent default for demo)
+            const form = modal.querySelector('form');
+            if(form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const submitBtn = form.querySelector('.dm-booking-modal__submit');
+                    const originalContent = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-circle-notch fa-spin"></i>';
+                    submitBtn.style.pointerEvents = 'none';
+                    submitBtn.style.opacity = '0.7';
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<span>Success!</span> <i class="fa-solid fa-check"></i>';
+                        submitBtn.style.background = '#28a745';
+                        
+                        setTimeout(() => {
+                            closeModal();
+                            // Reset form
+                            form.reset();
+                            submitBtn.innerHTML = originalContent;
+                            submitBtn.style.pointerEvents = 'auto';
+                            submitBtn.style.opacity = '1';
+                            submitBtn.style.background = '';
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+        });

@@ -162,6 +162,13 @@
                     <li class="dm-mobile-nav__item">
                         <a href="contact-us.html" class="dm-mobile-nav__link">Contact Us</a>
                     </li>
+                    <li class="dm-mobile-nav__item" style="border-bottom: none; margin-top: 25px;">
+                        <a href="#" class="dm-btn-cta dm-modal-trigger"
+                            style="width: 100%; display: flex; justify-content: center; transform: none !important;">
+                            <span class="dm-btn-cta__text">Get Started</span>
+                            <span class="dm-btn-cta__shine" aria-hidden="true"></span>
+                        </a>
+                    </li>
 
                 </ul>
             </nav>
@@ -395,7 +402,7 @@
                     <i class="fa-solid fa-moon"></i>
                     <i class="fa-solid fa-sun"></i>
                 </button>
-                <a href="#" class="dm-btn-cta btn-fx" id="dm-cta" role="button">
+                <a href="#" class="dm-btn-cta btn-fx dm-modal-trigger" id="dm-cta" role="button">
                     <span class="dm-btn-cta__text">Get Started</span>
                     <span class="dm-btn-cta__shine" aria-hidden="true"></span>
                 </a>
@@ -413,9 +420,9 @@
                 <h1 class="dm-service-hero__title">RADIO<br><span class="dm-text-outline">ADVERTISING</span></h1>
                 <p class="dm-service-hero__subtitle">Reach local audiences with impactful radio advertising campaigns.
                 </p>
-                <div class="dm-service-hero__actions">
+                <div class="dm-service-hero__actions dm-modal-trigger">
                     <a href="#video-service-content" class="dm-btn-cta btn-fx">
-                        <span class="dm-btn-cta__text">EXPLORE SERVICES</span>
+                        <span class="dm-btn-cta__text">GET IN TOUCH</span>
                         <span class="dm-btn-cta__shine"></span>
                     </a>
                 </div>
@@ -474,126 +481,130 @@
         </div>
     </section>
 
-   <section class="video-services-slide">
-    <div class="dm-slide-container">
-        <div class="dm-slide-header" data-reveal>
-            <h2 class="dm-slide-main-title">Why Choose Our <span class="dm-text-outline">Radio Advertising</span>
-                <span class="dm-text-glow">Services?</span>
-            </h2>
-            <p class="dm-slide-main-desc">Our radio advertising strategies are designed to boost brand awareness,
-                connect with targeted listeners, and deliver impactful audio campaigns that leave a lasting impression
-                across local and national radio networks.</p>
-        </div>
-
-        <div class="dm-video-slider-wrapper" data-reveal>
-            <div class="dm-video-slider" id="dm-video-slider">
-                <!-- Slide 1 -->
-                <div class="dm-video-slide active">
-                    <div class="dm-video-slide__content">
-                        <span class="dm-sliding-num">01</span>
-                        <h3 class="dm-sliding-title">Targeted Radio Placement</h3>
-                        <h4 class="dm-sliding-subtitle">Reach the Right Audience</h4>
-                        <p class="dm-sliding-text">We strategically place your radio ads on stations and time slots
-                            that align with your target audience and business goals.</p>
-                        <p class="dm-sliding-text--small">Our audience-focused approach helps maximize listener reach,
-                            increase brand recall, and generate stronger engagement through effective radio campaigns.</p>
-                    </div>
-                    <div class="dm-video-slide__image">
-                        <img src="assets/radio-1.webp" alt="Radio Advertising Service" />
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="dm-video-slide">
-                    <div class="dm-video-slide__content">
-                        <span class="dm-sliding-num">02</span>
-                        <h3 class="dm-sliding-title">Creative Audio Commercials</h3>
-                        <h4 class="dm-sliding-subtitle">Engaging Voice & Sound Production</h4>
-                        <p class="dm-sliding-text">Our creative team produces compelling radio advertisements with
-                            professional voiceovers, music, and messaging that capture listener attention.</p>
-                        <p class="dm-sliding-text--small">From catchy jingles to persuasive storytelling, we create
-                            memorable audio ads that strengthen your brand identity and audience connection.</p>
-                    </div>
-                    <div class="dm-video-slide__image">
-                        <img src="assets/radio-22.png" alt="Creative Radio Campaigns" />
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="dm-video-slide">
-                    <div class="dm-video-slide__content">
-                        <span class="dm-sliding-num">03</span>
-                        <h3 class="dm-sliding-title">Campaign Performance & Reach</h3>
-                        <h4 class="dm-sliding-subtitle">Data-Driven Advertising Results</h4>
-                        <p class="dm-sliding-text">We monitor campaign reach, listener engagement, and advertising
-                            performance to help businesses measure the impact of their radio promotions.</p>
-                        <p class="dm-sliding-text--small">Our optimization strategies ensure your radio advertising
-                            campaigns achieve maximum exposure, stronger audience response, and long-term brand growth.</p>
-                    </div>
-                    <div class="dm-video-slide__image">
-                        <img src="assets/radio-33.jpg" alt="Radio Campaign Analytics" />
-                    </div>
-                </div>
+    <section class="video-services-slide">
+        <div class="dm-slide-container">
+            <div class="dm-slide-header" data-reveal>
+                <h2 class="dm-slide-main-title">Why Choose Our <span class="dm-text-outline">Radio Advertising</span>
+                    <span class="dm-text-glow">Services?</span>
+                </h2>
+                <p class="dm-slide-main-desc">Our radio advertising strategies are designed to boost brand awareness,
+                    connect with targeted listeners, and deliver impactful audio campaigns that leave a lasting
+                    impression
+                    across local and national radio networks.</p>
             </div>
 
-            <!-- Slider Controls -->
-            <div class="dm-video-slider-controls">
-                <button class="dm-video-slider-btn prev" id="video-slide-prev"><i
-                        class="fa-solid fa-arrow-left"></i></button>
-                <div class="dm-video-slider-dots" id="video-slide-dots"></div>
-                <button class="dm-video-slider-btn next" id="video-slide-next"><i
-                        class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
-    </div>
-</section>
+            <div class="dm-video-slider-wrapper" data-reveal>
+                <div class="dm-video-slider" id="dm-video-slider">
+                    <!-- Slide 1 -->
+                    <div class="dm-video-slide active">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">01</span>
+                            <h3 class="dm-sliding-title">Targeted Radio Placement</h3>
+                            <h4 class="dm-sliding-subtitle">Reach the Right Audience</h4>
+                            <p class="dm-sliding-text">We strategically place your radio ads on stations and time slots
+                                that align with your target audience and business goals.</p>
+                            <p class="dm-sliding-text--small">Our audience-focused approach helps maximize listener
+                                reach,
+                                increase brand recall, and generate stronger engagement through effective radio
+                                campaigns.</p>
+                        </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/radio-1.webp" alt="Radio Advertising Service" />
+                        </div>
+                    </div>
 
-  <section class="email-mar-section-wrapper">
-    <div class="dm-container">
-        <div class="email-mar-section-container" data-reveal>
-            <div class="email-mar-section-left">
-                <div class="email-mar-section-item active" data-index="0">
-                    <h3 class="email-mar-section-title">Radio Campaign Strategy</h3>
-                    <p class="email-mar-section-text">We create strategic radio advertising campaigns designed to boost
-                        brand awareness, increase listener engagement, and connect your business with targeted
-                        audiences.</p>
+                    <!-- Slide 2 -->
+                    <div class="dm-video-slide">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">02</span>
+                            <h3 class="dm-sliding-title">Creative Audio Commercials</h3>
+                            <h4 class="dm-sliding-subtitle">Engaging Voice & Sound Production</h4>
+                            <p class="dm-sliding-text">Our creative team produces compelling radio advertisements with
+                                professional voiceovers, music, and messaging that capture listener attention.</p>
+                            <p class="dm-sliding-text--small">From catchy jingles to persuasive storytelling, we create
+                                memorable audio ads that strengthen your brand identity and audience connection.</p>
+                        </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/radio-22.png" alt="Creative Radio Campaigns" />
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="dm-video-slide">
+                        <div class="dm-video-slide__content">
+                            <span class="dm-sliding-num">03</span>
+                            <h3 class="dm-sliding-title">Campaign Performance & Reach</h3>
+                            <h4 class="dm-sliding-subtitle">Data-Driven Advertising Results</h4>
+                            <p class="dm-sliding-text">We monitor campaign reach, listener engagement, and advertising
+                                performance to help businesses measure the impact of their radio promotions.</p>
+                            <p class="dm-sliding-text--small">Our optimization strategies ensure your radio advertising
+                                campaigns achieve maximum exposure, stronger audience response, and long-term brand
+                                growth.</p>
+                        </div>
+                        <div class="dm-video-slide__image">
+                            <img src="assets/radio-33.jpg" alt="Radio Campaign Analytics" />
+                        </div>
+                    </div>
                 </div>
 
-                <div class="email-mar-section-item" data-index="1">
-                    <h3 class="email-mar-section-title">Targeted Radio Placement</h3>
-                    <p class="email-mar-section-text">Our team selects the most effective radio stations, programs, and
-                        time slots to ensure your ads reach the right listeners at the right time.</p>
-                </div>
-
-                <div class="email-mar-section-item" data-index="2">
-                    <h3 class="email-mar-section-title">Creative Audio Production</h3>
-                    <p class="email-mar-section-text">We produce engaging radio commercials with professional
-                        voiceovers, sound effects, and compelling scripts that leave a lasting impact on your audience.</p>
-                </div>
-
-                <div class="email-mar-section-item" data-index="3">
-                    <h3 class="email-mar-section-title">Campaign Reach & Performance</h3>
-                    <p class="email-mar-section-text">We track campaign performance, audience reach, and listener
-                        engagement to ensure your radio advertising delivers measurable marketing results and brand
-                        growth.</p>
-                </div>
-            </div>
-
-            <div class="email-mar-section-right">
-                <div class="email-mar-section-image-box">
-                    <img src="assets/radio-auto1.jpg" alt="Radio Campaign Strategy"
-                        class="email-mar-section-img active">
-                    <img src="assets/radio-auto2.jpg" alt="Targeted Radio Placement"
-                        class="email-mar-section-img">
-                    <img src="assets/radio-33.jpg" alt="Creative Audio Production"
-                        class="email-mar-section-img">
-                    <img src="assets/auto-email-4.jpg" alt="Campaign Analytics"
-                        class="email-mar-section-img">
+                <!-- Slider Controls -->
+                <div class="dm-video-slider-controls">
+                    <button class="dm-video-slider-btn prev" id="video-slide-prev"><i
+                            class="fa-solid fa-arrow-left"></i></button>
+                    <div class="dm-video-slider-dots" id="video-slide-dots"></div>
+                    <button class="dm-video-slider-btn next" id="video-slide-next"><i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="email-mar-section-wrapper">
+        <div class="dm-container">
+            <div class="email-mar-section-container" data-reveal>
+                <div class="email-mar-section-left">
+                    <div class="email-mar-section-item active" data-index="0">
+                        <h3 class="email-mar-section-title">Radio Campaign Strategy</h3>
+                        <p class="email-mar-section-text">We create strategic radio advertising campaigns designed to
+                            boost
+                            brand awareness, increase listener engagement, and connect your business with targeted
+                            audiences.</p>
+                    </div>
+
+                    <div class="email-mar-section-item" data-index="1">
+                        <h3 class="email-mar-section-title">Targeted Radio Placement</h3>
+                        <p class="email-mar-section-text">Our team selects the most effective radio stations, programs,
+                            and
+                            time slots to ensure your ads reach the right listeners at the right time.</p>
+                    </div>
+
+                    <div class="email-mar-section-item" data-index="2">
+                        <h3 class="email-mar-section-title">Creative Audio Production</h3>
+                        <p class="email-mar-section-text">We produce engaging radio commercials with professional
+                            voiceovers, sound effects, and compelling scripts that leave a lasting impact on your
+                            audience.</p>
+                    </div>
+
+                    <div class="email-mar-section-item" data-index="3">
+                        <h3 class="email-mar-section-title">Campaign Reach & Performance</h3>
+                        <p class="email-mar-section-text">We track campaign performance, audience reach, and listener
+                            engagement to ensure your radio advertising delivers measurable marketing results and brand
+                            growth.</p>
+                    </div>
+                </div>
+
+                <div class="email-mar-section-right">
+                    <div class="email-mar-section-image-box">
+                        <img src="assets/radio-auto1.jpg" alt="Radio Campaign Strategy"
+                            class="email-mar-section-img active">
+                        <img src="assets/radio-auto2.jpg" alt="Targeted Radio Placement" class="email-mar-section-img">
+                        <img src="assets/radio-33.jpg" alt="Creative Audio Production" class="email-mar-section-img">
+                        <img src="assets/auto-email-4.jpg" alt="Campaign Analytics" class="email-mar-section-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- <section class="vdm-proud-work">
@@ -676,7 +687,7 @@
                 <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
                 <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
                     the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
-                <a href="#" class="dm-cta__btn">
+                <a href="#" class="dm-cta__btn dm-modal-trigger">
                     <span class="dm-cta__btn-text">START A CONVERSATION</span>
                     <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
@@ -783,6 +794,48 @@
             </div>
         </div>
     </footer>
+
+    <!-- Booking Modal -->
+    <div class="dm-booking-modal" id="dm-booking-modal">
+        <div class="dm-booking-modal__overlay" id="dm-booking-modal-overlay"></div>
+        <div class="dm-booking-modal__container">
+            <button class="dm-booking-modal__close" id="dm-booking-modal-close-btn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="dm-booking-modal__content">
+                <h2 class="dm-booking-modal__title">Book Now</h2>
+                <form class="dm-booking-modal__form">
+                    <div class="dm-booking-modal__form-row">
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="First Name" required>
+                        </div>
+                        <div class="dm-booking-modal__form-group">
+                            <input type="text" class="dm-booking-modal__input" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <input type="email" class="dm-booking-modal__input" placeholder="Email" required>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <select class="dm-booking-modal__select" required>
+                            <option value="" disabled selected>Discuss New Projects</option>
+                            <option value="new-project">Discuss New Project</option>
+                            <option value="troubleshooting">Troubleshooting/Support</option>
+                            <option value="general">General Questions</option>
+                        </select>
+                    </div>
+                    <div class="dm-booking-modal__form-group">
+                        <textarea class="dm-booking-modal__textarea" placeholder="Details" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="dm-booking-modal__submit">
+                        <span>Submit</span>
+                        <i class="fa-solid fa-paper-plane submit-icon"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <div id="dm-cursor-dot" class="dm-cursor-dot"></div>
     <div id="dm-cursor-ring" class="dm-cursor-ring"></div>
