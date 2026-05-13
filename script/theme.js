@@ -5,7 +5,11 @@
     const currentTheme = localStorage.getItem('theme') || 'dark';
 
     const updateLogos = (theme) => {
-        const logoSrc = theme === 'light' ? 'assets/logo-light.png' : 'assets/dillon-logo.png';
+        const isAuthorPage = window.location.pathname.includes('/authors/');
+
+        const logoSrc = theme === 'light'
+            ? (isAuthorPage ? '../assets/logo-light.png' : 'assets/logo-light.png')
+            : (isAuthorPage ? '../assets/dillon-logo.png' : 'assets/dillon-logo.png');
         const selectors = [
             '.dm-mobile-header__logo img',
             '.dm-mobile-menu__logo img',
@@ -28,7 +32,7 @@
             toggle.addEventListener('click', () => {
                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                 const newTheme = isLight ? 'dark' : 'light';
-                
+
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
                 updateLogos(newTheme);
