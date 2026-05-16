@@ -334,6 +334,18 @@
     });
 })();
 
+/* ── Testimonials Initialization ── */
+(function() {
+    const track = document.querySelector('.dm-testimonials__track');
+    if (!track) return;
+
+    // Pause on hover is handled by CSS
+    // The marquee is seamless due to cloned elements in HTML
+    const speed = 40; // seconds for one full loop
+    track.style.animationDuration = `${speed}s`;
+})();
+
+
 
 
 (function () {

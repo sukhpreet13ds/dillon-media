@@ -197,14 +197,14 @@
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item" role="none">
+                <li class="dm-nav__item " role="none">
                     <a href="about-us.html" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-circle-info"></i> -->
                         <span>ABOUT US</span>
                         <span class="dm-nav__indicator"></span>
                     </a>
                 </li>
-                <li class="dm-nav__item dm-nav__item--active dm-nav__item--has-mega" role="none">
+                <li class="dm-nav__item dm-nav__item--has-mega" role="none">
                     <a href="#" class="dm-nav__link" role="menuitem">
                         <!-- <i class="fa-solid fa-film"></i> -->
                         <span>SERVICES</span>
@@ -246,7 +246,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="dm-mega-menu__column dm-mega-menu__column--active">
+                                    <div class="dm-mega-menu__column">
                                         <a href="social-media-ads.html">
                                             <div class="dm-mega-menu__group">
                                                 <h4 class="dm-mega-menu__title">SOCIAL MEDIA ADS</h4>
@@ -255,7 +255,6 @@
                                             </div>
                                         </a>
                                     </div>
-
                                     <div class="dm-mega-menu__column">
                                         <a href="social-media-marketing.html">
                                             <div class="dm-mega-menu__group">
@@ -364,6 +363,7 @@
                                     </div>
 
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -408,303 +408,140 @@
 
 
 
-    <section class="dm-service-hero dm-video-hero">
-        <div class="dm-service-hero__container">
-            <div class="dm-service-hero__content" data-reveal="left">
-                <h1 class="dm-service-hero__title">Social media management 
-                    <span class="dm-text-outline"> agency Ocala</span>
+    <section class="dm-hero dm-hero--about" id="dm-hero">
+        <canvas class="dm-hero__canvas" id="dm-hero-canvas"></canvas>
+        <div class="dm-hero__cursor-glow" id="dm-hero-glow"></div>
+
+        <div class="dm-hero__container">
+            <div class="dm-hero__left">
+                <h1 class="dm-hero__title">
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">DILLON</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--solid">
+                        <span class="dm-hero__line-inner">MEDIA</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--accent">
+                        <span class="dm-hero__line-inner">GROUP</span>
+                    </span>
+                    <span class="dm-hero__line dm-hero__line--outline">
+                        <span class="dm-hero__line-inner">BLOGS</span>
+                    </span>
+
                 </h1>
-                <p class="dm-service-hero__subtitle">Stop letting your competitors steal the spotlight.</p>
-                <div class="dm-service-hero__actions dm-modal-trigger">
-                    <a href="#video-service-content" class="dm-btn-cta btn-fx gap-btn">
-                        <span class="dm-btn-cta__text">GET IN TOUCH</span>
-                        <span class="dm-btn-cta__shine"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="all-blogs-section">
+        <div class="dm-all-blogs__container">
+            <div class="dm-all-blogs__header">
+                <h2 class="dm-all-blogs__main-title">OUR LATEST BLOGS</h2>
+            </div>
+            <div class="dm-all-blogs__grid">
+                 <!-- Card 1 -->
+                <div class="dm-all-blogs__card">
+                    <a href="blogs/blog-view.html" class="dm-all-blogs__card-link">
+                        <div class="dm-all-blogs__img-wrapper">
+                            <img src="assets/radio.jpg" alt="Ocala Ranks" class="dm-all-blogs__img" loading="lazy">
+                        </div>
+                        <div class="dm-all-blogs__content">
+                            <div class="dm-all-blogs__meta-top">
+                                <span class="dm-all-blogs__brand">DILLON MEDIA GROUP</span>
+                                <span class="dm-all-blogs__date">April 30, 2026</span>
+                            </div>
+                            <h3 class="dm-all-blogs__title">Do Radio Ads Still Work for Local Ocala Businesses?</h3>
+                            <p class="dm-all-blogs__desc">Top 10 in the nation? Ocala? Yes! WalletHub recently ranked
+                                1,334 small U.S. cities on their conditions for starting a business...</p>
+                            <div class="dm-all-blogs__meta-bottom">
+                                <div class="dm-all-blogs__author">
+                                    <img src="assets/glass.jpg" alt="Author" class="dm-all-blogs__author-img">
+                                    <span class="dm-all-blogs__author-name">SEO Team</span>
+                                </div>
+                                <span class="dm-all-blogs__read-more">READ MORE <i
+                                        class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 1 -->
+                <div class="dm-all-blogs__card">
+                    <a href="blogs/blog-view.html" class="dm-all-blogs__card-link">
+                        <div class="dm-all-blogs__img-wrapper">
+                            <img src="assets/blog1.jpg" alt="Ocala Ranks" class="dm-all-blogs__img" loading="lazy">
+                        </div>
+                        <div class="dm-all-blogs__content">
+                            <div class="dm-all-blogs__meta-top">
+                                <span class="dm-all-blogs__brand">DILLON MEDIA GROUP</span>
+                                <span class="dm-all-blogs__date">April 14, 2026</span>
+                            </div>
+                            <h3 class="dm-all-blogs__title">Ocala Ranks In Top 10 Cities To Start a Small Business</h3>
+                            <p class="dm-all-blogs__desc">Top 10 in the nation? Ocala? Yes! WalletHub recently ranked
+                                1,334 small U.S. cities on their conditions for starting a business...</p>
+                            <div class="dm-all-blogs__meta-bottom">
+                                <div class="dm-all-blogs__author">
+                                    <img src="assets/team-m5.png" alt="Author" class="dm-all-blogs__author-img">
+                                    <span class="dm-all-blogs__author-name">Faith Dominie</span>
+                                </div>
+                                <span class="dm-all-blogs__read-more">READ MORE <i
+                                        class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 2 -->
+                <div class="dm-all-blogs__card">
+                    <a href="blogs/blog-view.html" class="dm-all-blogs__card-link">
+                        <div class="dm-all-blogs__img-wrapper">
+                            <img src="assets/blog2.jpg" alt="SEO" class="dm-all-blogs__img" loading="lazy">
+                        </div>
+                        <div class="dm-all-blogs__content">
+                            <div class="dm-all-blogs__meta-top">
+                                <span class="dm-all-blogs__brand">DILLON MEDIA GROUP</span>
+                                <span class="dm-all-blogs__date">July 10, 2024</span>
+                            </div>
+                            <h3 class="dm-all-blogs__title">How do I get to be at the top of Google?</h3>
+                            <p class="dm-all-blogs__desc">The number one question I get from business owners is, “How do
+                                I get to be at the top of Google?”. Unfortunately, there’s not a short answer...</p>
+                            <div class="dm-all-blogs__meta-bottom">
+                                <div class="dm-all-blogs__author">
+                                    <img src="assets/team-m1.jpg" alt="Author" class="dm-all-blogs__author-img">
+                                    <span class="dm-all-blogs__author-name">Clinton Grubbs</span>
+                                </div>
+                                <span class="dm-all-blogs__read-more">READ MORE <i
+                                        class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 3 -->
+                <div class="dm-all-blogs__card">
+                    <a href="blogs/blog-view.html" class="dm-all-blogs__card-link">
+                        <div class="dm-all-blogs__img-wrapper">
+                            <img src="assets/blog3.jpg" alt="Landing Pages" class="dm-all-blogs__img" loading="lazy">
+                        </div>
+                        <div class="dm-all-blogs__content">
+                            <div class="dm-all-blogs__meta-top">
+                                <span class="dm-all-blogs__brand">DILLON MEDIA GROUP</span>
+                                <span class="dm-all-blogs__date">Feb 7, 2022</span>
+                            </div>
+                            <h3 class="dm-all-blogs__title">3 Reasons You Should Be Using Landing Pages</h3>
+                            <p class="dm-all-blogs__desc">Well-optimized advertising campaigns have a lot of moving
+                                parts. Sure, ad creative and content are vital. But, what happens after someone
+                                clicks...</p>
+                            <div class="dm-all-blogs__meta-bottom">
+                                <div class="dm-all-blogs__author">
+                                    <img src="assets/team-m1.jpg" alt="Author" class="dm-all-blogs__author-img">
+                                    <span class="dm-all-blogs__author-name">Clinton Grubbs</span>
+                                </div>
+                                <span class="dm-all-blogs__read-more">READ MORE <i
+                                        class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </div>
                     </a>
                 </div>
             </div>
-
         </div>
-        <div class="dm-service-hero__bg">
-            <video autoplay muted loop playsinline class="dm-service-hero__video">
-                <source src="assets/smm.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
-
-    <section class="smm-section">
-        <div class="vdm-container">
-            <!-- Social Platforms Bar -->
-            <div class="smm-platforms-card" data-reveal>
-                <a href="https://www.facebook.com/DillonMediaGroupOcala/">
-
-                    <div class="smm-platform-item">
-                        <i class="fa-brands fa-facebook-f smm-icon-fb"></i>
-                        <span>Facebook</span>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/dillonmediagroup/">
-                    <div class="smm-platform-item">
-                        <i class="fa-brands fa-instagram smm-icon-ig"></i>
-                        <span>Instagram</span>
-                    </div>
-                </a>
-                <a href="https://twitter.com/DillonMediaGrp">
-                    <div class="smm-platform-item">
-                        <i class="fa-brands fa-x-twitter smm-icon-tw"></i>
-                        <span>Twitter</span>
-                    </div>
-                </a>
-                <a href="https://www.youtube.com/channel/UCQg2-qOkRPidZBFmUfPXREQ">
-                    <div class="smm-platform-item">
-                        <i class="fa-brands fa-youtube smm-icon-yt"></i>
-                        <span>YouTube</span>
-                    </div>
-                </a>
-                <!-- <div class="smm-platform-item">
-                <i class="fa-brands fa-pinterest smm-icon-pi"></i>
-                <span>Pinterest</span>
-            </div> -->
-            </div>
-
-            <!-- Benefits Header -->
-            <div class="smm-benefits-header" data-reveal>
-                <h2 class="smm-main-title">How Social Media Management <br> Benefits Your Brand</h2>
-                <p class="smm-header-desc">
-                    We place confidence in the fact that for any business to boost, a logical and an imperative approach
-                    is the key solution. We model on a very effective & outcome-driven approach to take your business on
-                    the path of success.
-                </p>
-            </div>
-
-            <!-- Benefits Content -->
-            <div class="smm-benefits-grid">
-                <div class="smm-benefits-content">
-                    <h3 class="smm-sub-title">Growing your social community</h3>
-                    <ul class="smm-checklist">
-                        <li><i class="fa-solid fa-check"></i> Reach more potential customers</li>
-                        <li><i class="fa-solid fa-check"></i> Expand to new markets and segments</li>
-                        <li><i class="fa-solid fa-check"></i> Earn more revenues and realize better ROI</li>
-                        <li><i class="fa-solid fa-check"></i> Engage loyal customers</li>
-                        <li><i class="fa-solid fa-check"></i> Build a robust brand</li>
-                    </ul>
-                </div>
-                <div class="smm-benefits-visual" data-reveal="right">
-                    <img src="assets/smm-growing.webp" alt="Social Media Community Growth" class="smm-benefits-img"
-                        loading="lazy">
-                </div>
-            </div>
-
-            <!-- How We Do It Section -->
-            <div class="smm-process-section">
-                <div class="smm-process-header" data-reveal>
-                    <h2 class="smm-main-title">How we do it</h2>
-                    <p class="smm-header-desc">
-                        Our approach to social media ensures your brand stays relevant and on-trend in an ever-evolving
-                        digital landscape. While it's easier than ever to go viral, cutting through the noise and
-                        building a genuinely engaged audience is more challenging than ever. By keeping up with the
-                        latest trends and platform updates, we help your business maintain a competitive edge and engage
-                        effectively with your followers.
-                    </p>
-                </div>
-
-                <div class="smm-process-grid">
-                    <!-- Box 1 -->
-                    <div class="smm-process-box-item left-icon">
-                        <div class="smm-icon-circle yellow-circle">
-                            <i class="fa-solid fa-shapes"></i>
-                        </div>
-                        <div class="smm-box-content">
-                            <h4>Platform Specific Approaches</h4>
-                            <p>Each platform demands a unique approach, so we create original content tailored to the
-                                strengths and relevance of each one. By focusing on platform-specific features and
-                                trends, we maximize engagement. Our team stays updated on the latest platform algorithms
-                                to optimize reach and visibility.</p>
-                        </div>
-                    </div>
-
-                    <!-- Box 2 -->
-                    <div class="smm-process-box-item right-icon">
-                        <div class="smm-box-content">
-                            <h4>Discovery</h4>
-                            <p>We start by understanding your company's goals and identifying the most effective
-                                platforms for your brand, such as Instagram, TikTok, LinkedIn, Facebook, Pinterest,
-                                YouTube or Twitter. This phase sets the foundation for a tailored approach to maximize
-                                your social media impact and create the best results possible.</p>
-                        </div>
-                        <div class="smm-icon-circle red-circle">
-                            <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        </div>
-                    </div>
-
-                    <!-- Box 3 -->
-                    <div class="smm-process-box-item left-icon">
-                        <div class="smm-icon-circle red-circle">
-                            <i class="fa-solid fa-users-gear"></i>
-                        </div>
-                        <div class="smm-box-content">
-                            <h4>Your Own Personalized Team</h4>
-                            <p>A dedicated Social Media Manager & Community Manager will handle your account, ensuring
-                                timely posts, responding to comments and DMs, and maintaining error-free content. We can
-                                also develop and manage brand ambassador programs to further enhance your social media
-                                presence. This personalized attention guarantees an approach that builds lasting
-                                communities and engagement.</p>
-                        </div>
-                    </div>
-
-                    <!-- Box 4 -->
-                    <div class="smm-process-box-item right-icon">
-                        <div class="smm-box-content">
-                            <h4>Feedback & Reporting</h4>
-                            <p>Every month, we provide a detailed report on growth, top-performing posts, and key
-                                metrics. This report includes actionable insights and strategies to further optimize
-                                your organic social presence, helping you achieve continuous improvement and success.
-                                Regular feedback sessions ensure that our strategies align with your evolving goals and
-                                market trends.</p>
-                        </div>
-                        <div class="smm-icon-circle yellow-circle">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="video-services-slide">
-        <div class="dm-slide-container">
-            <div class="dm-slide-header" data-reveal>
-                <h2 class="dm-slide-main-title">Social Media <span class="dm-text-outline">Marketing</span></h2>
-                <p class="dm-slide-main-desc">Every media production service is tailor-made to each business. We help
-                    your brand’s individuality to shine. Learn more about our range of solutions below.</p>
-            </div>
-
-            <div class="dm-video-slider-wrapper" data-reveal>
-                <div class="dm-video-slider" id="dm-video-slider">
-                    <!-- Slide 1 -->
-                    <div class="dm-video-slide active">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">01</span>
-                            <h3 class="dm-sliding-title">INSTAGRAM</h3>
-                            <h4 class="dm-sliding-subtitle">AIM HIGHER & STRONGER WITH INSTAGRAM</h4>
-                            <p class="dm-sliding-text">Instagram’s visual focus and algorithm work together to make it a
-                                powerful platform for building brand awareness and connecting with audiences on a
-                                personal level. With the right strategy, businesses can leverage Instagram’s features to
-                                share their story, engage customers, and drive real business results.</p>
-                            <p class="dm-sliding-text--small">Whether you want to increase brand awareness, drive
-                                website traffic, or generate leads, we can help you create a tailored Instagram strategy
-                                that aligns with your business goals and delivers measurable results. Let us help you
-                                unlock the full potential of Instagram for your business.</p>
-                        </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/instagram-serv.webp" alt="Photography Service" loading="lazy"
-                                loading="lazy" />
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="dm-video-slide">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">02</span>
-                            <h3 class="dm-sliding-title">FACEBOOK</h3>
-                            <h4 class="dm-sliding-subtitle">REACH MORE CUSTOMERS WITH FACEBOOK</h4>
-                            <p class="dm-sliding-text">Facebook’s vast user base and powerful advertising tools make it
-                                an essential platform for businesses looking to connect with customers and drive growth.
-                                With the right strategy, businesses can leverage Facebook’s features to reach their
-                                target audience, engage with customers, and achieve their marketing goals.</p>
-                            <p class="dm-sliding-text--small">Whether you want to increase brand awareness, drive
-                                website traffic, or generate leads, we can help you create a tailored Facebook strategy
-                                that aligns with your business goals and delivers measurable results. Let us help you
-                                unlock the full potential of Facebook for your business.</p>
-                        </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/facebook-slide.jpg" alt="Videography Service" loading="lazy" />
-                        </div>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="dm-video-slide">
-                        <div class="dm-video-slide__content">
-                            <span class="dm-sliding-num">03</span>
-                            <h3 class="dm-sliding-title">TIKTOK</h3>
-                            <h4 class="dm-sliding-subtitle">REACH MORE CUSTOMERS WITH TIKTOK</h4>
-                            <p class="dm-sliding-text">TikTok’s massive user base and algorithm-driven content delivery
-                                system have made it a dominant force in the social media landscape. With the right
-                                strategy, businesses can leverage TikTok to reach a diverse audience, build brand
-                                awareness, and drive meaningful engagement.</p>
-                            <p class="dm-sliding-text--small">Whether you want to increase brand awareness, drive
-                                website traffic, or generate leads, we can help you create a tailored TikTok strategy
-                                that aligns with your business goals and delivers measurable results. Let us help you
-                                unlock the full potential of TikTok for your business.</p>
-                        </div>
-                        <div class="dm-video-slide__image">
-                            <img src="assets/tiktok-serv.png" alt="Drone & Virtual Tours Service" loading="lazy" />
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slider Controls -->
-                <div class="dm-video-slider-controls">
-                    <button class="dm-video-slider-btn prev" id="video-slide-prev"><i
-                            class="fa-solid fa-arrow-left"></i></button>
-                    <div class="dm-video-slider-dots" id="video-slide-dots"></div>
-                    <button class="dm-video-slider-btn next" id="video-slide-next"><i
-                            class="fa-solid fa-arrow-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Video Modal -->
-    <div class="dm-video-modal" id="dm-video-modal">
-        <div class="dm-video-modal__overlay" id="dm-video-modal-close"></div>
-        <div class="dm-video-modal__container">
-            <button class="dm-video-modal__close" id="dm-video-modal-btn-close">&times;</button>
-            <div class="dm-video-modal__frame">
-                <iframe id="dm-modal-iframe" src="" frameborder="0" allow="autoplay; fullscreen"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-    </div>
-
-    <section class="dm-cta" id="dm-cta">
-        <div class="dm-cta__container">
-            <div class="dm-cta__content">
-                <h2 class="dm-cta__title">LET'S BUILD SOMETHING GREAT TOGETHER</h2>
-                <p class="dm-cta__desc">Ready to elevate your brand’s presence? Our team is here to help you navigate
-                    the ever-evolving media landscape with data-driven strategies and creative excellence.</p>
-                <a href="#" class="dm-cta__btn dm-modal-trigger">
-                    <span class="dm-cta__btn-text">START A CONVERSATION</span>
-                    <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-        <div class="dm-cta__bg-glow"></div>
     </section>
 
     <footer class="dm-footer" id="dm-footer">
